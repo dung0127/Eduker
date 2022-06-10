@@ -601,7 +601,6 @@ class CourseAdd extends Component {
                         <button type="button" data-step="1" className="js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle active" data-toggle="tooltip" data-placement="top" title="Basic Information">
                             <img src="assets/default/img/icons/paper.svg" className="img-cover" alt=""/>
                         </button>
-
                         <div className="ml-10" >
                             <span className="font-14 text-gray">Step 1/4</span>
                             <h4 className="font-16 text-secondary font-weight-bold">Basic Information</h4>
