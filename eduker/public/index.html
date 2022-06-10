@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel='shortcut icon' type='image/x-icon' href="https://lms2.rocket-soft.org/store/1/favicon.png">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    
+    <meta property='og:site_name' content='https://lms2.rocket-soft.org/Rocket LMS'>
+    <meta property='og:image' content='https://lms2.rocket-soft.org/store/1/favicon.png'>
+    <meta name='twitter:image' content='https://lms2.rocket-soft.org/store/1/favicon.png'>
+    <meta property='og:locale' content='https://lms2.rocket-soft.org/en_US'>
+    <meta property='og:type' content='website'>
+    <title>Rocket LMS</title>
+		
+    <!-- General CSS File -->
+    <link href="/assets/default/css/font.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/default/vendors/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="/assets/default/vendors/toast/jquery.toast.min.css">
+    <link rel="stylesheet" href="/assets/default/vendors/simplebar/simplebar.css">
+    <link rel="stylesheet" href="/assets/default/css/app.css">
+    <link rel="stylesheet" href="/assets/default/css/rating.css">
+    <link rel="stylesheet" href="/assets/default/vendors/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/assets/default/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="assets/default/css/panel.css">
+    <style>
+        
+    </style>
+
+
+    <style>
+        .pace { -webkit-pointer-events: none; pointer-events: none; -webkit-user-select: none; -moz-user-select: none; user-select: none; } .pace-inactive { display: none; } .pace .pace-progress { background: #29d; position: fixed; z-index: 2000; top: 0; right: 100%; width: 100%; height: 2px; } .pace .pace-progress-inner { display: block; position: absolute; right: 0px; width: 100px; height: 100%; box-shadow: 0 0 10px #29d, 0 0 5px #29d; opacity: 1.0; -webkit-transform: rotate(3deg) translate(0px, -4px); -moz-transform: rotate(3deg) translate(0px, -4px); -ms-transform: rotate(3deg) translate(0px, -4px); -o-transform: rotate(3deg) translate(0px, -4px); transform: rotate(3deg) translate(0px, -4px); } .pace .pace-activity { display: block; position: fixed; z-index: 2000; top: 15px; right: 15px; width: 14px; height: 14px; border: solid 2px transparent; border-top-color: #29d; border-left-color: #29d; border-radius: 10px; -webkit-animation: pace-spinner 400ms linear infinite; -moz-animation: pace-spinner 400ms linear infinite; -ms-animation: pace-spinner 400ms linear infinite; -o-animation: pace-spinner 400ms linear infinite; animation: pace-spinner 400ms linear infinite; } @-webkit-keyframes pace-spinner { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } } @-moz-keyframes pace-spinner { 0% { -moz-transform: rotate(0deg); transform: rotate(0deg); } 100% { -moz-transform: rotate(360deg); transform: rotate(360deg); } } @-o-keyframes pace-spinner { 0% { -o-transform: rotate(0deg); transform: rotate(0deg); } 100% { -o-transform: rotate(360deg); transform: rotate(360deg); } } @-ms-keyframes pace-spinner { 0% { -ms-transform: rotate(0deg); transform: rotate(0deg); } 100% { -ms-transform: rotate(360deg); transform: rotate(360deg); } } @keyframes  pace-spinner { 0% { transform: rotate(0deg); transform: rotate(0deg); } 100% { transform: rotate(360deg); transform: rotate(360deg); } }
+    </style>
+
+	
+  </head>
+    <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      
+      
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script src="/bundle.js"></script>
+
+    <script>
+        window.paceOptions = {
+            ajax: false, // disabled
+            document: false, // disabled
+            eventLag: false, // disabled
+        };
+    </script>
+     <script src="/assets/default/vendors/pace-loading/pace.min.js"></script>
+    <!-- Template JS File -->
+    <script src="/assets/default/js/app.js"></script>
+    <script src="/assets/default/vendors/feather-icons/dist/feather.min.js"></script>
+    <script src="/assets/default/vendors/moment.min.js"></script>
+    <script src="/assets/default/vendors/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="/assets/default/vendors/toast/jquery.toast.min.js"></script>
+    <script src="/assets/default/vendors/simplebar/simplebar.min.js"></script>
+
+    <script>
+        var deleteAlertTitle = 'Are you sure?';
+        var deleteAlertHint = 'This action cannot be undone!';
+        var deleteAlertConfirm = 'Delete';
+        var deleteAlertCancel = 'Cancel';
+        var deleteAlertSuccess = 'Success';
+        var deleteAlertFail = 'Failed';
+        var deleteAlertFailHint = 'Error while deleting item!';
+        var deleteAlertSuccessHint = 'Item successfully deleted.';
+        var forbiddenRequestToastTitleLang = 'public.forbidden_request_toast_lang';
+        var forbiddenRequestToastMsgLang = 'public.forbidden_request_toast_msg_lang';
+        
+        var webinarDemoLang = 'Course demo';
+        var replyLang = 'Reply';
+        var closeLang = 'Close';
+        var saveLang = 'Save';
+        var reportLang = 'Report';
+        var reportSuccessLang = 'Your report has been sent.';
+        var reportFailLang = 'Report failed. Make sure you are logged in.';
+        var messageToReviewerLang = 'Message to reviewer';
+        var copyLang = 'Copy';
+        var copiedLang = 'Copied';
+        var learningToggleLangSuccess = 'Your learning status successfully changed.';
+        var learningToggleLangError = 'Failed to change learning status.';
+        var notLoginToastTitleLang = 'Restricted Content';
+        var notLoginToastMsgLang = 'Please login to access the content.';
+        var notAccessToastTitleLang = 'Access denied';
+        var notAccessToastMsgLang = 'You dont have access to this content.';
+        var canNotTryAgainQuizToastTitleLang = 'Reched out';
+        var canNotTryAgainQuizToastMsgLang = 'You can not take this quiz again.';
+        var canNotDownloadCertificateToastTitleLang = 'Download failed';
+        var canNotDownloadCertificateToastMsgLang = 'You can not download this certificate.';
+        var sessionFinishedToastTitleLang = 'Session Finished';
+        var sessionFinishedToastMsgLang = 'You are too late, this session finished.';
+    </script>
+
+        <script src="/assets/default/js/parts/time-counter-down.min.js"></script>
+        <script src="/assets/default/vendors/barrating/jquery.barrating.min.js"></script>
+        <script src="/assets/default/vendors/video/video.min.js"></script>
+        <script src="/assets/default/vendors/video/youtube.min.js"></script>
+        <script src="/assets/default/vendors/video/vimeo.js"></script>
+        <script src="/assets/default/vendors/lottie/lottie-player.js"></script>
+
+        <script src="/assets/default/js/parts/comment.min.js"></script>
+        <script src="/assets/default/js/parts/video_player_helpers.min.js"></script>
+        <script src="/assets/default/js/parts/webinar_show.min.js"></script>
+        <script src="/assets/default/vendors/feather-icons/dist/feather.min.js"></script>
+        
+        <script src="/assets/default/vendors/select2/select2.min.js"></script>
+        <script src="/assets/default/vendors/swiper/swiper-bundle.min.js"></script>
+        <script src="/assets/default/vendors/owl-carousel2/owl.carousel.min.js"></script>
+        <script src="/assets/default/vendors/parallax/parallax.min.js"></script>
+        <script src="/assets/default/js/parts/home.min.js"></script>
+        <script src="/assets/default/js/parts/categories.min.js"></script>
+        <link href="/assets/default/vendors/flagstrap/css/flags.css" rel="stylesheet">
+        <script src="/assets/default/vendors/flagstrap/js/jquery.flagstrap.min.js"></script>
+        <script src="/assets/default/js/parts/top_nav_flags.min.js"></script>
+        <script src="/assets/default/js/parts/navbar.min.js"></script>
+
+        <script src="/assets/default/js/panel/user_setting.min.js"></script>
+      <script src="/assets/default/js/parts/main.min.js"></script>
+      <script src="/assets/vendors/cropit/jquery.cropit.js"></script>
+    <script src="/assets/default/js/parts/img_cropit.min.js"></script>
+    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=ATNmz7NaSvnCl1jq5kkub9a0jB8chvoO7VWkYSdZMSVTThE80teaQCyYuIIU-viT9-C9bsB7pca_dEhr"></script>
+    <script defer src="https://www.paypal.com/sdk/js?client-id=ATNmz7NaSvnCl1jq5kkub9a0jB8chvoO7VWkYSdZMSVTThE80teaQCyYuIIU-viT9-C9bsB7pca_dEhr"></script>
+    <script src="/assets/default/js/print.js"></script>
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    
+    <script src="/assets/default/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="/assets/default/vendors/chartjs/chart.min.js"></script>
+    <script>
+      var offlineSuccess = 'Your status changed successfully!';
+      var $chartDataMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      var $chartData = [0,0,867.9,0,0,0,0,0,0,0,0,0];
+  </script>
+  <script src="/assets/default/js/panel/dashboard.min.js"></script>
+<script src="/assets/default/js/panel/public.min.js"></script>
+<script src="/assets/default/vendors/sortable/jquery-ui.min.js"></script>
+<script src="/assets/default/vendors/daterangepicker/daterangepicker.min.js"></script>
+
+<script>
+  var videoDemoPathPlaceHolderBySource = {
+      upload: 'Uploads files from your PC',
+      youtube: 'Paste Youtube link',
+      vimeo: 'Paste Youtube link',
+      external_link: 'Paste the external link',
+  }
+</script>
+<script src="/assets/vendors/summernote/summernote-bs4.min.js"></script>
+
+<script>
+  var requestFailedLang = 'Request Failed';
+  var thisLiveHasEndedLang = 'This live has been ended.';
+</script>
+<script>
+  var saveSuccessLang = 'Item added successfully.';
+  var zoomJwtTokenInvalid = 'Your Zoom JWT token is invalid.';
+  var hasZoomApiToken = 'true';
+  var editChapterLang = 'Edit Section';
+</script>
+
+<script src="/assets/default/js/panel/webinar.min.js"></script>
+<script src="/assets/default/js/panel/webinar_content_locale.min.js"></script>
+  </body>
+</html>

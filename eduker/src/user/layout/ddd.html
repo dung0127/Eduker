@@ -1,0 +1,1634 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<!-- CSRF Token -->
+<meta name="csrf-token" content="g4KwLYysx3Rf4UHggOKK39AoVOs7xYjNKLvMVnMl">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name='robots' content="index, follow, all">
+
+
+<link rel='shortcut icon' type='image/x-icon' href="https://lms2.rocket-soft.org/store/1/favicon.png">
+<link rel="manifest" href="mix-manifest.json?v=4">
+<meta name="theme-color" content="#FFF">
+<!-- Windows Phone -->
+<meta name="msapplication-starturl" content="/">
+<meta name="msapplication-TileColor" content="#FFF">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-title" content="Rocket LMS">
+<link rel="apple-touch-icon" href="https://lms2.rocket-soft.org/store/1/favicon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<!-- Android -->
+<link rel='icon' href='https://lms2.rocket-soft.org/store/1/favicon.png'>
+<meta name="application-name" content="Rocket LMS">
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Other -->
+<meta name="layoutmode" content="fitscreen/standard">
+<link rel="home" href="https://lms2.rocket-soft.org">
+
+<!-- Open Graph -->
+<meta property='og:title' content='Dashboard'>
+<meta name='twitter:card' content='summary'>
+<meta name='twitter:title' content='Dashboard'>
+
+<meta property='og:site_name' content='https://lms2.rocket-soft.org/Rocket LMS'>
+<meta property='og:image' content='https://lms2.rocket-soft.org/store/1/favicon.png'>
+<meta name='twitter:image' content='https://lms2.rocket-soft.org/store/1/favicon.png'>
+<meta property='og:locale' content='https://lms2.rocket-soft.org/en_US'>
+<meta property='og:type' content='website'>
+
+    <title>Dashboard | Rocket LMS</title>
+
+    <!-- General CSS File -->
+    <link href="assets/default/css/font.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/default/vendors/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/default/vendors/toast/jquery.toast.min.css">
+    <link rel="stylesheet" href="assets/default/vendors/simplebar/simplebar.css">
+    <link rel="stylesheet" href="assets/default/css/app.css">
+    <link rel="stylesheet" href="assets/default/css/panel.css">
+
+    
+        <link rel="stylesheet" href="assets/default/vendors/chartjs/chart.min.css"/>
+    <link rel="stylesheet" href="assets/default/vendors/apexcharts/apexcharts.css"/>
+    
+    <style>
+        
+    </style>
+
+            <style>
+    .pace { -webkit-pointer-events: none; pointer-events: none; -webkit-user-select: none; -moz-user-select: none; user-select: none; } .pace-inactive { display: none; } .pace .pace-progress { background: #29d; position: fixed; z-index: 2000; top: 0; right: 100%; width: 100%; height: 2px; } .pace .pace-progress-inner { display: block; position: absolute; right: 0px; width: 100px; height: 100%; box-shadow: 0 0 10px #29d, 0 0 5px #29d; opacity: 1.0; -webkit-transform: rotate(3deg) translate(0px, -4px); -moz-transform: rotate(3deg) translate(0px, -4px); -ms-transform: rotate(3deg) translate(0px, -4px); -o-transform: rotate(3deg) translate(0px, -4px); transform: rotate(3deg) translate(0px, -4px); } .pace .pace-activity { display: block; position: fixed; z-index: 2000; top: 15px; right: 15px; width: 14px; height: 14px; border: solid 2px transparent; border-top-color: #29d; border-left-color: #29d; border-radius: 10px; -webkit-animation: pace-spinner 400ms linear infinite; -moz-animation: pace-spinner 400ms linear infinite; -ms-animation: pace-spinner 400ms linear infinite; -o-animation: pace-spinner 400ms linear infinite; animation: pace-spinner 400ms linear infinite; } @-webkit-keyframes pace-spinner { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } } @-moz-keyframes pace-spinner { 0% { -moz-transform: rotate(0deg); transform: rotate(0deg); } 100% { -moz-transform: rotate(360deg); transform: rotate(360deg); } } @-o-keyframes pace-spinner { 0% { -o-transform: rotate(0deg); transform: rotate(0deg); } 100% { -o-transform: rotate(360deg); transform: rotate(360deg); } } @-ms-keyframes pace-spinner { 0% { -ms-transform: rotate(0deg); transform: rotate(0deg); } 100% { -ms-transform: rotate(360deg); transform: rotate(360deg); } } @keyframes  pace-spinner { 0% { transform: rotate(0deg); transform: rotate(0deg); } 100% { transform: rotate(360deg); transform: rotate(360deg); } }
+</style>
+
+<script>
+    window.paceOptions = {
+        ajax: false, // disabled
+        document: false, // disabled
+        eventLag: false, // disabled
+    };
+</script>
+<script src="assets/default/vendors/pace-loading/pace.min.js"></script>
+    
+</head>
+<body className="">
+
+
+<div id="panel_app">
+
+    <div id="navbarVacuum"></div>
+<nav id="navbar" className="navbar navbar-expand-lg navbar-light">
+    <div className="container-fluid">
+        <div className="d-flex align-items-center justify-content-between w-100">
+
+            <a className="navbar-brand navbar-order mr-0" href="">
+                                    <img src="store/1/default_images/website-logo.png" className="img-cover" alt="site logo">
+                            </a>
+
+            <button className="navbar-toggler navbar-order" type="button" id="navbarToggle">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="mx-lg-30 d-none d-lg-flex flex-grow-1 navbar-toggle-content " id="navbarContent">
+                <div className="navbar-toggle-header text-right d-lg-none">
+                    <button className="btn-transparent" id="navbarClose">
+                        <i data-feather="x" width="32" height="32"></i>
+                    </button>
+                </div>
+
+                <ul className="navbar-nav mr-auto d-flex align-items-center">
+                                            <li className="mr-lg-25">
+                            <div className="menu-category">
+                                <ul>
+                                    <li className="cursor-pointer user-select-none d-flex xs-categories-toggle">
+                                        <i data-feather="grid" width="20" height="20" className="mr-10 d-none d-lg-block"></i>
+                                        Categories
+
+                                        <ul className="cat-dropdown-menu">
+                                                                                            <li>
+                                                    <a href="categories/Design">
+                                                        <div className="d-flex align-items-center">
+                                                            <img src="store/1/default_images/categories_icons/feather.png" className="cat-dropdown-menu-icon mr-10" alt="Design icon">
+                                                            Design
+                                                        </div>
+
+                                                                                                            </a>
+
+                                                                                                    </li>
+                                                                                            <li>
+                                                    <a href="#!">
+                                                        <div className="d-flex align-items-center">
+                                                            <img src="store/1/default_images/categories_icons/briefcase.png" className="cat-dropdown-menu-icon mr-10" alt="Academics icon">
+                                                            Academics
+                                                        </div>
+
+                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
+                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
+                                                                                                            </a>
+
+                                                                                                            <ul className="sub-menu" >
+                                                                                                                            <li><a href="categories/Academics/Math">Math</a></li>
+                                                                                                                            <li><a href="categories/Academics/Science">Science</a></li>
+                                                                                                                            <li><a href="categories/Academics/Language">Language</a></li>
+                                                                                                                    </ul>
+                                                                                                    </li>
+                                                                                            <li>
+                                                    <a href="categories/Health-&amp;-Fitness">
+                                                        <div className="d-flex align-items-center">
+                                                            <img src="store/1/default_images/categories_icons/heart.png" className="cat-dropdown-menu-icon mr-10" alt="Health &amp; Fitness icon">
+                                                            Health &amp; Fitness
+                                                        </div>
+
+                                                                                                            </a>
+
+                                                                                                    </li>
+                                                                                            <li>
+                                                    <a href="#!">
+                                                        <div className="d-flex align-items-center">
+                                                            <img src="store/1/default_images/categories_icons/umbrella.png" className="cat-dropdown-menu-icon mr-10" alt="Lifestyle icon">
+                                                            Lifestyle
+                                                        </div>
+
+                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
+                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
+                                                                                                            </a>
+
+                                                                                                            <ul className="sub-menu" >
+                                                                                                                            <li><a href="categories/Lifestyle/Lifestyle">Lifestyle</a></li>
+                                                                                                                            <li><a href="categories/Lifestyle/Beauty-&amp;-Makeup">Beauty &amp; Makeup</a></li>
+                                                                                                                    </ul>
+                                                                                                    </li>
+                                                                                            <li>
+                                                    <a href="categories/Marketing">
+                                                        <div className="d-flex align-items-center">
+                                                            <img src="store/1/default_images/categories_icons/pie-chart.png" className="cat-dropdown-menu-icon mr-10" alt="Marketing icon">
+                                                            Marketing
+                                                        </div>
+
+                                                                                                            </a>
+
+                                                                                                    </li>
+                                                                                            <li>
+                                                    <a href="#!">
+                                                        <div className="d-flex align-items-center">
+                                                            <img src="store/1/default_images/categories_icons/anchor.png" className="cat-dropdown-menu-icon mr-10" alt="Business icon">
+                                                            Business
+                                                        </div>
+
+                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
+                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
+                                                                                                            </a>
+
+                                                                                                            <ul className="sub-menu" >
+                                                                                                                            <li><a href="categories/Business/Management">Management</a></li>
+                                                                                                                            <li><a href="categories/Business/Communications">Communications</a></li>
+                                                                                                                            <li><a href="categories/Business/Business-Strategy">Business Strategy</a></li>
+                                                                                                                    </ul>
+                                                                                                    </li>
+                                                                                            <li>
+                                                    <a href="#!">
+                                                        <div className="d-flex align-items-center">
+                                                            <img src="store/1/default_images/categories_icons/code.png" className="cat-dropdown-menu-icon mr-10" alt="Development icon">
+                                                            Development
+                                                        </div>
+
+                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
+                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
+                                                                                                            </a>
+
+                                                                                                            <ul className="sub-menu" >
+                                                                                                                            <li><a href="categories/Development/Web-Development">Web Development</a></li>
+                                                                                                                            <li><a href="categories/Development/Mobile-Development">Mobile Development</a></li>
+                                                                                                                            <li><a href="categories/Development/Game-Development">Game Development</a></li>
+                                                                                                                    </ul>
+                                                                                                    </li>
+                                                                                    </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    
+                                                                        <li className="nav-item">
+                                <a className="nav-link" href="">Home</a>
+                            </li>
+                                                    <li className="nav-item">
+                                <a className="nav-link" href="classes?sort=newest">Courses</a>
+                            </li>
+                                                    <li className="nav-item">
+                                <a className="nav-link" href="instructors">Instructors</a>
+                            </li>
+                                                    <li className="nav-item">
+                                <a className="nav-link" href="blog">Blog</a>
+                            </li>
+                                                    <li className="nav-item">
+                                <a className="nav-link" href="contact">Contact</a>
+                            </li>
+                                                            </ul>
+            </div>
+
+            <div className="nav-icons-or-start-live navbar-order">
+
+                <a href="panel/webinars/new" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
+                    Start a new course
+                </a>
+
+                <a href="panel/webinars/new" className="d-flex d-lg-none text-primary nav-start-a-live-btn font-14">
+                    Start a new course
+                </a>
+
+                <div className="d-none nav-notify-cart-dropdown top-navbar ">
+                    <div className="dropdown">
+    <button type="button"  className="btn btn-transparent dropdown-toggle" id="navbarShopingCart" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+        <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
+
+                    <span className="badge badge-circle-primary d-flex align-items-center justify-content-center">1</span>
+            </button>
+
+    <div className="dropdown-menu" aria-labelledby="navbarShopingCart">
+        <div className="d-md-none border-bottom mb-20 pb-10 text-right">
+            <i className="close-dropdown" data-feather="x" width="32" height="32" className="mr-10"></i>
+        </div>
+        <div className="h-100">
+            <div className="navbar-shopping-cart h-100" data-simplebar>
+                                    <div className="mb-auto">
+                                                    <div className="navbar-cart-box d-flex align-items-center">
+                                
+                                                                    <a href="https://lms2.rocket-soft.org/course/Learn-and-Understand-AngularJS" target="_blank" className="navbar-cart-img">
+                                        <img src="store/3/Learn and Understand AngularJS.jpg" alt="product title" className="img-cover"/>
+                                    </a>
+                                    <div className="navbar-cart-info">
+                                        <a href="https://lms2.rocket-soft.org/course/Learn-and-Understand-AngularJS" target="_blank">
+                                            <h4>Learn and Understand AngularJS</h4>
+                                        </a>
+                                        <div className="price mt-10">
+                                                                                            <span className="text-primary font-weight-bold">$16</span>
+                                                <span className="off ml-15">$20</span>
+                                                                                    </div>
+                                    </div>
+
+                                                            </div>
+                                            </div>
+                    <div className="navbar-cart-actions">
+                        <div className="navbar-cart-total mt-15 border-top d-flex align-items-center justify-content-between">
+                            <strong className="total-text">Total</strong>
+                            <strong className="text-primary font-weight-bold">$16</strong>
+                        </div>
+
+                        <a href="cart/" className="btn btn-sm btn-primary btn-block mt-50 mt-md-15">Go to cart</a>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</div>
+
+                    <div className="border-left mx-15"></div>
+
+                    <div className="dropdown">
+    <button type="button" className="btn btn-transparent dropdown-toggle"  id="navbarNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i data-feather="bell" width="20" height="20" className="mr-10"></i>
+
+                    <span className="badge badge-circle-danger d-flex align-items-center justify-content-center">95</span>
+            </button>
+
+    <div className="dropdown-menu pt-20" aria-labelledby="navbarNotification">
+        <div className="d-flex flex-column h-100">
+            <div className="mb-auto navbar-notification-card" data-simplebar>
+                <div className="d-md-none border-bottom mb-20 pb-10 text-right">
+                    <i className="close-dropdown" data-feather="x" width="32" height="32" className="mr-10"></i>
+                </div>
+
+                
+                                            <a href="panel/notifications?notification=1891">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">5 Mar 2022 | 10:07</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1875">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 12:32</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1874">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 12:32</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1859">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1858">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1857">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1856">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1855">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1810">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 06:10</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1798">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 04:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1796">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 04:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1797">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 04:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1795">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 04:45</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1794">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 04:44</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1780">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New meeting request</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 02:34</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1777">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">4 Mar 2022 | 02:34</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1776">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New feedback</h4>
+                                <span className="notify-at d-block mt-5">3 Mar 2022 | 19:13</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1715">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:55</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1714">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:55</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1713">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:53</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1712">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:44</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1710">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:32</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1709">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class created</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:17</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1708">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:10</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1707">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class created</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:10</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1702">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:04</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1699">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:02</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1696">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:02</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1693">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:01</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1692">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 17:00</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1691">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class created</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 16:59</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1690">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 05:27</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1689">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">1 Mar 2022 | 04:32</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1683">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">24 Feb 2022 | 05:09</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1676">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">13 Dec 2021 | 02:09</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1665">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 14:19</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1664">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 14:18</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1663">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 14:16</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1643">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 13:36</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1639">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 04:50</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1638">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 04:50</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1637">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 04:48</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1631">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">28 Oct 2021 | 02:57</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1603">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">29 Jul 2021 | 03:21</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1591">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">17 Jul 2021 | 03:50</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1574">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">14 Jul 2021 | 03:10</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1573">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New pending quiz</h4>
+                                <span className="notify-at d-block mt-5">14 Jul 2021 | 02:18</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1572">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Meeting finished</h4>
+                                <span className="notify-at d-block mt-5">14 Jul 2021 | 02:13</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1551">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">14 Jul 2021 | 01:32</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1543">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New pending quiz</h4>
+                                <span className="notify-at d-block mt-5">14 Jul 2021 | 00:46</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1532">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:52</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1533">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:52</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1531">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:52</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1519">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New feedback</h4>
+                                <span className="notify-at d-block mt-5">13 Jul 2021 | 18:18</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1517">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New feedback</h4>
+                                <span className="notify-at d-block mt-5">13 Jul 2021 | 18:16</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1515">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">13 Jul 2021 | 18:13</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1512">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New pending quiz</h4>
+                                <span className="notify-at d-block mt-5">13 Jul 2021 | 15:33</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1508">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New financial document</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 19:34</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1507">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New purchase completed</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 19:34</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1505">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Offline payment approved</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 19:29</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1504">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Offline payment submitted</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 19:29</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1496">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 18:16</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1490">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New reply on support conversation</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 00:10</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1489">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New class support message</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 00:09</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1488">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New reply on support conversation</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 00:05</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1487">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New reply on support conversation</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 00:04</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1486">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New reply on support conversation</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 00:02</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1485">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New reply on support conversation</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 00:02</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1484">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New reply on support conversation</h4>
+                                <span className="notify-at d-block mt-5">12 Jul 2021 | 00:01</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1483">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New class support message</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:59</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1460">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Payout has been processed</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:40</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1458">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Payout request submitted</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:39</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1457">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:34</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1454">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:33</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1453">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:31</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1450">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:29</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1446">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:26</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1437">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 05:49</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1429">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New meeting request</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 05:46</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1426">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">11 Jul 2021 | 05:46</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1399">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">10 Jul 2021 | 16:14</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1398">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Your class approved</h4>
+                                <span className="notify-at d-block mt-5">10 Jul 2021 | 16:13</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1396">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New meeting request</h4>
+                                <span className="notify-at d-block mt-5">10 Jul 2021 | 15:12</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1393">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
+                                <span className="notify-at d-block mt-5">10 Jul 2021 | 15:12</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1376">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New comment for your class</h4>
+                                <span className="notify-at d-block mt-5">9 Jul 2021 | 16:46</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1335">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">6 Jul 2021 | 03:02</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1330">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">6 Jul 2021 | 02:59</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1315">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
+                                <span className="notify-at d-block mt-5">6 Jul 2021 | 02:43</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1303">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Course approve</h4>
+                                <span className="notify-at d-block mt-5">3 Jul 2021 | 02:29</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1284">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Course approve</h4>
+                                <span className="notify-at d-block mt-5">29 Jun 2021 | 17:51</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1283">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Course created</h4>
+                                <span className="notify-at d-block mt-5">29 Jun 2021 | 17:51</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1282">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Course approve</h4>
+                                <span className="notify-at d-block mt-5">29 Jun 2021 | 07:39</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1281">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Course created</h4>
+                                <span className="notify-at d-block mt-5">29 Jun 2021 | 07:38</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1277">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Course approve</h4>
+                                <span className="notify-at d-block mt-5">29 Jun 2021 | 01:44</span>
+                            </div>
+                        </a>
+                                            <a href="panel/notifications?notification=1276">
+                            <div className="navbar-notification-item border-bottom">
+                                <h4 className="font-14 font-weight-bold text-secondary">Course created</h4>
+                                <span className="notify-at d-block mt-5">29 Jun 2021 | 01:43</span>
+                            </div>
+                        </a>
+                    
+                
+            </div>
+
+                            <div className="mt-10 navbar-notification-action">
+                    <a href="panel/notifications" className="btn btn-sm btn-danger btn-block">All notifications</a>
+                </div>
+                    </div>
+    </div>
+</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <div className="d-flex justify-content-end">
+        <div className="xs-panel-nav d-flex d-lg-none justify-content-between py-5 px-15">
+    <div className="user-info d-flex align-items-center justify-content-between">
+        <div className="user-avatar">
+            <img src="store/1015/avatar/617a4f2fb8a6d.png" className="img-cover" alt="Robert Ransdell">
+        </div>
+
+        <div className="user-name ml-15">
+            <h3 className="font-16 font-weight-bold">Robert Ransdell</h3>
+        </div>
+    </div>
+
+    <button className="sidebar-toggler btn-transparent d-flex flex-column-reverse justify-content-center align-items-center p-5 rounded-sm sidebarNavToggle" type="button">
+        <span>Menu</span>
+        <i data-feather="menu" width="16" height="16"></i>
+    </button>
+</div>
+
+<div className="panel-sidebar pt-50 pb-25 px-25" id="panelSidebar">
+    <button className="btn-transparent panel-sidebar-close sidebarNavToggle">
+        <i data-feather="x" width="24" height="24"></i>
+    </button>
+
+    <div className="user-info d-flex align-items-center flex-row flex-lg-column justify-content-lg-center">
+        <a href="panel" className="user-avatar">
+            <img src="store/1015/avatar/617a4f2fb8a6d.png" className="img-cover" alt="Robert Ransdell">
+        </a>
+
+        <div className="d-flex flex-column align-items-center justify-content-center">
+            <a href="panel" className="user-name mt-15">
+                <h3 className="font-16 font-weight-bold text-center">Robert Ransdell</h3>
+            </a>
+
+                    </div>
+    </div>
+
+    <div className="d-flex sidebar-user-stats pb-10 ml-20 pb-lg-20 mt-15 mt-lg-30">
+        <div className="sidebar-user-stat-item d-flex flex-column">
+            <strong className="text-center">5</strong>
+            <span className="font-12">Courses</span>
+        </div>
+
+        <div className="border-left mx-30"></div>
+
+                    <div className="sidebar-user-stat-item d-flex flex-column">
+                <strong className="text-center">0</strong>
+                <span className="font-12">Followers</span>
+            </div>
+            </div>
+
+    <ul className="sidebar-menu pt-10  " data-simplebar >
+
+        <li className="sidenav-item sidenav-item-active">
+            <a href="panel" className="d-flex align-items-center">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="Group_1264" transform="translate(-188.102 -869.102)">
+        <g id="Group_1262">
+            <g id="speedometer" transform="translate(188.102 869.102)">
+                <path id="Path_1547" d="M20.484 3.515a12 12 0 0 0-16.97 16.97 12 12 0 0 0 16.97-16.97zM12 22.593A10.594 10.594 0 1 1 22.593 12 10.606 10.606 0 0 1 12 22.593zm0 0" className="cls-1"/>
+                <path id="Path_1548" d="M118.647 321.206a.7.7 0 0 0-.5-.206h-8.094a.7.7 0 0 0-.5.206l-2.228 2.228a.7.7 0 0 0-.012.982 9.357 9.357 0 0 0 13.569 0 .7.7 0 0 0-.012-.982zm-4.544 4.716a7.882 7.882 0 0 1-5.273-2l1.517-1.517h7.512l1.517 1.517a7.882 7.882 0 0 1-5.273 2zm0 0" className="cls-1" transform="translate(-102.104 -305.954)"/>
+                <path id="Path_1549" d="M216.719 120.194a.7.7 0 0 0-.919.38l-1.606 3.876h-.091a2.063 2.063 0 1 0 1.39.541l1.606-3.877a.7.7 0 0 0-.38-.919zm-2.616 6.969a.654.654 0 1 1 .654-.654.655.655 0 0 1-.657.654zm0 0" className="cls-1" transform="translate(-202.104 -114.509)"/>
+                <path id="Path_1550" d="M65.375 56A9.385 9.385 0 0 0 56 65.375a.7.7 0 0 0 .7.7h1.25a.7.7 0 1 0 0-1.406h-.516a7.933 7.933 0 0 1 1.83-4.409l.362.362a.7.7 0 1 0 .994-.994l-.362-.362a7.934 7.934 0 0 1 4.41-1.83v.516a.7.7 0 1 0 1.406 0v-.516a7.934 7.934 0 0 1 4.41 1.83l-.362.362a.7.7 0 0 0 .994.994l.362-.362a7.932 7.932 0 0 1 1.83 4.409H72.8a.7.7 0 0 0 0 1.406h1.25a.7.7 0 0 0 .7-.7A9.385 9.385 0 0 0 65.375 56zm0 0" className="cls-1" transform="translate(-53.376 -53.375)"/>
+            </g>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Dashboard</span>
+            </a>
+        </li>
+
+        
+        <li className="sidenav-item ">
+            <a className="d-flex align-items-center" data-toggle="collapse" href="#webinarCollapse" role="button" aria-expanded="false" aria-controls="webinarCollapse">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="Mask_Group_17" clip-path="url(#clip-path)" data-name="Mask Group 17" transform="translate(-25 -410)">
+        <g id="online-class" transform="translate(25 410)">
+            <path id="Path_153" d="M22.078 12.319a2.112 2.112 0 0 0 1.922-2.1V3.656a2.112 2.112 0 0 0-2.109-2.109h-6.985A2.112 2.112 0 0 0 12.8 3.656v2.766H4.031a2.112 2.112 0 0 0-2.109 2.109v8.438a2.1 2.1 0 0 0 .121.7h-.777A1.267 1.267 0 0 0 0 18.938a3.52 3.52 0 0 0 3.516 3.516h16.968A3.52 3.52 0 0 0 24 18.938a1.267 1.267 0 0 0-1.266-1.266h-.777a2.1 2.1 0 0 0 .121-.7zM14.2 3.656a.7.7 0 0 1 .7-.7h6.984a.7.7 0 0 1 .7.7v6.562a.7.7 0 0 1-.7.7h-6.509a.7.7 0 0 0-.373.107l-1.418.886.589-1.963a.7.7 0 0 0 .03-.2zm6.281 17.391H3.516a2.112 2.112 0 0 1-2.1-1.969h21.173a2.112 2.112 0 0 1-2.105 1.969zM6.7 12.375a.8.8 0 1 1 .8.8.8.8 0 0 1-.8-.8zm-.375 3c0-.424.548-.8 1.172-.8a1.435 1.435 0 0 1 .885.287.692.692 0 0 1 .287.51v2.3H6.328zm3.75 2.3v-2.3a2.074 2.074 0 0 0-.815-1.608l-.036-.027a2.2 2.2 0 1 0-3.455 0 2.073 2.073 0 0 0-.851 1.634v2.3h-.887a.7.7 0 0 1-.7-.7V8.531a.7.7 0 0 1 .7-.7H12.8v1.816l-.559 1.864a1.4 1.4 0 0 0 2.092 1.6l1.247-.779h5.1v4.641a.7.7 0 0 1-.7.7z" className="cls-3" data-name="Path 153"/>
+            <path id="Path_154" d="M19.125 7.922h-1.5a.7.7 0 0 0 0 1.406h1.5a.7.7 0 0 0 0-1.406z" className="cls-3" data-name="Path 154"/>
+            <path id="Path_155" d="M16.5 5.953h3.75a.7.7 0 0 0 0-1.406H16.5a.7.7 0 0 0 0 1.406z" className="cls-3" data-name="Path 155"/>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Courses</span>
+            </a>
+
+            <div className="collapse " id="webinarCollapse">
+                <ul className="sidenav-item-collapse">
+                                            <li className="mt-5 ">
+                            <a href="panel/webinars/new">New</a>
+                        </li>
+
+                        <li className="mt-5 ">
+                            <a href="panel/webinars">My courses</a>
+                        </li>
+
+                        <li className="mt-5 ">
+                            <a href="panel/webinars/invitations">Invited courses</a>
+                        </li>
+                    
+                                            <li className="mt-5 ">
+                            <a href="panel/webinars/organization_classes">Organization courses</a>
+                        </li>
+                    
+                    <li className="mt-5 ">
+                        <a href="panel/webinars/purchases">My purchases</a>
+                    </li>
+
+                                            <li className="mt-5 ">
+                            <a href="panel/webinars/comments">My course comments</a>
+                        </li>
+                    
+                    <li className="mt-5 ">
+                        <a href="panel/webinars/my-comments">My comments</a>
+                    </li>
+                    <li className="mt-5 ">
+                        <a href="panel/webinars/favorites">Favorites</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li className="sidenav-item ">
+            <a className="d-flex align-items-center" data-toggle="collapse" href="#meetingCollapse" role="button" aria-expanded="false" aria-controls="meetingCollapse">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="Mask_Group_21" clip-path="url(#clip-path)" data-name="Mask Group 21" transform="translate(-25 -410)">
+        <g id="online-class_1_" data-name="online-class (1)" transform="translate(25 410)">
+            <path id="Path_170" d="M21.422 0H2.578A2.581 2.581 0 0 0 0 2.578v18.844A2.581 2.581 0 0 0 2.578 24h18.844A2.581 2.581 0 0 0 24 21.422V2.578A2.581 2.581 0 0 0 21.422 0zM1.406 2.578a1.173 1.173 0 0 1 1.172-1.172h18.844a1.173 1.173 0 0 1 1.172 1.172v13.453H1.406zm21.188 18.844a1.173 1.173 0 0 1-1.172 1.172H2.578a1.173 1.173 0 0 1-1.172-1.172v-3.984h21.188z" className="cls-3" data-name="Path 170"/>
+            <path id="Path_171" d="M3.563 20.719h9.609v.234a.7.7 0 0 0 1.406 0v-.234h5.859a.7.7 0 0 0 0-1.406h-5.859v-.234a.7.7 0 0 0-1.406 0v.234H3.563a.7.7 0 0 0 0 1.406z" className="cls-3" data-name="Path 171"/>
+            <path id="Path_172" d="M20.167 6.122L12.2 3.779a.7.7 0 0 0-.4 0L3.833 6.122a.7.7 0 0 0 0 1.349l2.777.817v3.665a.7.7 0 0 0 .7.7h9.375a.7.7 0 0 0 .7-.7V8.288l1.875-.551v3.279a.7.7 0 0 0 1.406 0V6.8a.7.7 0 0 0-.499-.678zm-4.183 5.128H8.016V8.7L11.8 9.815a.7.7 0 0 0 .4 0L15.984 8.7zM12 8.408L6.523 6.8 12 5.186 17.477 6.8z" className="cls-3" data-name="Path 172"/>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Meetings</span>
+            </a>
+
+            <div className="collapse " id="meetingCollapse">
+                <ul className="sidenav-item-collapse">
+
+                    <li className="mt-5 ">
+                        <a href="panel/meetings/reservation">My reservations</a>
+                    </li>
+
+                                            <li className="mt-5 ">
+                            <a href="panel/meetings/requests">Requests</a>
+                        </li>
+
+                        <li className="mt-5 ">
+                            <a href="panel/meetings/settings">Settings</a>
+                        </li>
+                                    </ul>
+            </div>
+        </li>
+
+        <li className="sidenav-item ">
+            <a className="d-flex align-items-center" data-toggle="collapse" href="#quizzesCollapse" role="button" aria-expanded="false" aria-controls="quizzesCollapse">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="Mask_Group_18" clip-path="url(#clip-path)" data-name="Mask Group 18" transform="translate(-25 -410)">
+        <g id="task" transform="translate(25 410)">
+            <path id="Path_156" d="M8.227 6.8h-3.75a.7.7 0 0 0 0 1.406h3.75a.7.7 0 0 0 0-1.406z" className="cls-3" data-name="Path 156"/>
+            <path id="Path_157" d="M8.227 10.547h-3.75a.7.7 0 0 0 0 1.406h3.75a.7.7 0 0 0 0-1.406z" className="cls-3" data-name="Path 157"/>
+            <path id="Path_158" d="M8.227 14.3h-3.75a.7.7 0 0 0 0 1.406h3.75a.7.7 0 0 0 0-1.406z" className="cls-3" data-name="Path 158"/>
+            <path id="Path_159" d="M18.3 12.887V6.468a3.5 3.5 0 0 0-1-2.462l-2.853-2.95A3.538 3.538 0 0 0 11.934 0H2.883a2.112 2.112 0 0 0-2.11 2.109v18.235a2.112 2.112 0 0 0 2.109 2.109H13.75a5.589 5.589 0 1 0 4.55-9.566zM2.18 20.344V2.109a.7.7 0 0 1 .7-.7h9.051a2.124 2.124 0 0 1 1.5.629l2.852 2.95a2.1 2.1 0 0 1 .617 1.48v6.42a5.576 5.576 0 0 0-4.217 8.159h-9.8a.7.7 0 0 1-.7-.7zm15.42 2.25a4.172 4.172 0 1 1 4.219-4.172 4.177 4.177 0 0 1-4.219 4.172z" className="cls-3" data-name="Path 159"/>
+            <path id="Path_160" d="M19.224 16.757a.7.7 0 0 0-.99.09l-1.187 1.424-.269-.538a.7.7 0 0 0-1.258.629l.75 1.5a.7.7 0 0 0 .548.384.716.716 0 0 0 .081 0 .7.7 0 0 0 .54-.253l1.875-2.25a.7.7 0 0 0-.09-.986z" className="cls-3" data-name="Path 160"/>
+            <path id="Path_161" d="M11.977 8.2h.75a.7.7 0 0 0 0-1.406h-.75a.7.7 0 0 0 0 1.406z" className="cls-3" data-name="Path 161"/>
+            <path id="Path_162" d="M13.43 11.25a.7.7 0 0 0-.7-.7h-.75a.7.7 0 0 0 0 1.406h.75a.7.7 0 0 0 .7-.706z" className="cls-3" data-name="Path 162"/>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Quizzes</span>
+            </a>
+
+            <div className="collapse " id="quizzesCollapse">
+                <ul className="sidenav-item-collapse">
+                                            <li className="mt-5 ">
+                            <a href="panel/quizzes/new">New quiz</a>
+                        </li>
+                        <li className="mt-5 ">
+                            <a href="panel/quizzes">List</a>
+                        </li>
+                        <li className="mt-5 ">
+                            <a href="panel/quizzes/results">Results</a>
+                        </li>
+                    
+                    <li className="mt-5 ">
+                        <a href="panel/quizzes/my-results">My results</a>
+                    </li>
+
+                    <li className="mt-5 ">
+                        <a href="panel/quizzes/opens">Not Participated</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+        <li className="sidenav-item ">
+            <a className="d-flex align-items-center" data-toggle="collapse" href="#certificatesCollapse" role="button" aria-expanded="false" aria-controls="certificatesCollapse">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Rectangle_204" fill="#1f3b64" stroke="#707070" d="M0 0H24V24H0z" data-name="Rectangle 204" transform="translate(25 410)"/>
+        </clipPath>
+    </defs>
+    <g id="Mask_Group_19" clip-path="url(#clip-path)" data-name="Mask Group 19" transform="translate(-25 -410)">
+        <g id="reward" transform="translate(25 410)">
+            <g id="Group_183" data-name="Group 183">
+                <g id="Group_182" data-name="Group 182">
+                    <path id="Path_163" d="M16.423 5.789a7.668 7.668 0 0 0-1.478-.824l-.59 1.406a6.165 6.165 0 0 1 1.181.659z" className="cls-3" data-name="Path 163"/>
+                    <path id="Path_164" d="M18.665 8.291a7.619 7.619 0 0 0-.982-1.373l-1.136 1.018a6.177 6.177 0 0 1 .786 1.1z" className="cls-3" data-name="Path 164"/>
+                    <path id="Path_165" d="M17.855 10.28a6.092 6.092 0 1 1-4.794-4.29l.263-1.5A7.81 7.81 0 0 0 12 4.374a7.618 7.618 0 1 0 7.321 5.479z" className="cls-3" data-name="Path 165"/>
+                    <path id="Path_166" d="M24 12l-1.954-2.692L22.393 6l-3.038-1.355L18 1.607l-3.308.347L12 0 9.308 1.954 6 1.607 4.645 4.645 1.607 6l.347 3.308L0 12l1.954 2.692L1.607 18l3.038 1.354L6 22.393l3.308-.347L12 24l2.692-1.954 3.308.347 1.354-3.038L22.393 18l-.347-3.308zm-5.8 6.2l-1.145 2.56-2.785-.3L12 22.116l-2.27-1.651-2.788.292L5.8 18.2l-2.563-1.148.3-2.782L1.884 12l1.651-2.27-.3-2.788L5.8 5.8l1.145-2.563 2.788.292L12 1.884l2.27 1.651 2.788-.292L18.2 5.8l2.562 1.144-.3 2.782L22.116 12l-1.651 2.27.292 2.788z" className="cls-3" data-name="Path 166"/>
+                    <path id="Path_167" d="M8.726 11.461l-1.078 1.078 2.827 2.827 5.115-5.115-1.079-1.078-4.036 4.037z" className="cls-3" data-name="Path 167"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Certificates</span>
+            </a>
+
+            <div className="collapse " id="certificatesCollapse">
+                <ul className="sidenav-item-collapse">
+                                            <li className="mt-5 ">
+                            <a href="panel/certificates">List</a>
+                        </li>
+                    
+                    <li className="mt-5 ">
+                        <a href="panel/certificates/achievements">Achievements</a>
+                    </li>
+
+                    <li className="mt-5">
+                        <a href="certificate_validation">Certificate Validation</a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <li className="sidenav-item ">
+            <a className="d-flex align-items-center" data-toggle="collapse" href="#financialCollapse" role="button" aria-expanded="false" aria-controls="financialCollapse">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <clipPath id="clip-path">
+            <path id="Rectangle_204" fill="#1f3b64" stroke="#707070" d="M0 0H24V24H0z" data-name="Rectangle 204" transform="translate(25 410)"/>
+        </clipPath>
+    </defs>
+    <g id="Mask_Group_20" clip-path="url(#clip-path)" data-name="Mask Group 20" transform="translate(-25 -410)">
+        <g id="money_1_" data-name="money (1)" transform="translate(25 410)">
+            <path id="Path_168" d="M21.176 18.446v-3.622a9.191 9.191 0 0 0-6.061-8.631 2.112 2.112 0 0 0-.577-3.043A3.514 3.514 0 0 0 15.527.7a.7.7 0 0 0-.7-.7H9.176a.7.7 0 0 0-.7.7 3.514 3.514 0 0 0 .99 2.447 2.112 2.112 0 0 0-.577 3.043 9.191 9.191 0 0 0-6.061 8.631v3.622A2.821 2.821 0 0 0 3.527 24h16.946a2.821 2.821 0 0 0 .7-5.554zM14 1.406a2.121 2.121 0 0 1-4 0zm-3.412 4.242a.709.709 0 0 1 0-1.418h2.824a.709.709 0 0 1 0 1.418zm9.885 16.945H3.527a1.415 1.415 0 1 1 0-2.83.7.7 0 0 0 .7-.7v-4.239a7.77 7.77 0 1 1 15.539 0v4.236a.7.7 0 0 0 .7.7 1.415 1.415 0 1 1 0 2.83z" className="cls-3" data-name="Path 168"/>
+            <path id="Path_169" d="M12 12.7h1.412a.7.7 0 0 0 0-1.406H12.7v-.709a.7.7 0 0 0-1.406 0v.83a2.115 2.115 0 0 0 .7 4.11.709.709 0 0 1 0 1.418h-1.406a.7.7 0 0 0 0 1.406h.712v.709a.7.7 0 0 0 1.406 0v-.83a2.115 2.115 0 0 0-.7-4.11A.709.709 0 0 1 12 12.7z" className="cls-3" data-name="Path 169"/>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Financial</span>
+            </a>
+
+            <div className="collapse " id="financialCollapse">
+                <ul className="sidenav-item-collapse">
+
+                                            <li className="mt-5 ">
+                            <a href="panel/financial/sales">Sales report</a>
+                        </li>
+                    
+                    <li className="mt-5 ">
+                        <a href="panel/financial/summary">Financial summary</a>
+                    </li>
+
+                    <li className="mt-5 ">
+                        <a href="panel/financial/payout">Payout</a>
+                    </li>
+
+                    <li className="mt-5 ">
+                        <a href="panel/financial/account">Charge account</a>
+                    </li>
+
+                    <li className="mt-5 ">
+                        <a href="panel/financial/subscribes">Subscribe</a>
+                    </li>
+
+                                            <li className="mt-5 ">
+                            <a href="https://lms2.rocket-soft.org/panel/financial/registration-packages">SaaS Packages</a>
+                        </li>
+                                    </ul>
+            </div>
+        </li>
+
+        <li className="sidenav-item ">
+            <a className="d-flex align-items-center" data-toggle="collapse" href="#supportCollapse" role="button" aria-expanded="false" aria-controls="supportCollapse">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="Mask_Group_22" clip-path="url(#clip-path)" data-name="Mask Group 22" transform="translate(-25 -410)">
+        <g id="help" transform="translate(25 410)">
+            <g id="Group_184" data-name="Group 184">
+                <path id="Path_173" fill="#1f3b64" d="M20.485 3.515a12 12 0 0 0-16.97 16.97 12 12 0 0 0 16.97-16.97zM12 1.406a10.549 10.549 0 0 1 6.973 2.626L15.7 7.3a5.969 5.969 0 0 0-7.4 0L5.027 4.032A10.549 10.549 0 0 1 12 1.406zM16.575 12A4.575 4.575 0 1 1 12 7.425 4.58 4.58 0 0 1 16.575 12zM1.406 12a10.549 10.549 0 0 1 2.626-6.974L7.3 8.3a5.969 5.969 0 0 0 0 7.4l-3.268 3.273A10.549 10.549 0 0 1 1.406 12zM12 22.594a10.549 10.549 0 0 1-6.974-2.626L8.3 16.7a5.969 5.969 0 0 0 7.4 0l3.272 3.272A10.549 10.549 0 0 1 12 22.594zm7.968-3.62L16.7 15.7a5.969 5.969 0 0 0 0-7.4l3.272-3.272a10.572 10.572 0 0 1 0 13.947z" data-name="Path 173"/>
+            </g>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Support</span>
+            </a>
+
+            <div className="collapse " id="supportCollapse">
+                <ul className="sidenav-item-collapse">
+                    <li className="mt-5 ">
+                        <a href="panel/support/new">New</a>
+                    </li>
+                    <li className="mt-5 ">
+                        <a href="panel/support">Courses support</a>
+                    </li>
+                    <li className="mt-5 ">
+                        <a href="panel/support/tickets">Tickets</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
+                    <li className="sidenav-item ">
+                <a className="d-flex align-items-center" data-toggle="collapse" href="#marketingCollapse" role="button" aria-expanded="false" aria-controls="marketingCollapse">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="Group_1261" transform="translate(-180 -776.999)">
+        <g id="price-tag" transform="translate(180 776.999)">
+            <path id="Path_1553" d="M175.692 124l3.315-9.944a.7.7 0 0 0-1.334-.445l-3.315 9.944a.7.7 0 1 0 1.334.445z" className="cls-1" transform="translate(-166.15 -107.828)"/>
+            <path id="Path_1554" d="M266.642 193.422a2.109 2.109 0 1 0-2.109-2.109 2.112 2.112 0 0 0 2.109 2.109zm0-2.813a.7.7 0 1 1-.7.7.7.7 0 0 1 .7-.7z" className="cls-1" transform="translate(-252.133 -180.334)"/>
+            <path id="Path_1555" d="M96.936 189.2a2.109 2.109 0 1 0 2.109 2.109 2.112 2.112 0 0 0-2.109-2.109zm0 2.813a.7.7 0 1 1 .7-.7.7.7 0 0 1-.7.703z" className="cls-1" transform="translate(-90.382 -180.334)"/>
+            <path id="Path_1556" d="M23.86 8.719L21.408 5.45l.1-.67a.7.7 0 0 0-.2-.6l-1.495-1.488L21.3 1.2a.7.7 0 0 0-.99-.994L18.819 1.7 17.327.206a.7.7 0 0 0-.6-.2L9.77 1a.7.7 0 0 0-.4.2L.754 9.818a2.581 2.581 0 0 0 0 3.646l7.292 7.292a2.572 2.572 0 0 0 .485.381v.285A2.581 2.581 0 0 0 11.11 24h10.312A2.581 2.581 0 0 0 24 21.422V9.141a.7.7 0 0 0-.141-.422zM1.748 12.47a1.173 1.173 0 0 1 0-1.657L10.2 2.361l6.381-.911 1.243 1.243-.994.994-.5-.5a.7.7 0 1 0-.994.994l1.989 1.989a.7.7 0 0 0 .994-.994l-.5-.5.994-.994 1.249 1.248-.912 6.38-8.45 8.452a1.172 1.172 0 0 1-1.657 0zm20.846 8.952a1.173 1.173 0 0 1-1.172 1.172H11.11a1.173 1.173 0 0 1-1.168-1.085 2.568 2.568 0 0 0 1.751-.752l8.618-8.618a.7.7 0 0 0 .2-.4l.617-4.322 1.468 1.957z" className="cls-1"/>
+        </g>
+    </g>
+</svg>
+                </span>
+                    <span className="font-14 text-dark-blue font-weight-500">Marketing</span>
+                </a>
+
+                <div className="collapse " id="marketingCollapse">
+                    <ul className="sidenav-item-collapse">
+                                                    <li className="mt-5 ">
+                                <a href="panel/marketing/special_offers">Discounts</a>
+                            </li>
+                            <li className="mt-5 ">
+                                <a href="panel/marketing/promotions">Promotions</a>
+                            </li>
+                        
+                                                    <li className="mt-5 ">
+                                <a href="panel/marketing/affiliates">Affiliate</a>
+                            </li>
+                                            </ul>
+                </div>
+            </li>
+        
+        
+        
+                    <li className="sidenav-item ">
+                <a href="panel/rewards" className="d-flex align-items-center">
+                <span className="sidenav-notification-icon sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f3b64" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" className="feather feather-award"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                </span>
+                    <span className="font-14 text-dark-blue font-weight-500">Reward Points</span>
+                </a>
+            </li>
+        
+        <li className="sidenav-item ">
+            <a href="panel/notifications" className="d-flex align-items-center">
+            <span className="sidenav-notification-icon sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="20.496" viewBox="0 0 19.5 20.496">
+    <g id="Group_1266" transform="translate(-207.65 -516.252)">
+        <g id="Group_1265">
+            <g id="Icon_feather-bell" transform="translate(205.4 515.002)">
+                <path id="Path_175" d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" className="cls-1"/>
+                <path id="Path_176" d="M13.73 21a2 2 0 0 1-3.46 0" className="cls-1" transform="translate(0 -1)"/>
+            </g>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Notifications</span>
+            </a>
+        </li>
+
+        <li className="sidenav-item ">
+            <a href="panel/setting" className="d-flex align-items-center">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="Mask_Group_24" clip-path="url(#clip-path)" data-name="Mask Group 24" transform="translate(-25 -410)">
+        <g id="settings" transform="translate(25 410)">
+            <path id="Path_177" d="M12.753 24h-1.506a2.212 2.212 0 0 1-2.209-2.209v-.51a9.689 9.689 0 0 1-1.5-.625l-.361.361a2.209 2.209 0 0 1-3.125 0l-1.07-1.064a2.209 2.209 0 0 1 0-3.125l.361-.361a9.69 9.69 0 0 1-.625-1.5h-.51A2.212 2.212 0 0 1 0 12.753v-1.506a2.212 2.212 0 0 1 2.209-2.209h.51a9.692 9.692 0 0 1 .625-1.5l-.361-.361a2.209 2.209 0 0 1 0-3.125l1.064-1.07a2.209 2.209 0 0 1 3.125 0l.361.361a9.7 9.7 0 0 1 1.5-.625v-.51A2.212 2.212 0 0 1 11.247 0h1.506a2.212 2.212 0 0 1 2.209 2.209v.51a9.689 9.689 0 0 1 1.5.625l.361-.361a2.209 2.209 0 0 1 3.125 0l1.065 1.065a2.209 2.209 0 0 1 0 3.125l-.361.361a9.69 9.69 0 0 1 .625 1.5h.51A2.212 2.212 0 0 1 24 11.247v1.506a2.212 2.212 0 0 1-2.209 2.209h-.51a9.692 9.692 0 0 1-.625 1.5l.361.361a2.209 2.209 0 0 1 0 3.125l-1.065 1.065a2.209 2.209 0 0 1-3.125 0l-.361-.361a9.7 9.7 0 0 1-1.5.625v.51A2.212 2.212 0 0 1 12.753 24zm-4.985-4.82a8.288 8.288 0 0 0 2.148.892.7.7 0 0 1 .527.681v1.038a.8.8 0 0 0 .8.8h1.506a.8.8 0 0 0 .8-.8v-1.039a.7.7 0 0 1 .527-.681 8.288 8.288 0 0 0 2.148-.892.7.7 0 0 1 .855.108l.735.735a.8.8 0 0 0 1.135 0l1.065-1.065a.8.8 0 0 0 0-1.136l-.736-.736a.7.7 0 0 1-.108-.855 8.287 8.287 0 0 0 .892-2.148.7.7 0 0 1 .681-.527h1.038a.8.8 0 0 0 .8-.8v-1.508a.8.8 0 0 0-.8-.8h-1.028a.7.7 0 0 1-.681-.527 8.288 8.288 0 0 0-.892-2.148.7.7 0 0 1 .108-.855l.735-.735a.8.8 0 0 0 0-1.136l-1.065-1.069a.8.8 0 0 0-1.136 0l-.736.736a.7.7 0 0 1-.855.108 8.288 8.288 0 0 0-2.148-.892.7.7 0 0 1-.527-.681V2.209a.8.8 0 0 0-.8-.8h-1.509a.8.8 0 0 0-.8.8v1.039a.7.7 0 0 1-.527.681 8.288 8.288 0 0 0-2.148.892.7.7 0 0 1-.855-.108l-.735-.735a.8.8 0 0 0-1.135 0l-1.07 1.064a.8.8 0 0 0 0 1.136l.736.736a.7.7 0 0 1 .108.855 8.287 8.287 0 0 0-.892 2.148.7.7 0 0 1-.681.527H2.209a.8.8 0 0 0-.8.8v1.506a.8.8 0 0 0 .8.8h1.039a.7.7 0 0 1 .681.527 8.288 8.288 0 0 0 .892 2.148.7.7 0 0 1-.108.855l-.735.735a.8.8 0 0 0 0 1.136l1.065 1.065a.8.8 0 0 0 1.136 0l.736-.736a.706.706 0 0 1 .855-.108z" className="cls-3" data-name="Path 177"/>
+            <path id="Path_178" d="M12 17.222A5.222 5.222 0 1 1 17.222 12 5.228 5.228 0 0 1 12 17.222zm0-9.038A3.816 3.816 0 1 0 15.816 12 3.82 3.82 0 0 0 12 8.184z" className="cls-3" data-name="Path 178"/>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Settings</span>
+            </a>
+        </li>
+
+                    <li className="sidenav-item ">
+                <a href="users/1015/profile" className="d-flex align-items-center">
+                <span className="sidenav-item-icon mr-10">
+                    <i data-feather="user" stroke="#1f3b64" stroke-width="1.5" width="24" height="24" className="mr-10 webinar-icon"></i>
+                </span>
+                    <span className="font-14 text-dark-blue font-weight-500">My Profile</span>
+                </a>
+            </li>
+        
+        <li className="sidenav-item">
+            <a href="logout" className="d-flex align-items-center">
+                <span className="sidenav-item-icon mr-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23.999" height="23.999" viewBox="0 0 23.999 23.999">
+    <g id="Group_1263" transform="translate(-161.102 -869.102)">
+        <g id="power-button" transform="translate(161.102 869.102)">
+            <path id="Path_1541" d="M20.473 3.526a11.984 11.984 0 1 0 0 16.947 11.945 11.945 0 0 0 0-16.947zM12 22.591A10.591 10.591 0 1 1 22.591 12 10.6 10.6 0 0 1 12 22.591z" className="cls-1"/>
+            <path id="Path_1542" d="M153.7 168.953a.7.7 0 0 0-.93 1.047 3.8 3.8 0 1 1-5.016-.019.7.7 0 1 0-.925-1.058 5.2 5.2 0 1 0 6.875.025z" className="cls-1" transform="translate(-138.252 -160.845)"/>
+            <path id="Path_1543" d="M241.753 126.205a.7.7 0 0 0 .7-.7v-3.749a.7.7 0 1 0-1.406 0v3.744a.7.7 0 0 0 .706.705z" className="cls-1" transform="translate(-229.754 -115.378)"/>
+        </g>
+    </g>
+</svg>
+                </span>
+                <span className="font-14 text-dark-blue font-weight-500">Log out</span>
+            </a>
+        </li>
+    </ul>
+
+            <div className="sidebar-create-class d-none d-md-block">
+            <a href="classes?sort=newest" className="sidebar-create-class-btn d-block text-right p-5">
+                <img src="store/1/sidebar-user.png" alt="">
+            </a>
+        </div>
+    </div>
+
+        <div className="panel-content">
+                <section className="">
+        <div className="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
+            <h1 className="section-title">Dashboard</h1>
+
+                            <div className="d-flex align-items-center flex-row-reverse flex-md-row justify-content-start justify-content-md-center mt-20 mt-md-0">
+                    <label className="mb-0 mr-10 cursor-pointer text-gray font-14 font-weight-500" for="iNotAvailable">Activate offline status</label>
+                    <div className="custom-control custom-switch">
+                        <input type="checkbox" name="disabled"  className="custom-control-input" id="iNotAvailable">
+                        <label className="custom-control-label" for="iNotAvailable"></label>
+                    </div>
+                </div>
+                    </div>
+
+        
+        <div className="bg-white dashboard-banner-container position-relative px-15 px-ld-35 py-10 panel-shadow rounded-sm">
+            <h2 className="font-30 text-primary line-height-1">
+                <span className="d-block">Hi Robert Ransdell,</span>
+                <span className="font-16 text-secondary font-weight-bold">You have 95 new events</span>
+            </h2>
+
+            <ul className="mt-15 unread-notification-lists">
+                                                            <li className="font-14 mt-1 text-gray">- Your class approved</li>
+                                            <li className="font-14 mt-1 text-gray">- Your class approved</li>
+                                            <li className="font-14 mt-1 text-gray">- Your class approved</li>
+                                            <li className="font-14 mt-1 text-gray">- New badge</li>
+                                            <li className="font-14 mt-1 text-gray">- New badge</li>
+                    
+                                            <li>&nbsp;&nbsp;...</li>
+                                                </ul>
+
+            <a href="panel/notifications" className="mt-15 font-weight-500 text-dark-blue d-inline-block">View all events</a>
+
+            <div className="dashboard-banner">
+                <img src="store/1/dashboard.png" alt="" className="img-cover">
+            </div>
+        </div>
+    </section>
+
+    <section className="dashboard">
+        <div className="row">
+            <div className="col-12 col-lg-3 mt-35">
+                <div className="bg-white account-balance rounded-sm panel-shadow py-15 py-md-30 px-10 px-md-20">
+                    <div className="text-center">
+                        <img src="assets/default/img/activity/36.svg" className="account-balance-icon" alt="">
+
+                        <h3 className="font-16 font-weight-500 text-gray mt-25">Account Balance</h3>
+                        <span className="mt-5 d-block font-30 text-secondary">$1281.6</span>
+                    </div>
+
+                    
+                    <div className="mt-20 pt-30 border-top border-gray300 d-flex align-items-center  justify-content-between ">
+                                                    <span className="font-16 font-weight-500 text-gray">Withdrawable:</span>
+                            <span className="font-16 font-weight-bold text-secondary">$799.2</span>
+                                            </div>
+                </div>
+            </div>
+
+            <div className="col-12 col-lg-3 mt-35">
+                <a href="panel/webinars " className="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
+                    <div className="stat-icon requests">
+                        <img src="assets/default/img/icons/request.svg" alt="">
+                    </div>
+                    <div className="d-flex flex-column ml-15">
+                        <span className="font-30 text-secondary">2</span>
+                        <span className="font-16 text-gray font-weight-500">Pending meetings</span>
+                    </div>
+                </a>
+
+                <a href="panel/financial/sales " className="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center mt-15 mt-md-30">
+                    <div className="stat-icon monthly-sales">
+                        <img src="assets/default/img/icons/monay.svg " alt="">
+                    </div>
+                    <div className="d-flex flex-column ml-15">
+                        <span className="font-30 text-secondary">0</span>
+                        <span className="font-16 text-gray font-weight-500">Monthly Sales</span>
+                    </div>
+                </a>
+            </div>
+
+            <div className="col-12 col-lg-3 mt-35">
+                <a href="panel/support" className="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
+                    <div className="stat-icon support-messages">
+                        <img src="assets/default/img/icons/support.svg" alt="">
+                    </div>
+                    <div className="d-flex flex-column ml-15">
+                        <span className="font-30 text-secondary">0</span>
+                        <span className="font-16 text-gray font-weight-500">Support Messages</span>
+                    </div>
+                </a>
+
+                <a href="panel/webinars/comments " className="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center mt-15 mt-md-30">
+                    <div className="stat-icon comments">
+                        <img src="assets/default/img/icons/comment.svg" alt="">
+                    </div>
+                    <div className="d-flex flex-column ml-15">
+                        <span className="font-30 text-secondary">0</span>
+                        <span className="font-16 text-gray font-weight-500">Comments</span>
+                    </div>
+                </a>
+            </div>
+
+            <div className="col-12 col-lg-3 mt-35">
+                <div className="bg-white account-balance rounded-sm panel-shadow py-15 py-md-15 px-10 px-md-20">
+                    <div data-percent="90" data-label="King Seller" id="nextBadgeChart" className="text-center">
+                    </div>
+                    <div className="mt-10 pt-10 border-top border-gray300 d-flex align-items-center justify-content-between">
+                        <span className="font-16 font-weight-500 text-gray">Next Badge:</span>
+                        <span className="font-16 font-weight-bold text-secondary">Not defined</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div className="row">
+            <div className="col-12 col-lg-6 mt-35">
+                <div className="bg-white noticeboard rounded-sm panel-shadow py-10 py-md-20 px-15 px-md-30">
+                    <h3 className="font-16 text-dark-blue font-weight-bold">Noticeboard</h3>
+
+                                            <div className="noticeboard-item py-15">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4 className="js-noticeboard-title font-weight-500 text-secondary">New Private Course Published</h4>
+                                    <div className="font-12 text-gray mt-5">
+                                        <span className="mr-5">Created by Light Moon</span>
+                                        |
+                                        <span className="js-noticeboard-time ml-5">13 Jul 2021 | 23:58</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="button" data-id="14" className="js-noticeboard-info btn btn-sm btn-border-white">More info</button>
+                                    <input type="hidden" className="js-noticeboard-message" value="&lt;p&gt;Dear students and instructors. Travel Management Course published privately for you. please enroll on this course&lt;br&gt;&lt;/p&gt;">
+                                </div>
+                            </div>
+                        </div>
+                                            <div className="noticeboard-item py-15">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4 className="js-noticeboard-title font-weight-500 text-secondary">New Class Published</h4>
+                                    <div className="font-12 text-gray mt-5">
+                                        <span className="mr-5">Created by Light Moon</span>
+                                        |
+                                        <span className="js-noticeboard-time ml-5">13 Jul 2021 | 04:30</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="button" data-id="13" className="js-noticeboard-info btn btn-sm btn-border-white">More info</button>
+                                    <input type="hidden" className="js-noticeboard-message" value="&quot;Effective Time Management&quot; Live Class &lt;font color=&quot;#6ba54a&quot; style=&quot;&quot;&gt;Published&lt;/font&gt;, for getting the final certificate it is necessary to Enroll in this class.">
+                                </div>
+                            </div>
+                        </div>
+                                            <div className="noticeboard-item py-15">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4 className="js-noticeboard-title font-weight-500 text-secondary">New Year Sales Festival</h4>
+                                    <div className="font-12 text-gray mt-5">
+                                        <span className="mr-5">Created by Staff</span>
+                                        |
+                                        <span className="js-noticeboard-time ml-5">12 Jul 2021 | 19:26</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="button" data-id="12" className="js-noticeboard-info btn btn-sm btn-border-white">More info</button>
+                                    <input type="hidden" className="js-noticeboard-message" value="&lt;p&gt;Due to the New Year Festival, users who buy more than $ 200 will be given a 20% discount code.&lt;/p&gt;">
+                                </div>
+                            </div>
+                        </div>
+                                            <div className="noticeboard-item py-15">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4 className="js-noticeboard-title font-weight-500 text-secondary">Instructor terms of services changed</h4>
+                                    <div className="font-12 text-gray mt-5">
+                                        <span className="mr-5">Created by Staff</span>
+                                        |
+                                        <span className="js-noticeboard-time ml-5">10 Jul 2021 | 08:57</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="button" data-id="11" className="js-noticeboard-info btn btn-sm btn-border-white">More info</button>
+                                    <input type="hidden" className="js-noticeboard-message" value="&lt;p&gt;Instructors terms of services changed on July 17. You can read terms on the terms page.&lt;/p&gt;">
+                                </div>
+                            </div>
+                        </div>
+                                            <div className="noticeboard-item py-15">
+                            <div className="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h4 className="js-noticeboard-title font-weight-500 text-secondary">Top summer classes</h4>
+                                    <div className="font-12 text-gray mt-5">
+                                        <span className="mr-5">Created by Staff</span>
+                                        |
+                                        <span className="js-noticeboard-time ml-5">10 Jul 2021 | 08:55</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="button" data-id="10" className="js-noticeboard-info btn btn-sm btn-border-white">More info</button>
+                                    <input type="hidden" className="js-noticeboard-message" value="&lt;p&gt;You can find top summer courses on the platform homepage and get all of them with 50% discount by using &quot;mysummer&quot; discount coupon.&lt;/p&gt;">
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+
+            <div className="col-12 col-lg-6 mt-35">
+                <div className="bg-white monthly-sales-card rounded-sm panel-shadow py-10 py-md-20 px-15 px-md-30">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <h3 className="font-16 text-dark-blue font-weight-bold">Monthly Sales</h3>
+
+                        <span className="font-16 font-weight-500 text-gray">Apr 2022</span>
+                    </div>
+
+                    <div className="monthly-sales-chart">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div className="d-none" id="iNotAvailableModal">
+        <div className="offline-modal">
+            <h3 className="section-title after-line">Activate offline status</h3>
+            <p className="mt-20 font-16 text-gray">If you put your account offline, a message will be displayed in your profile and it will be noticed to users. You can type a personalized message in the following input.</p>
+
+            <div className="form-group mt-15">
+                <label>Offline message</label>
+                <textarea name="message" rows="4" className="form-control "></textarea>
+                <div className="invalid-feedback"></div>
+            </div>
+
+            <div className="mt-30 d-flex align-items-center justify-content-end">
+                <button type="button" className="js-save-offline-toggle btn btn-primary btn-sm">Save</button>
+                <button type="button" className="btn btn-danger ml-10 close-swl btn-sm">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div className="d-none" id="noticeboardMessageModal">
+        <div className="text-center">
+            <h3 className="modal-title font-20 font-weight-500 text-dark-blue"></h3>
+            <span className="modal-time d-block font-12 text-gray mt-25"></span>
+            <p className="modal-message font-weight-500 text-gray mt-4"></p>
+        </div>
+    </div>
+
+        </div>
+    </div>
+</div>
+<!-- Template JS File -->
+<script src="assets/default/js/app.js"></script>
+<script src="assets/default/vendors/moment.min.js"></script>
+<script src="assets/default/vendors/feather-icons/dist/feather.min.js"></script>
+<script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+<script src="assets/default/vendors/sweetalert2/dist/sweetalert2.min.js"></script>
+<script src="assets/default/vendors/toast/jquery.toast.min.js"></script>
+<script type="text/javascript" src="assets/default/vendors/simplebar/simplebar.min.js"></script>
+
+<script>
+    var deleteAlertTitle = 'Are you sure?';
+    var deleteAlertHint = 'This action cannot be undone!';
+    var deleteAlertConfirm = 'Delete';
+    var deleteAlertCancel = 'Cancel';
+    var deleteAlertSuccess = 'Success';
+    var deleteAlertFail = 'Failed';
+    var deleteAlertFailHint = 'Error while deleting item!';
+    var deleteAlertSuccessHint = 'Item successfully deleted.';
+    var forbiddenRequestToastTitleLang = 'public.forbidden_request_toast_lang';
+    var forbiddenRequestToastMsgLang = 'public.forbidden_request_toast_msg_lang';
+</script>
+
+
+    <script src="assets/default/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/default/vendors/chartjs/chart.min.js"></script>
+
+    <script>
+        var offlineSuccess = 'Your status changed successfully!';
+        var $chartDataMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+        var $chartData = [0,0,867.9,0,0,0,0,0,0,0,0,0];
+    </script>
+
+    <script src="assets/default/js/panel/dashboard.min.js"></script>
+    <script src="assets/default/js/parts/navbar.min.js"></script>
+<script src="assets/default/js//parts/main.min.js"></script>
+
+<script src="assets/default/js/panel/public.min.js"></script>
+
+<script>
+
+    
+    
+</script>
+</body>
+</html>

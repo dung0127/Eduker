@@ -1,0 +1,54 @@
+
+
+._rate002 {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    margin-bottom: 0;
+    color: #333;
+    margin-left: 10px;
+    line-height: 22px;
+}
+.rate:not(:checked) > input {
+    position:fixed;
+    
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #e4cc18;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+
+.total_rating {
+    display: inline-grid;
+    width: 100%;
+    font-size: 16px;
+    justify-items: center;
+	background: #f7f7f7;
+    border: 1px solid #efefef;
+    padding: 10px 20px;
+	border-radius: 3px;
+}

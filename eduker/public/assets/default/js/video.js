@@ -1,0 +1,1 @@
+var webinarDemoLang = 'Course demo';
