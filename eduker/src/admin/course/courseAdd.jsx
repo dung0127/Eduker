@@ -40,6 +40,7 @@ class CourseAdd extends Component {
                 urlVideoDescription:'',
                 imageVideoDescription:'',
                 activate:'',
+                subCatalogId:'',
                 },
 
             addLesson: {
@@ -58,7 +59,7 @@ class CourseAdd extends Component {
 
             select:'',
 
-            show:'4',
+            show:'1',
 
             classStep1:'active',
             classStep2:'',
@@ -105,18 +106,32 @@ class CourseAdd extends Component {
     }
 
     // ------------------------- Alert + Step + NextPage + PrevPage  --------------
+    
     handleSuccess = () => {
-        $('#success').fadeIn('fast').delay(2000).fadeOut('fast');
+        Swal.fire({
+            icon: "success",
+            html: '<h3 class="font-20 text-center text-dark-blue py-25">' + "Submit course successfully </h3>",
+            showConfirmButton: !1,
+            width: "25rem"
+        }),
+        setTimeout(function() {
+        Swal.close()
+            
+        }, 1000)
 		
 		setTimeout(()=>{
-			this.props.navigate('/courses')
+			this.props.navigate('/course-info')
 		},1000);
 		
 	} 
 
     handleError = () => {
-        $('#error').fadeIn('fast').delay(2000).fadeOut('slow');
-		
+        Swal.fire({
+            icon: "error",
+            html: '<h2 class="font-20 text-center text-dark-blue py-25">' + "Failed </h2>",
+            showConfirmButton: !1,
+            width: "25rem"
+        })
 	} 
 
     changeSwitch =  () => {
@@ -164,19 +179,19 @@ class CourseAdd extends Component {
         })
         }
         if(num==2 && this.validateStep1()){
-            this.setState({classStep1:'done',classStep2:'active',classStep3:'',classStep4:'', classStep5:'',show: '2'
+            this.setState({classStep1:'',classStep2:'active',classStep3:'',classStep4:'', classStep5:'',show: '2'
             })
         }
         if(num==3 && this.validateStep2()){
-            this.setState({classStep1:'done',classStep2:'done',classStep3:'active',classStep4:'',classStep5:'',show: '3'
+            this.setState({classStep1:'',classStep2:'',classStep3:'active',classStep4:'',classStep5:'',show: '3'
         })
         }
         if(num==4 && this.validateStep3()){
-            this.setState({classStep1:'done',classStep2:'done',classStep3:'done',classStep4:'active',classStep5:'',show: '4'
+            this.setState({classStep1:'',classStep2:'',classStep3:'',classStep4:'active',classStep5:'',show: '4'
         })
         }
         if(num==5 && this.validateStep4()){
-            this.setState({classStep1:'done',classStep2:'done',classStep3:'done',classStep4:'done',classStep5:'active',show: '5'
+            this.setState({classStep1:'',classStep2:'e',classStep3:'',classStep4:'e',classStep5:'active',show: '5'
         })
         }
     }
@@ -193,34 +208,31 @@ class CourseAdd extends Component {
         this.setState({lesson:select});  
         console.log(select);
 
-        //this.setState({...this.state.lesson, title: e.target.value});  
-        // console.log(e.target.value)
-        // console.log(this.state.lesson)
     }
 
     pageNext = () => {
         
         this.state.show=='1'?
-            this.validateStep1()&&this.setState({show: '2', classStep1:'done',classStep2:'active',classStep3:'',classStep4:'', classStep5:''
+            this.validateStep1()&&this.setState({show: '2', classStep1:'',classStep2:'active',classStep3:'',classStep4:'', classStep5:''
             }):this.state.show=='2'?
-            this.validateStep2()&&this.setState({classStep1:'done',classStep2:'done',classStep3:'active',classStep4:'',classStep5:'',show: '3'
+            this.validateStep2()&&this.setState({classStep1:'',classStep2:'',classStep3:'active',classStep4:'',classStep5:'',show: '3'
             }):this.state.show=='3'?
-            this.validateStep3()&&this.setState({classStep1:'done',classStep2:'done',classStep3:'done',classStep4:'active',classStep5:'',show: '4'
+            this.validateStep3()&&this.setState({classStep1:'',classStep2:'',classStep3:'',classStep4:'active',classStep5:'',show: '4'
             }):
-            this.validateStep4()&&this.setState({classStep1:'done',classStep2:'done',classStep3:'done',classStep4:'done',classStep5:'active',show: '5'
+            this.validateStep4()&&this.setState({classStep1:'',classStep2:'',classStep3:'',classStep4:'',classStep5:'active',show: '5'
             })
         
     }
 
     pagePrev = () => {
         this.state.show=='5'?
-            this.setState({show: '4'
+            this.setState({show: '4', classStep1:'',classStep2:'',classStep3:'',classStep4:'active',classStep5:''
             }):this.state.show=='4'?
-            this.setState({show: '3'
+            this.setState({show: '3', classStep1:'',classStep2:'',classStep3:'active',classStep4:'',classStep5:''
             }):this.state.show=='3'?
-            this.setState({show: '2'
+            this.setState({show: '2', classStep1:'',classStep2:'active',classStep3:'',classStep4:'',classStep5:''
             }):
-            this.setState({show: '1'
+            this.setState({show: '1', classStep1:'active',classStep2:'',classStep3:'',classStep4:'',classStep5:''
             })
     }
 
@@ -240,8 +252,21 @@ class CourseAdd extends Component {
         lessons.push(add);
         this.setState({addLesson: {id: '' ,title:'',}});
         Array.from(document.querySelectorAll('input')).forEach(input=>(input.value=""))
+        Swal.fire({
+            icon: "success",
+            html: '<h3 class="font-20 text-center text-dark-blue py-25">' + saveSuccessLang + "</h3>",
+            showConfirmButton: !1,
+            width: "25rem"
+        }),
+        setTimeout(function() {
+        Swal.close()
+            
+        }, 800)
+        $('#createLesson').click();
         }
+       
         console.log(add)
+        
     }
 
     removeLesson = (del) => {
@@ -252,6 +277,7 @@ class CourseAdd extends Component {
             }
         }
         this.setState({addLesson:lessons});
+        loadjs('/assets/default/js/deleteSuccess.js', () => {});
     }
 
     // -------------------------  Lecture  -----------------------------
@@ -306,6 +332,17 @@ class CourseAdd extends Component {
         Array.from(document.querySelectorAll('select')).forEach(select=>(select.value=""))  ;
         console.log(lesslec);
         this.setState({course:lesslec})
+        Swal.fire({
+            icon: "success",
+            html: '<h3 class="font-20 text-center text-dark-blue py-25">' + saveSuccessLang + "</h3>",
+            showConfirmButton: !1,
+            width: "25rem"
+        }),
+        setTimeout(function() {
+        Swal.close()
+            
+        }, 800)
+        $('#createLecture').click();
         }
     }
 
@@ -328,6 +365,8 @@ class CourseAdd extends Component {
         videoDuration:'',
         preview:'false',
         sort:'',}});
+        
+        loadjs('/assets/default/js/deleteSuccess.js', () => {});
 
         console.log(lectures);
         console.log(lesslec);
@@ -374,6 +413,11 @@ class CourseAdd extends Component {
                         // tmp.push(lec.lectures),
                         les.lectures=tmp):''
                 ))
+            )
+        )
+        lessons.map((les,i) =>
+            (
+                les.lectures!== undefined?'':les.lectures=[]
             )
         )
         lessons.map((les,i) =>
@@ -446,6 +490,14 @@ class CourseAdd extends Component {
             error['videoDuration'] = 'The field is required.';
             isValid = false;
         }
+        if(validator.isEmpty(this.state.addCourse.subCatalogId)){            
+            error['subCatalogId'] = 'The field is required.';
+            isValid = false;
+        }
+        if(validator.isEmpty(this.state.addCourse.language)){            
+            error['language'] = 'The field is required.';
+            isValid = false;
+        }
 
         this.setState({
             error: error
@@ -494,29 +546,18 @@ class CourseAdd extends Component {
             isValid = false;
         }
 
-        this.setState({
-            error: error
-        })
-
-        return isValid;
-    }
-
-    validateStep4 = () => {
-        let isValid = true;
-
-        const error = {}
-
         if(lesslec==[]){            
             error['titleLecture'] = 'The field is required.';
             isValid = false;
         }
-
+        
         this.setState({
             error: error
         })
 
         return isValid;
     }
+
 
     validateLesson= ()=> {
         let isValid = true;
@@ -598,7 +639,7 @@ class CourseAdd extends Component {
                         <div className="webinar-progress d-block d-lg-flex align-items-center p-15 panel-shadow bg-white rounded-sm">
 
                         <div className="progress-item d-flex align-items-center" onClick={()=>{this.handleClick(1)}}>
-                        <button type="button" data-step="1" className="js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle active" data-toggle="tooltip" data-placement="top" title="Basic Information">
+                        <button type="button" data-step="1" className={"js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle " +this.state.classStep1} data-toggle="tooltip" data-placement="top" title="Basic Information">
                             <img src="assets/default/img/icons/paper.svg" className="img-cover" alt=""/>
                         </button>
 
@@ -608,7 +649,7 @@ class CourseAdd extends Component {
                         </div>
                     </div>
                         <div className="progress-item d-flex align-items-center" onClick={()=>{this.handleClick(2)}}>
-                        <button type="button" data-step="2" className="js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle " data-toggle="tooltip" data-placement="top" title="Media">
+                        <button type="button" data-step="2" className={"js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle " +this.state.classStep2} data-toggle="tooltip" data-placement="top" title="Media">
                             <img src="assets/default/img/icons/video.svg" className="img-cover" alt=""/>
                         </button>
 
@@ -618,7 +659,7 @@ class CourseAdd extends Component {
                         </div>
                     </div>
                         <div className="progress-item d-flex align-items-center" onClick={()=>{this.handleClick(3)}}>
-                        <button type="button" data-step="3" className="js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle " data-toggle="tooltip" data-placement="top" title="Lesson">
+                        <button type="button" data-step="3" className={"js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle " +this.state.classStep3} data-toggle="tooltip" data-placement="top" title="Lesson">
                             <img src="assets/default/img/icons/paper_plus.svg" className="img-cover" alt=""/>
                         </button>
 
@@ -628,8 +669,8 @@ class CourseAdd extends Component {
                         </div>
                     </div>
                        
-                        <div className="progress-item d-flex align-items-center" onClick={()=>{this.handleClick(5)}}>
-                        <button type="button" data-step="5" className="js-get-next-step p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle " data-toggle="tooltip" data-placement="top" title="Publish">
+                        <div className="progress-item d-flex align-items-center" onClick={()=>{this.handleClick(4)}}>
+                        <button type="button" data-step="5" className={"js-get-next-stsep p-0 border-0 progress-icon p-10 d-flex align-items-center justify-content-center rounded-circle " +this.state.classStep4} data-toggle="tooltip" data-placement="top" title="Publish">
                             <img src="assets/default/img/icons/shield_done.svg" className="img-cover" alt=""/>
                         </button>
 
@@ -667,64 +708,6 @@ class CourseAdd extends Component {
 
                     </div>
 
-
-                    {/* <div className="form-group mt-15">
-                        <label className="input-label">Thumbnail</label>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <button type="button" className="input-group-text panel-file-manager" data-input="thumbnail" data-preview="holder">
-                                    <i data-feather="arrow-up" width="18" height="18" className="text-white"></i>
-                                </button>
-                            </div>
-                            <input type="text" name="thumbnail" id="thumbnail" value="" className="form-control " placeholder="360x250px preferred"/>
-                                        </div>
-                    </div>
-
-                    <div className="form-group mt-15">
-                        <label className="input-label">Cover Image</label>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <button type="button" className="input-group-text panel-file-manager" data-input="cover_image" data-preview="holder">
-                                    <i data-feather="arrow-up" width="18" height="18" className="text-white"></i>
-                                </button>
-                            </div>
-                            <input type="text" name="image_cover" id="cover_image" value="" placeholder="1920x530px preferred" className="form-control "/>
-                                        </div>
-                    </div> */}
-
-                    {/* <div className="form-group mt-25">
-                        <label className="input-label">Demo Video (Optional)</label>
-
-                        <div className="">
-                            <label className="input-label font-12">Source</label>
-                            <select name="video_demo_source"
-                                    className="js-video-demo-source form-control"
-                            >
-                                                        <option value="upload" >Upload</option>
-                                                        <option value="youtube" >Youtube</option>
-                                                        <option value="vimeo" >Vimeo</option>
-                                                        <option value="external_link" >External Link</option>
-                                                </select>
-                        </div>
-                    </div> */}
-{/* 
-                    <div className="form-group mt-0">
-                        <label className="input-label font-12">Path</label>
-                        <div className="input-group js-video-demo-path-input">
-                            <div className="input-group-prepend">
-                                <button type="button" className="js-video-demo-path-upload input-group-text text-white panel-file-manager " data-input="demo_video" data-preview="holder">
-                                    <i data-feather="upload" width="18" height="18" className="text-white"></i>
-                                </button>
-
-                                <button type="button" className="js-video-demo-path-links rounded-left input-group-text input-group-text-rounded-left text-white d-none">
-                                    <i data-feather="link" width="18" height="18" className="text-white"></i>
-                                </button>
-                            </div>
-                            <input type="text" name="video_demo" id="demo_video" value="" className="form-control "/>
-                                        </div>
-                    </div> */}
-
-              
             </div>
             
             </div>
@@ -754,6 +737,8 @@ class CourseAdd extends Component {
                     
                
             </select>
+            {this.state.error.subCatalogId && <div style={{color:"red",fontSize:"12px"}} >{this.state.error.subCatalogId}</div>}								
+
             </div>
             </div>
             <br/>
@@ -810,6 +795,8 @@ class CourseAdd extends Component {
                             <option value="FR">French</option>
                             <option value="JP">Japanese</option>
                     </select>
+                    {this.state.error.language && <div style={{color:"red",fontSize:"12px"}}  >{this.state.error.language}</div>}
+
                 </div>
                 <div className="col-md-4">
                     <label className="input-label">Duration (Hour) *</label>
@@ -828,11 +815,12 @@ class CourseAdd extends Component {
                     <label className="input-label">Regular Price ($) *</label>
                         <div className="input-group">
                             <div className="input-group-prepend">
-                                <span className="input-group-text" id="timeInputGroupPrepend">
-                                    <img style={{width:"23px", height:"23px"}} src="/assets/default/img/dollar.png"/>
+                           
+                                <span className="input-group-text  text-white font-16" id="timeInputGroupPrepend">
+                                    $
                                 </span>
                             </div>
-                            <input type="text" placeholder="$0" name="price" onChange={this.formCourse} className="form-control "/>
+                            <input type="number" placeholder="$0" name="price" onChange={this.formCourse} className="form-control "/>
                         </div>
                     {this.state.error.price && <div style={{color:"red",fontSize:"12px"}} >{this.state.error.price}</div>}
 
@@ -915,6 +903,7 @@ class CourseAdd extends Component {
                         <span className="chapter-icon mr-10">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                         </span>
+                        
                         <div className="">
                             <span className="font-weight-bold text-dark-blue d-block">{less.title}</span>
                             <span className="font-12 text-gray d-block">
@@ -936,8 +925,9 @@ class CourseAdd extends Component {
                         <a type="button" value='delete' name={less.title} onClick={()=>this.removeLesson(less.id)} title="Delete" className=" btn btn-sm btn-transparent text-gray">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 mr-10 cursor-pointer"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                         </a>
-
-                        <i className="collapse-chevron-icon feather-chevron-up text-gray" data-feather="chevron-down" height="20" href={'#collapseChapter'+i} aria-controls={'collapseChapter'+i} data-parent="#chapterAccordion" role="button" data-toggle="collapse" aria-expanded="true"></i>
+                        {topic>0?
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down collapse-chevron-icon feather-chevron-up text-gray" href={'#collapseChapter'+i}  aria-controls={'collapseChapter'+i} data-parent="#chapterAccordion" role="button" data-toggle="collapse" aria-expanded="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        :''}
                     </div>
                 </div>
 
@@ -1089,7 +1079,7 @@ class CourseAdd extends Component {
                                 <div className="form_group">
                                     <label className="label25">Lesson Title*</label>
                                     <input className="form-control " type="text" name="title" onChange={this.formLesson} />
-                                    {this.state.error.titleLesson && <div className="validation alert alert-warning">{this.state.error.titleLesson}</div>}
+                                    {this.state.error.titleLesson && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.titleLesson}</div>}
                                 </div>
                             </div>
                         </div>
@@ -1098,7 +1088,7 @@ class CourseAdd extends Component {
                 </div>
             </div>
             <div className="modal-footer">
-                <button type="button" className="save-chapter btn btn-sm btn-primary" data-dismiss="modal" onClick={()=>this.newLesson(this.state.addLesson)} >Save</button>
+                <button type="button" className="save-chapter btn btn-sm btn-primary" onClick={()=>this.newLesson(this.state.addLesson)} >Save</button>
                 <button type="button" className="close-swl btn btn-sm btn-danger ml-2" data-dismiss="modal" onClick={()=>this.closeModal()}>Close</button>
                 {/* <button type="button" className="main-btn" data-dismiss="modal" value={'delete'} onClick={()=>this.deleteLecture(lecture.id, this.props.course.id)} ><i className="uil uil-trash-alt"></i>DELETE</button> */}
             </div>
@@ -1124,16 +1114,17 @@ class CourseAdd extends Component {
 <div className="form-group">
     <label className="input-label">Title *</label>
     <input type="text" placeholder="Insert your lecture title." name="title" onChange={this.formLecture} className="form-control"/>
-    {this.state.error.titleLecture && <div className="validation alert alert-warning">{this.state.error.titleLecture}</div>}
+    {this.state.error.titleLecture && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.titleLecture}</div>}
 
 </div>
 <div className="form-group">
     <label className="input-label">Sort *</label>
     <input type="number" min="0" max="100" placeholder="0" name="sort" onChange={this.formLecture} className="form-control"/>
-    {this.state.error.sort && <div className="validation alert alert-warning">{this.state.error.sort}</div>}
-    {this.state.error.sortLecture && <div className="validation alert alert-warning">{this.state.error.sortLecture}</div>}
+    {this.state.error.sort && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.sort}</div>}
+    {this.state.error.sortLecture && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.sortLecture}</div>}
 
 </div>
+    
 
 <div className="form-group">
     <label className="input-label">Youtube URL *</label>
@@ -1146,9 +1137,10 @@ class CourseAdd extends Component {
             </button>
         </div>
         <input type="text" placeholder="Youtube video URL" name="videoUrl" onChange={this.formLecture} className="form-control"/>
-        {this.state.error.videoUrlLecture && <div className="validation alert alert-warning">{this.state.error.videoUrlLecture}</div>}
 
     </div>
+    {this.state.error.videoUrlLecture && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.videoUrlLecture}</div>}
+
 </div>
 
 <div className="form-group">
@@ -1162,8 +1154,9 @@ class CourseAdd extends Component {
             </button>
         </div>
         <input type="number" min="0" max="100" placeholder="0" name="videoDuration" onChange={this.formLecture} className="form-control"/>
-        {this.state.error.videoDurationLecture && <div className="validation alert alert-warning">{this.state.error.videoDurationLecture}</div>}
     </div>
+    {this.state.error.videoDurationLecture && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.videoDurationLecture}</div>}
+
 </div>
 
 <div className="form-group">
@@ -1192,7 +1185,7 @@ class CourseAdd extends Component {
                 </div>
             </div>
             <div className="modal-footer">
-                <button type="button" className="btn btn-sm btn-primary" data-dismiss="modal" onClick={()=>this.newLecture(this.state.lesson,this.state.addLecture)} >Save</button>
+                <button type="button" className="btn btn-sm btn-primary" onClick={()=>this.newLecture(this.state.lesson,this.state.addLecture)} >Save</button>
                 <button type="button" className="close-swl btn btn-sm btn-danger ml-2" data-dismiss="modal" onClick={()=>this.closeModal()}>Close</button>
                 {/* <button type="button" className="main-btn" data-dismiss="modal" value={'delete'} onClick={()=>this.deleteLecture(lecture.id, this.props.course.id)} ><i className="uil uil-trash-alt"></i>DELETE</button> */}
             </div>
@@ -1232,14 +1225,14 @@ class CourseAdd extends Component {
             <div className="create-webinar-footer d-flex flex-column flex-md-row align-items-center justify-content-between mt-20 pt-15 border-top">
                 <div className="d-flex align-items-center">
                     {this.state.show>1?
-                    <a type="button" onClick={this.pagePrev} className="btn btn-sm btn-primary ">Previous</a>
+                    <button type="button" onClick={this.pagePrev} className="btn btn-sm btn-primary ">Previous</button>
                     :''
                     }
                      {this.state.show<4?
                     <button type="button" onClick={this.pageNext} className="btn btn-sm btn-primary ml-15" >Next</button>
                     :''}
                 </div>
-                {this.state.course?
+                {this.state.course&&this.state.show==4?
                 <div className="mt-20 mt-md-0">
 
                     <button  type="button" value={'add'} onClick={()=>this.course(this.state.addCourse)} className=" btn btn-sm btn-primary">Submit</button>
@@ -1249,7 +1242,7 @@ class CourseAdd extends Component {
                 {this.state.show==2?
                 <div className="mt-20 mt-md-0">
 
-                    <button type="button" value={'add'} onClick={()=>this.courseDraf(this.state.addCourse)}  className=" btn btn-sm btn-primary">Save as Draft</button>
+                    <button type="button" value={'add'} onClick={()=>this.courseDraf(this.state.addCourse)}  className=" btn btn-sm btn-primary">Submit as Draft</button>
 
                 </div>
                 :''}

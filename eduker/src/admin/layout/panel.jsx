@@ -28,7 +28,7 @@ class Panel extends React.Component {
     render() {
         return (
             <>
-                <div className="xs-panel-nav d-flex d-lg-none justify-content-between py-5 px-15">
+                <div style={{zIndex:"5"}} className="xs-panel-nav d-flex d-lg-none justify-content-between py-5 px-15">
                     
                     <div className="user-info d-flex align-items-center justify-content-between" >
                         
@@ -49,7 +49,7 @@ class Panel extends React.Component {
                 </div>
                 
 
-                <div className="panel-sidebar pt-50 pb-25 px-25" id="panelSidebar" >
+                <div style={{zIndex:"5"}} className="panel-sidebar pt-50 pb-25 px-25" id="panelSidebar" >
                     <button className="btn-transparent panel-sidebar-close sidebarNavToggle">
                         <i data-feather="x" width="24" height="24"></i>
                     </button>
@@ -88,7 +88,34 @@ class Panel extends React.Component {
                                 <span className="font-14 text-dark-blue font-weight-500">Dashboard</span>
                             </Link>
                         </li>
-                        
+                        <li className="sidenav-item ">
+                                <Link to ="/user-info" className="d-flex align-items-center">
+                                <span className="sidenav-item-icon mr-10">
+                                    <i data-feather="user" stroke="#1f3b64" stroke-width="1.5" width="24" height="24" className="mr-10 webinar-icon"></i>
+                                </span>
+                                    <span className="font-14 text-dark-blue font-weight-500">Users</span>
+                                </Link>
+                        </li>
+                        <li className="sidenav-item ">
+                            <a className="d-flex align-items-center" data-toggle="collapse" href="#webinarCollapseCata" aria-expanded="false" aria-controls="webinarCollapseCata">
+                                <span className="sidenav-item-icon mr-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid mr-10 d-none d-lg-block"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                </span>
+                                <span className="font-14 text-dark-blue font-weight-500">Category</span>
+                            </a>
+                            <div className="collapse " id="webinarCollapseCata">
+                                <ul className="sidenav-item-collapse">
+                                                            <li className="mt-5 ">
+                                            <Link to ="/catalog">Catalog</Link>
+                                        </li>
+
+                                        <li className="mt-5 ">
+                                            <Link to ="/subcatalog">Subcatalog</Link>
+                                        </li>
+                                 
+                                </ul>
+                            </div>
+                        </li>
                         <li className="sidenav-item ">
                             <a className="d-flex align-items-center" data-toggle="collapse" href="#webinarCollapse" role="button" aria-expanded="false" aria-controls="webinarCollapse">
                                 <span className="sidenav-item-icon mr-10">
@@ -134,17 +161,17 @@ class Panel extends React.Component {
                                 <span className="font-14 text-dark-blue font-weight-500">Settings</span>
                             </a>
                         </li>
-
-                        <li className="sidenav-item ">
-                                <a href="users/1015/profile" className="d-flex align-items-center">
-                                <span className="sidenav-item-icon mr-10">
-                                    <i data-feather="user" stroke="#1f3b64" stroke-width="1.5" width="24" height="24" className="mr-10 webinar-icon"></i>
-                                </span>
-                                    <span className="font-14 text-dark-blue font-weight-500">My Profile</span>
-                                </a>
-                        </li>
                         
-                        <li className="sidenav-item">
+                        <li className="sidenav-item ">
+                            <a href="panel/setting" className="d-flex align-items-center">
+                                <span className="sidenav-item-icon mr-10">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart mr-10"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                </span>
+                                <span className="font-14 text-dark-blue font-weight-500">Orders</span>
+                            </a>
+                        </li>
+                        <hr/>
+                        {/* <li className="sidenav-item">
                             <a href="logout" className="d-flex align-items-center">
                                 <span className="sidenav-item-icon mr-10">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="23.999" height="23.999" viewBox="0 0 23.999 23.999">
@@ -158,10 +185,13 @@ class Panel extends React.Component {
                 </svg>
                                 </span>
                                 <span className="font-14 text-dark-blue font-weight-500">Log out</span>
+                                
                             </a>
-                        </li>
+                        </li> */}
+                        <p>© 2022 <strong>RocketLMS</strong>. All Rights Reserved.</p>
                     </ul>
-                           
+                   
+                    
                 </div>
         </>
         );

@@ -49,7 +49,7 @@ class HeaderUser extends React.Component {
         return (
             <>
                 <div className="top-navbar d-flex border-bottom">
-                    <div className="container d-flex justify-content-between flex-column flex-lg-row">
+                    <div className="container d-flex justify-content-between flex-column flex-lg-row"  style={{padding:"7px"}}>
                         <div
                             className="top-contact-box border-bottom d-flex flex-column flex-md-row align-items-center justify-content-center">
 
@@ -65,9 +65,8 @@ class HeaderUser extends React.Component {
                                     <i data-feather="mail" width="20" height="20" className="mr-10"></i>
                                     mailer@rocket-soft.org
                                 </span>
-                            </div>
-
-                            <div className="d-flex align-items-center justify-content-between justify-content-md-center">
+                                <span>
+                                <div className="d-flex align-items-center justify-content-between justify-content-md-center">
                                 {/* <form action="/locale" method="post" className="mr-15 mx-md-20">
                                     <input type="hidden" name="_token" value="ETPTxzgAqooYOwRHgA79RMUNuNbEPsW22p7jTn3I"/>
 
@@ -80,14 +79,19 @@ class HeaderUser extends React.Component {
                                     </div>
                                 </form> */}
 
-
+                                <form  className="mr-15 mx-md-20 form-inline my-2 my-lg-0 navbar-search position-relative">
                                     <input className="form-control mr-5 rounded" type="text" name="search" placeholder="Search..."  onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)}
                                         aria-label="Search"/>
                                     <button onClick={()=>this.searchCourse(this.state.searchCourse) }
                                         className="btn-transparent d-flex align-items-center justify-content-center search-icon">
                                         <i data-feather="search" width="20" height="20" className="mr-10"></i>
                                     </button>
+                                </form>
                             </div>
+                                </span>
+                            </div>
+
+                            
                         </div>
 
                         <div className="xs-w-100 d-flex align-items-center justify-content-between ">

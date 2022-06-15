@@ -189,13 +189,13 @@ class HeaderUser extends React.Component {
                     </a>
 
                     <div className="dropdown-menu user-profile-dropdown" aria-labelledby="dropdownMenuButton">
-                            <Link to ="/detail" className="dropdown-item" href="users/1015/profile">
+                            <Link to ="/detail" className="dropdown-item" >
                                 <img src="/assets/default/img/profile.svg" width="25" alt="nav-icon"/>
                                 <span className="font-14 text-dark-blue"> My Profile</span>
                             </Link>
-                            <Link to ="/orders" className="dropdown-item" href="users/1015/profile">
-                                <img src="/assets/default/img/orders.svg" width="20" alt="nav-icon"/>
-                                <span className="font-14 text-dark-blue"> &nbsp;My Orders</span>
+                            <Link to="/dashboard" class="dropdown-item">
+                                <img src="/assets/default/img/dashboard.svg" width="25" alt="nav-icon"/>
+                                <span class="font-14 text-dark-blue"> My Panel</span>
                             </Link>
                             <hr/>
 
@@ -298,6 +298,11 @@ class HeaderUser extends React.Component {
 
                             <div className="nav-icons-or-start-live navbar-order">
 
+                                <a href="/course-add" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
+                                    Create New Course
+                                </a>
+
+
                                 <div className="d-none nav-notify-cart-dropdown top-navbar ">
                                     <div className="dropdown">
                                         <button type="button" disabled className="btn btn-transparent dropdown-toggle"
@@ -307,6 +312,21 @@ class HeaderUser extends React.Component {
 
                                         </button>
 
+                                        <div className="dropdown-menu" aria-labelledby="navbarShopingCart">
+                                            <div className="d-md-none border-bottom mb-20 pb-10 text-right">
+                                                <i className="close-dropdown mr-10" data-feather="x" width="32" height="32"
+                                                    ></i>
+                                            </div>
+                                            <div className="h-100">
+                                                <div className="navbar-shopping-cart h-100" data-simplebar>
+                                                    <div className="d-flex align-items-center text-center py-50">
+                                                        <i data-feather="shopping-cart" width="20" height="20"
+                                                            className="mr-10"></i>
+                                                        <span className="">Your cart is empty</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className="border-left mx-15"></div>

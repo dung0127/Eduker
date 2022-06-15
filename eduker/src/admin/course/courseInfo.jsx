@@ -121,13 +121,15 @@ class CourseInfo extends React.Component {
                                         
                                         <div className="col-12 col-lg-12">
                                             <div>
-
-                                                    <input className="form-control mr-5 rounded" type="text" style={{width:"450px"}} placeholder="Search..."  onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)}
-                                                        aria-label="Search"/>
-                                                    <button onClick={()=>this.searchCourse(this.state.searchCourse) }
-                                                        className="btn-transparent d-flex align-items-center justify-content-center search-icon">
-                                                    <i data-feather="search" style={{position: 'absolute', left:"430px", top:"10px"}} className="mr-10"></i>
-                                                    </button>
+                                            <div className="input-group js-video-demo-path-input">
+                                            <div className="input-group-prepend">
+                                                <button type="button"  onClick={()=>this.searchCourse(this.state.searchCourse) } className="js-video-demo-path-links rounded-left input-group-text input-group-text-rounded-left text-white" data-preview="holder">
+                                                <img style={{width:"23px", height:"23px"}} src="/assets/default/img/search1.png"/>
+                                                </button>
+                                            </div>
+                                            <input type="text" placeholder="Search..."  name="urlVideoDescription" onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)} className="form-control "/>
+                                        </div>
+                                                   
                                             </div>
                                         </div>
                                         
@@ -145,7 +147,7 @@ class CourseInfo extends React.Component {
                         {
                         this.state.filter=='all'?<h2 className="section-title">All Courses</h2>
                         :this.state.filter=='activate'?<h2 className="section-title">Activate Courses</h2>
-                        :<h2 className="section-title">Draft Courses</h2>}
+                        :this.state.filter=='darft'?<h2 className="section-title">Draft Courses</h2>:''}
                     </div>
                     <div className="panel-section-card py-20 px-25 mt-20">
                         <div className="row">
@@ -191,7 +193,7 @@ class CourseInfo extends React.Component {
                                                                 </span>
                                                             </td>
                                                             <td className="align-middle">
-                                                            {course.activate ?          <span className="text-primary">Activate</span>:<span  className="text-dark-blue">Draf</span>}
+                                                            {course.activate ?          <span className="text-primary">Activate</span>:<span  className="text-dark-blue">Draft</span>}
                                                             </td>
                                                         
                                                             <td className="align-middle">
@@ -266,7 +268,7 @@ class CourseInfo extends React.Component {
                                                                 </span>
                                                             </td>
                                                             <td className="align-middle">
-                                                                <span  className="text-dark-blue">Draf</span>
+                                                                <span  className="text-dark-blue">Draft</span>
                                                             </td>
                                                         
                                                             <td className="align-middle">
@@ -304,7 +306,7 @@ class CourseInfo extends React.Component {
                                                                 </span>
                                                             </td>
                                                             <td className="align-middle">
-                                                            {search.activate ?          <span className="text-primary">Activate</span>:<span  className="text-dark-blue">Draf</span>}
+                                                            {search.activate ?          <span className="text-primary">Activate</span>:<span  className="text-dark-blue">Draft</span>}
                                                             </td>
                                                         
                                                             <td className="align-middle">
