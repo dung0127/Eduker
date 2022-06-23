@@ -272,11 +272,11 @@ class HeaderGuest extends React.Component {
                             <div className="nav-icons-or-start-live navbar-order">
 
                                 <Link to="/login" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
-                                    Start a new course
+                                    Login to your account
                                 </Link>
 
                                 <Link to="/login" className="d-flex d-lg-none text-primary nav-start-a-live-btn font-14">
-                                    Start a new course
+                                    Login to your account
                                 </Link>
 
                                 <div className="d-none nav-notify-cart-dropdown top-navbar ">

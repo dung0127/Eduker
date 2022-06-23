@@ -257,7 +257,27 @@ class CourseById extends React.Component {
                                                                                                 <span className="mr-15 font-14 text-gray">
                                                                                                     {lecture.videoDuration} hours
                                                                                                 </span>
-
+                                                                                                {lecture.videoUrl?
+                                                                                                lecture.preview?
+                                                                                                <a href="#" data-toggle="modal" data-target={"#videoModalLecture"+lecture.id} className="course-content-btns  ">
+                                                                                                <img  src="http://www.downloadclipart.net/medium/play-button-png-clipart.png" style={{width:"30px",height:"25px"}} alt="" />
+                                                                                                </a>:''
+                                                                                                :''}
+                                                                                                <div className="modal vd_mdl fade" id={"videoModalLecture"+lecture.id}   role="dialog" aria-hidden="true">
+                                                                                                    <div className="modal-dialog modal-lg" role="document">
+                                                                                                        <div className="modal-content">
+                                                                                                            <button type="button" className="close " data-dismiss="modal" aria-label="Close">
+                                                                                                                <span aria-hidden="true">&times;</span>
+                                                                                                            </button>
+                                                                                                            {lecture.videoUrl?
+                                                                                                            <div className="modal-body" >
+                                                                                                                <iframe className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                                                                                            </div>
+                                                                                                            :console.log(lecture.videoUrl)}
+                                                                                                            
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
                                                                                             </div>
                                                                                             
                                                                                         </div>
@@ -499,6 +519,7 @@ class CourseById extends React.Component {
                                         </div>
                                     </div>
                                     {localStorage.getItem("isLogin")?
+                                    localStorage.getItem("role")=="ROLE_ADMIN"?'':
                                         this.props.course.purchased?
                                     <div className="mt-20 d-flex flex-column">
                                         <button type="button" style={{backgroundColor:"#e1b329", borderColor:"#e1b329"}} className="btn btn-primary" onClick={() => this.addCart(this.props.cartItems, this.props.course)}>
@@ -520,6 +541,7 @@ class CourseById extends React.Component {
                                         </button>
                                         {/* <div class="jq-toast-wrap bottom-right" role="alert" aria-live="polite"><div className="jq-toast-single jq-has-icon jq-icon-success" style={{backgroundColor: "rgb(67, 212, 119)", color: "white", textAlign: "left"}}><span className="jq-toast-loader jq-toast-loaded" style={{WebkitTransition: "width 9.6s ease-in",                       OTransition: "width 9.6s ease-in",                       transition: "width 9.6s ease-in",  backgroundColor: "#9EC600"}}></span><span className="close-jq-toast-single">×</span><h2 className="jq-toast-heading">Added to cart!</h2>You can continue shopping or go to cart to finalize your order.</div></div> */}
                                     </div>
+                                    
                                     }
                                    
 

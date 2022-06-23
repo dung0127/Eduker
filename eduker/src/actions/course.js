@@ -24,7 +24,7 @@ export const getAllCourse = (courses, page, totalPages) => {
 
 export const fetchCourseIndexRequest = () => {
     return(dispatch) => {
-        axios.get(COURSE_API_BASE_URL +'?pageNumber=0' + '&size=15&sort=DESC',{ headers: authHeader() }).then((res) => {
+        axios.get(COURSE_API_BASE_URL +'?pageNumber=0' + '&size=6&sort=DESC',{ headers: authHeader() }).then((res) => {
             dispatch(getIndexCourse(res.data.data.content,res.data.data.pageable.pageNumber,res.data.data.totalPages))
         })
     }
@@ -39,7 +39,7 @@ export const getIndexCourse = (coursesIndex) => {
 
 export const fetchCourseTopRequest = () => {
     return(dispatch) => {
-        axios.get(COURSE_API_BASE_URL +'/top-seller?pageNumber=0' + '&size=15',{ headers: authHeader() }).then((res) => {
+        axios.get(COURSE_API_BASE_URL +'/top-seller?pageNumber=0' + '&size=6',{ headers: authHeader() }).then((res) => {
             dispatch(getTopCourse(res.data.data.content,res.data.data.pageable.pageNumber,res.data.data.totalPages))
         })
     }

@@ -203,12 +203,12 @@ import loadjs from "loadjs";
                             
                         </div>
                     </div>
-                    </div>
+            </div>
                     
-         </section>
-         <br/>
-         
-         </div>
+            </section>
+            <br/>
+            
+            </div>
          <div style={{paddingLeft:"150px"}}>
             <Link to ="/orders" type="button" id="getNextStep" className="btn btn-sm btn-primary ml-15" >Back</Link>
             <button style={{backgroundColor:"#dc2e2e", borderColor:"#dc2e2e"}} type="button" value={'Value'} onClick={()=> printdiv('print_this')}  className="btn btn-sm btn-primary ml-15" >Print</button>

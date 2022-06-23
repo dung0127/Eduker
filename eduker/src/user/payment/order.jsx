@@ -105,7 +105,7 @@ class Order extends React.Component{
                                         {order.statusOrder?<span className="text-primary">Compeleted</span>:<span className="text-dark-blue"></span>}
                                                                                         </td>
                                         <td className="align-middle">
-                                        <Link to={`/order/${order.orderNumber}`} params={order.orderNumber}><span><img style={{width:"15px", cursor:"pointer"}} src='/assets/default/img/search-line.svg'/></span>
+                                        <Link to={`/order/${order.orderNumber}`} params={order.orderNumber}><span><img style={{width:"23px", height:"23px", cursor:"pointer"}} src="assets/default/img/icons/paper.svg" className="img-cover" alt=""/></span>
                                         </Link></td>
                                     </tr>);
                                             }

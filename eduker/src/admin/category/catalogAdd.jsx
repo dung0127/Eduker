@@ -292,7 +292,8 @@ class CatalogAdd extends React.Component {
                                 <div className="step-tab-panel step-tab-location">
                                     <div className="tab-from-content">
                                         <div className="mt-20 mt-md-0">
-
+                                        <Link to="/catalog" ><button style={{backgroundColor:"#eb4242", borderColor:"#eb4242"}} type="button" className=" btn btn-sm btn-primary" >Back</button></Link>
+                                        &nbsp;&nbsp;&nbsp;
                                         <button  type="button" className=" btn btn-sm btn-primary" value={'Add'} onClick={()=>this.handleSubmitCatalog(this.state.addCatalog,this.state.subCatalog)}>Save</button>
 
                                         </div>

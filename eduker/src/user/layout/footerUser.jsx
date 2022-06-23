@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 
 class FooterUser extends React.Component {
     render() {
@@ -23,7 +24,7 @@ class FooterUser extends React.Component {
             <div className="container">
                 <div className="row">
 
-                    <div className="col-6 col-md-3">
+                    <div className="col-6 col-md-6">
                         <span className="header d-block text-white font-weight-bold">About US</span>
 
                         <div className="mt-20">
@@ -39,75 +40,31 @@ class FooterUser extends React.Component {
                         <span className="header d-block text-white font-weight-bold">Additional Links</span>
 
                         <div className="mt-20">
-                            <p><a href="/login">
+                            <p><Link to= "/login">
                                     <font color="#ffffff">- Login</font>
-                                </a></p>
+                                </Link></p>
                             <p>
-                                <font color="#ffffff"><a href="/register">
+                                <font color="#ffffff"><Link to="/signup">
                                         <font color="#ffffff">- Register</font>
-                                    </a><br/></font>
+                                    </Link><br/></font>
                             </p>
-                            <p><a href="/blog">
-                                    <font color="#ffffff">- Blog</font>
-                                </a></p>
-                            <p><a href="/contact">
+                            
+                            <p><Link to="/contact">
                                     <font color="#ffffff">- Contact us</font>
-                                </a></p>
-                            <p>
-                                <font color="#ffffff"><a href="/certificate_validation">
-                                        <font color="#ffffff">- Certificate validation</font>
-                                    </a><br/></font>
-                            </p>
-                            <p>
-                                <font color="#ffffff"><a href="/become_instructor">
-                                        <font color="#ffffff">- Become instructor</font>
-                                    </a><br/></font>
-                            </p>
-                            <p><a href="/pages/terms">
-                                    <font color="#ffffff">- Terms &amp; rules</font>
-                                </a></p>
-                            <p><a href="/pages/about">
+                                </Link></p>
+                           
+                            
+                            <p><Link to="/about">
                                     <font color="#ffffff">- About us</font>
-                                </a><br/></p>
+                                </Link><br/></p>
                         </div>
                     </div>
+                   
                     <div className="col-6 col-md-3">
-                        <span className="header d-block text-white font-weight-bold">Similar Businesses</span>
+                        <span className="header d-block text-white font-weight-bold">Learning Rocket LMS</span>
 
-                        <div className="mt-20">
-                            <p><a href="https://www.udemy.com/" target="_blank">
-                                    <font color="#ffffff">- Udemy</font>
-                                </a></p>
-                            <p><a href="https://www.skillshare.com/" target="_blank">
-                                    <font color="#ffffff">- Skillshare</font>
-                                </a></p>
-                            <p><a href="https://www.coursera.org/" target="_blank">
-                                    <font color="#ffffff">- Coursera</font>
-                                </a></p>
-                            <p><a href="https://www.linkedin.com/learning/" target="_blank">
-                                    <font color="#ffffff">- Lynda</font>
-                                </a></p>
-                            <p><a href="https://www.skillsoft.com/" target="_blank">
-                                    <font color="#ffffff">- Skillsoft</font>
-                                </a></p>
-                            <p><a href="https://www.udacity.com/" target="_blank">
-                                    <font color="#ffffff">- Udacity</font>
-                                </a></p>
-                            <p><a href="https://www.edx.org/" target="_blank">
-                                    <font color="#ffffff">- edX</font>
-                                </a></p>
-                            <p><a href="https://www.masterclassName.com/" target="_blank">
-                                    <font color="#ffffff">- MasterclassName</font>
-                                </a><br/></p>
-                        </div>
-                    </div>
-                    <div className="col-6 col-md-3">
-                        <span className="header d-block text-white font-weight-bold">Purchase Rocket LMS</span>
-
-                        <div className="mt-20">
-                            <p><a title="Notnt" href="https://codecanyon.net"><img style={{width: "200px"}}
-                                        src="/store/1/default_images/envato.png"/></a></p>
-                        </div>
+                       <a title="Notnt" href="#"><img style={{width: "200px"}}
+                                        src="/store/1/default_images/envato.png"/></a>
                     </div>
 
                 </div>

@@ -22,6 +22,10 @@ import Catalog from "../category/catalog.jsx";
 import CatalogAdd from "../category/catalogAdd.jsx";
 import SubCatalog from "../category/subCatalog.jsx";
 import UserEdit from "../user/userEdit.jsx";
+import CourseEdit from "../course/courseEdit.jsx";
+import OrderInfo from "../payment/orderInfo.jsx";
+import OrderInfoDetail from "../payment/orderInfoDetail.jsx";
+import Signup from "../../user/profile/signup.jsx";
 
 const isLogin = localStorage.getItem("isLogin");
 
@@ -46,15 +50,16 @@ class AppAdmin extends React.Component {
                 
             <Routes>    
                 <Route path ="/dashboard" element = {<DashBoard/>}/> 
-                <Route path ="/" element = {<MainUser/>}/> 
+                <Route path ="/index" element = {<MainUser/>}/> 
                 <Route path ="/course-info" element = {<CourseInfo/>}/> 
                 <Route path ="/user-info" element = {<UserInfo/>}/> 
                 <Route path ="/user-edit/:id" element = {<UserEdit/>}/>
                 
                 <Route path="/course-add" element = {<CourseAdd/>}/>
-                {!isEmpty(this.props.user) && <Route path ="/change-password" element = {<ChangePassword/>}/> }
-                {!isEmpty(this.props.user) && <Route path ="/detail" element = {<DetailUser/>}/> }
-                {!isEmpty(this.props.user) && <Route path ="/edit-profile" element = {<DetailEdit/>}/> }
+                <Route path ="/course-edit/:id" element = {<CourseEdit/>}/>
+                <Route path ="/change-password" element = {<ChangePassword/>}/> 
+                <Route path ="/detail" element = {<DetailUser/>}/> 
+                <Route path ="/edit-profile" element = {<DetailEdit/>}/> 
                 <Route path="/courses/:name/:id" element ={<CourseBySubCatalog/>}></Route>
                 <Route path="/course/:id" element ={<CourseById/>}></Route>
                 <Route path="/search" element ={<Search/>}></Route>
@@ -64,9 +69,20 @@ class AppAdmin extends React.Component {
                 <Route path ="/catalog" element = {<Catalog/>}/>
                 <Route path ="/catalog-add" element = {<CatalogAdd/>}/>
                 <Route path ="/contact" element = {<Contact/>}/>
-                {isEmpty(this.props.user)?<Route path ="/login" element = {<Login/>}/>:<Route path ="/login" element = {<MainUser/>}/>}
+                {isEmpty(this.props.user)?<Route path ="/login" element = {<Login/>}/>:<Route path ="/login" element = {<DashBoard/>}/>}
         
-
+                <Route path ="/order-info" element = {<OrderInfo/>}/>
+                <Route path="/order-detail/:id" element = {<OrderInfoDetail/>}/>
+                <Route path ="/contact" element = {<Contact/>}/>
+                <Route path ="/about" element = {<About/>}/>
+                <Route path ="/signup" element = {<Signup/>}/>
+                <Route path ="*" element = {<DashBoard/>}/> 
+                <Route path ="/" element = {<MainUser/>}/> 
+                <Route path ="/contact" element = {<Contact/>}/>
+                <Route path ="/about" element = {<About/>}/> 
+                <Route path="/search/:name" element ={<Search/>}></Route>
+                <Route path="/courses/:name/:id" element ={<CourseBySubCatalog/>}></Route>
+                <Route path="/search" element ={<Search/>}></Route>
             </Routes>  
             <FooterAdmin/>
 

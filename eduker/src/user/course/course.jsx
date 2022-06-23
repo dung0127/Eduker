@@ -206,7 +206,7 @@ class Course extends React.Component {
                                                         </div>
                                                     </figcaption>
                                                 </figure>
-                                            </div>
+                                                </div>
                                             </div>
                                         )
                                     })

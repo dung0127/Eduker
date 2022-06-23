@@ -307,10 +307,12 @@ class HeaderUser extends React.Component {
 
                             <div className="nav-icons-or-start-live navbar-order">
 
-                                <a href="/login" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
-                                    Enroll now
-                                </a>
-
+                                <Link to="/detail" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
+                                  Enroll Now
+                                </Link>
+                                <Link to="/detail" className="d-flex d-lg-none text-primary nav-start-a-live-btn font-14">
+                                    Enroll Now
+                                </Link>
 
                                 <div className="d-none nav-notify-cart-dropdown top-navbar ">
                                     <div className="dropdown">

@@ -692,7 +692,11 @@ class CourseAdd extends Component {
             
             <div className="row">
                 <div className="col-12 col-md-6 mt-15">
-               
+                    <div className="">
+                        <br/>
+                        <h2 className="section-title after-line">Basic Information</h2>
+                        <br/>
+                    </div>
                     <div className="form-group mt-15">
                         <label className="input-label">Course Title *</label>
                         <input type="text" name="title" className="form-control " onChange={this.formCourse} placeholder="Course title here" maxlength="60"/>
@@ -832,7 +836,10 @@ class CourseAdd extends Component {
             <>
              <div className="row">
                 <div className="col-12 col-md-6 mt-15">
-               
+                    <div className="">
+                        <br/>
+                        <h2 className="section-title after-line">Media</h2>
+                    </div>
                     <div className="form-group mt-25">
                         <label className="input-label">Intro Course overview provider type.</label>
                     </div>
@@ -885,7 +892,7 @@ class CourseAdd extends Component {
         <p className="font-12 text-gray">- You can also upload additional files like projects, exercises, attachments.</p>
     </div>
     <button data-toggle="modal" data-target='#createLesson' className="btn btn-primary btn-sm mt-15" >New Lesson</button>
-
+    {lessons.length>0?
     <div className="row mt-10">
     <div className="col-12">
         <div className="accordion-content-wrapper mt-15" id="chapterAccordion" role="tablist" aria-multiselectable="true">
@@ -1057,7 +1064,25 @@ class CourseAdd extends Component {
         </div>
 
     </div>
+    </div>
+    :
+    <div class="row mt-10">
+        <div class="col-12">
+
+            <div class="accordion-content-wrapper mt-15" id="prerequisitesAccordion" role="tablist" aria-multiselectable="true">
+                                    <div class="no-result default-no-result mt-50 d-flex align-items-center justify-content-center flex-column">
+    <div class="no-result-logo">
+        <img src="/assets/default/img/no-results/comment.png" alt=""/>
+    </div>
+    <div class="d-flex align-items-center flex-column mt-30 text-center">
+        <h2 class="text-dark-blue">No Lesson is defined!</h2>
+        <p class="mt-5 text-center text-gray font-weight-500">You can create lesson for students to learn.</p>
+            </div>
 </div>
+                            </div>
+        </div>
+    </div>
+    }
 
 </section>
 

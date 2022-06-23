@@ -323,9 +323,9 @@ class UserEdit extends React.Component {
                                     <div className="tab-from-content">
                                         <div className="mt-20 mt-md-0">
 
-                                        <Link to="/user-info" ><button  type="button" className=" btn btn-sm btn-primary" >Back</button></Link>
+                                        <Link to="/user-info" ><button style={{backgroundColor:"#eb4242", borderColor:"#eb4242"}} type="button" className=" btn btn-sm btn-primary" >Back</button></Link>
                                         &nbsp;&nbsp;&nbsp;
-                                        <button style={{backgroundColor:"#eb4242", borderColor:"#eb4242"}} type="button" className=" btn btn-sm btn-primary" value={'Update'} onClick={()=>this.updateDetail(this.state.newDetail, userById.id)}>Save</button>
+                                        <button  type="button" className=" btn btn-sm btn-primary" value={'Update'} onClick={()=>this.updateDetail(this.state.newDetail, userById.id)}>Save</button>
 
                                         </div>
                                         

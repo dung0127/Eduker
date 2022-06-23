@@ -251,7 +251,7 @@ class DetailEdit extends React.Component {
                 
                 <div className="create-webinar-footer d-flex align-items-center justify-content-between mt-20 pt-15 border-top">
                 <div className="">
-                        <Link to ="/detail" type="button" id="getNextStep" className="btn btn-sm btn-primary ml-15" >Back</Link>
+                        <Link to ="/detail" type="button" style={{backgroundColor:"#eb4242", borderColor:"#eb4242"}} id="getNextStep" className="btn btn-sm btn-primary ml-15" >Back</Link>
                         <button value={'Update'} onClick={()=>this.updateDetail(this.state.newDetail)} type="button" className="btn btn-sm btn-primary ml-15" >Save</button>
                             </div>
                 

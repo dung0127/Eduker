@@ -54,9 +54,7 @@ class AppUser extends React.Component {
       this.props.fetchDetailUserRequest();
   }
     render() {
-      console.log(this.props.user)                          
 
-      console.log(this.state.isLog)                          
       return (
           <Router >
                 {/* {isLogin? ( !(window.location.pathname.startsWith('/login') || window.location.pathname.startsWith('/learn') || window.location.pathname.startsWith('/signup') ) ? <HeaderUser/> : '') : (  (window.location.pathname.startsWith('/login') || window.location.pathname.startsWith('/signup')) ? '':<HeaderGuest/> )} */}
@@ -70,7 +68,7 @@ class AppUser extends React.Component {
                 {isEmpty(this.props.user)?<Route path ="/login" element = {<Login/>}/>:<Route path ="/login" element = {<MainUser/>}/>}
                 <Route path ="/course" element = {<Course/>}/>
                 <Route path ="/contact" element = {<Contact/>}/>
-                <Route path ="/about" element = {<About/>}/>
+                <Route path ="/about" element = {<About/>}/> 
                 <Route path="/search" element ={<Search/>}></Route>
                 <Route path="/course/:id" element ={<CourseById/>}></Route>
                 <Route path="/search/:name" element ={<Search/>}></Route>

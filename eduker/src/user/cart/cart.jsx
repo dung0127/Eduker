@@ -28,11 +28,11 @@ class CartInfo extends React.Component {
     }
 
     componentDidUpdate() {
-        // this.props.cartItems.map((item) => 
-        //     this.props.enroll.map((course)=> 
-        //     (item.id == course.id)?
-        //         this.props.removeFromCart(this.props.cartItems,item):'')
-        // )
+        this.props.cartItems.map((item) => 
+            this.props.enroll.map((course)=> 
+            (item.id == course.id)?
+                this.props.removeFromCart(this.props.cartItems,item):'')
+        )
     }
 
     clearCart = () => {
@@ -46,6 +46,12 @@ class CartInfo extends React.Component {
     alertCancel = () => {
         $('#confirm').fadeOut('fast');
     } 
+
+    remove(items, item){
+        this.props.removeFromCart(items, item)
+        loadjs('/assets/default/js/removeCart.js', () => {});
+
+    }
 
     render() {
         const { cartItems } = this.props;
@@ -106,7 +112,7 @@ class CartInfo extends React.Component {
                                 <div className="col-6 col-lg-2 d-flex flex-md-column align-items-center justify-content-center">
                                     <span className="text-gray d-inline-block d-md-none mr-10 mr-md-0">Remove :</span>
 
-                                    <a onClick={(e) => this.props.removeFromCart(this.props.cartItems, item)} className="btn-cart-list-delete d-flex align-items-center justify-content-center">
+                                    <a onClick={(e) => this.remove(this.props.cartItems, item)} className="btn-cart-list-delete d-flex align-items-center justify-content-center">
                                         <i data-feather="x" width="20" height="20" className=""></i>
                                     </a>
                                 </div>

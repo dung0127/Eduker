@@ -81,7 +81,7 @@ class UserInfo extends React.Component {
                                                 <img style={{width:"23px", height:"23px"}} src="/assets/default/img/search1.png"/>
                                                 </button>
                                             </div>
-                                            <input type="text" placeholder="Search..."  name="urlVideoDescription" onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchUser(this.state.searchUser)} className="form-control "/>
+                                            <input type="text" placeholder="Search..."  name="search" onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchUser(this.state.searchUser)} className="form-control "/>
                                         </div>
                                         
                                 </div>
@@ -94,10 +94,7 @@ class UserInfo extends React.Component {
 
                     <section className="mt-35">
                     <div className="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
-                        {
-                        this.state.filter=='all'?<h2 className="section-title">All Courses</h2>
-                        :this.state.filter=='activate'?<h2 className="section-title">Activate Courses</h2>
-                        :this.state.filter=='darft'?<h2 className="section-title">Draft Courses</h2>:''}
+                        <h2 className="section-title">All Users</h2>
                     </div>
                     <div className="panel-section-card py-20 px-25 mt-20">
                         <div className="row">

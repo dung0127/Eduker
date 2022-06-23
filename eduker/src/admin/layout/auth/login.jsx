@@ -67,7 +67,14 @@ class Login extends React.Component {
                 localStorage.setItem('role',res.data.data.roles)					
                 localStorage.setItem('username',res.data.data.username)				
                 loadjs('/assets/default/js/login.js', () => {});
-                this.props.navigate('/')
+                if(res.data.data.roles=='ROLE_ADMIN'){
+                    this.props.navigate('/dashboard')
+                    window.location.reload();
+                }
+                else {
+                    this.props.navigate('/')
+
+                }
                 
             }).catch(error => loadjs('/assets/default/js/loginError.js', () => {}))
             
