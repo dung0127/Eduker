@@ -1,58 +1,39 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { fetchCourseRequest } from "../../actions/course"
-import { Link } from "react-router-dom"
-import { addToCart } from "../../actions/cart";
-import { fetchSavedRequest } from "../../actions/savedCourse";
+import {connect} from 'react-redux';
+import {fetchDetailUserRequest} from "../../actions/detail";
+import {Link} from "react-router-dom";
+import { addToCart, removeFromCart } from "../../actions/cart";
+import {withRouter} from "../../admin/layout/auth/withRouter"
 import moment from 'moment';
+import {fetchAllEnrollRequest} from "../../actions/course"
 import Header from "../layout/header.jsx";
 
-  
-let date
-class Course extends React.Component {
+class Enroll extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
     }
 
-    handleClick(data) {
-        console.log(data);
-        if (data >= 0 && data < this.props.totalPages) {
-            this.props.fetchCourseRequest(data);
-        }
-    }
+    componentDidMount(){
+		this.props.fetchDetailUserRequest();
+        this.props.fetchAllEnrollRequest();
+    } 
 
-    componentDidMount() {
-        this.props.fetchCourseRequest(this.props.page);
-    }
-    handleInputSearchCourseChange = e => {
-        let value = e.target.value
-        this.setState({ searchCourse: value });
-    }
-
-    searchCourse = (searchCourse) => {
-        this.props.searchCourseRequest(searchCourse)
-    }
-
-    savedCourse = (id) => {
-        this.props.fetchSavedRequest(id);
-    }
-
-    render() {
+    render(){
+        const { enroll } = this.props;
         return (
             <>
                 <Header/>
                 <section className="site-top-banner search-top-banner opacity-04 position-relative">
-                    <img src="./store/1/default_images/category_cover.png" className="img-cover" alt="" />
+                    <img src="./store/1/default_images/blogs_cover.png" className="img-cover" alt="" />
 
                     <div className="container h-100">
                         <div className="row h-100 align-items-center justify-content-center text-center">
                             <div className="col-12 col-md-9 col-lg-7">
                                 <div className="top-search-categories-form">
-                                    <h1 className="text-white font-30 mb-15">Courses</h1>
-                                    {/* <span className="course-count-badge py-5 px-10 text-white rounded">{this.props.courses.length} Courses</span> */}
+                                    <h1 className="text-white font-30 mb-15">Enroll course</h1>
+                                    <span className="course-count-badge py-5 px-10 text-white rounded">{enroll&&enroll.length} Courses</span>
 {/* 
                                     <div className="search-input bg-white p-10 flex-grow-1">
                                         <form action="/search" method="get">
@@ -144,8 +125,7 @@ class Course extends React.Component {
                                 <div className="col-12 col-lg-12">
 
                                     <div className="row">
-                                    {
-                                    this.props.courses.map((course,index) => {
+                                    {enroll.map((course,index) => {
                                         return (
                                             <div className="col-12 col-lg-6 mt-20"  key={index}>
                                                 <div className="webinar-card">
@@ -317,27 +297,28 @@ class Course extends React.Component {
                     </section>
                 </div>
             </>
-        );
+      );
     }
-
+  
 };
 
 const mapStateToProps = state => {
-    return {
-        courses: state.course.courses,
-        page: state.course.page,
-        totalPages: state.course.totalPages,
+    return {        
+        user: state.detail.user,
+        courses: state.savedCourse.courses,
+        enroll: state.course.coursesEnroll,
         cartItems: state.cart.items,
-        savedSuccess: state.savedCourse.savedSuccess
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchCourseRequest: (e) => dispatch(fetchCourseRequest(e)),
-        addToCart: (e, p) => dispatch(addToCart(e, p)),
-        fetchSavedRequest: (e) => dispatch(fetchSavedRequest(e)),
+        fetchDetailUserRequest:() => dispatch (fetchDetailUserRequest()),
+        addToCart:(e,p) => dispatch (addToCart(e,p)),
+        fetchAllEnrollRequest:() => dispatch (fetchAllEnrollRequest()),
+
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Course);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Enroll));
+ 

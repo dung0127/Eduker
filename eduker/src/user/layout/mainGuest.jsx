@@ -4,12 +4,10 @@ import loadjs from 'loadjs';
 import Header from "./header.jsx";
 import {connect} from 'react-redux';
 import { fetchCourseIndexRequest, fetchCourseTopRequest } from "../../actions/course";
-import {fetchDetailUserRequest} from "../../actions/detail";
 import { addToCart } from "../../actions/cart";
 import moment from 'moment';
 
-
-class MainUser extends React.Component {
+class MainGuest extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -20,7 +18,7 @@ class MainUser extends React.Component {
 
     componentDidMount(){
        
-        loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
+        loadjs('/assets/default/vendors/swiper/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
         this.props.fetchCourseIndexRequest();
         this.props.fetchCourseTopRequest();
@@ -305,4 +303,4 @@ const mapDispatchToProps = dispatch => {
     };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(MainUser);
+export default connect(mapStateToProps,mapDispatchToProps)(MainGuest);

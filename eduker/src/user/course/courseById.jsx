@@ -9,7 +9,7 @@ import moment from 'moment';
 import loadjs from 'loadjs';
 import { fetchCreateReviewRequest,fetchDeleteReviewRequest,fetchUpdateReviewRequest } from "../../actions/review";
 import Header from "../layout/header.jsx";
-
+import jQuery from "jquery";
 
 class CourseById extends React.Component {
     constructor(props) {
@@ -26,6 +26,16 @@ class CourseById extends React.Component {
     addCart = (items, courses) => {
         this.props.addToCart(items, courses);
 
+    }
+
+    stopVideo = (id) => {
+        
+        $("#videoModalLecture"+id).on('hidden.bs.modal', function(e) {
+            var $iframes = $(e.target).find('iframe');
+            $iframes.each(function(index, iframe){
+            $(iframe).attr('src', $(iframe).attr('src'));
+            });
+          })
     }
 
     createReview = (form, id) => {
@@ -263,18 +273,24 @@ class CourseById extends React.Component {
                                                                                                 <img  src="http://www.downloadclipart.net/medium/play-button-png-clipart.png" style={{width:"30px",height:"25px"}} alt="" />
                                                                                                 </a>:''
                                                                                                 :''}
-                                                                                                <div className="modal vd_mdl fade" id={"videoModalLecture"+lecture.id}   role="dialog" aria-hidden="true">
+                                                                                                <div className="modal vd_mdl fade" id={"videoModalLecture"+lecture.id} role="dialog" aria-hidden="true">
                                                                                                     <div className="modal-dialog modal-lg" role="document">
                                                                                                         <div className="modal-content">
-                                                                                                            <button type="button" className="close " data-dismiss="modal" aria-label="Close">
-                                                                                                                <span aria-hidden="true">&times;</span>
-                                                                                                            </button>
+                                                                                                            
+                                                                                                            <div className="modal-header">
+                                                                                                                <h5 className="modal-title">Video Preview</h5>
+                                                                                                                <button onClick={()=>this.stopVideo(lecture.id)} type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                                                </button>
+                                                                                                            </div>
                                                                                                             {lecture.videoUrl?
-                                                                                                            <div className="modal-body" >
-                                                                                                                <iframe className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                                                                                            <div className="modal-body"  >
+                                                                                                                <iframe style={{height:"300px"}} className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                                                                                             </div>
                                                                                                             :console.log(lecture.videoUrl)}
-                                                                                                            
+                                                                                                            <div className="modal-footer">
+                                                                                                                {/* <button type="button" className="main-btn" data-dismiss="modal" value={'delete'} onClick={()=>this.deleteLecture(lecture.id, this.props.course.id)} ><i className="uil uil-trash-alt"></i>DELETE</button> */}
+                                                                                                            </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -522,9 +538,8 @@ class CourseById extends React.Component {
                                     localStorage.getItem("role")=="ROLE_ADMIN"?'':
                                         this.props.course.purchased?
                                     <div className="mt-20 d-flex flex-column">
-                                        <button type="button" style={{backgroundColor:"#e1b329", borderColor:"#e1b329"}} className="btn btn-primary" onClick={() => this.addCart(this.props.cartItems, this.props.course)}>
-                                                Enroll now
-                                        </button>
+                                         
+                                         <Link to= {`/learn/${this.props.course.id}`}  style={{backgroundColor:"#e1b329", borderColor:"#e1b329"}} type="button" className="btn btn-primary" params={this.props.course.id} >Enroll now</Link>
                                         {/* <div class="jq-toast-wrap bottom-right" role="alert" aria-live="polite"><div className="jq-toast-single jq-has-icon jq-icon-success" style={{backgroundColor: "rgb(67, 212, 119)", color: "white", textAlign: "left"}}><span className="jq-toast-loader jq-toast-loaded" style={{WebkitTransition: "width 9.6s ease-in",                       OTransition: "width 9.6s ease-in",                       transition: "width 9.6s ease-in",  backgroundColor: "#9EC600"}}></span><span className="close-jq-toast-single">×</span><h2 className="jq-toast-heading">Added to cart!</h2>You can continue shopping or go to cart to finalize your order.</div></div> */}
                                     </div>
                                     :

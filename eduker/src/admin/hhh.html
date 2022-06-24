@@ -1,2289 +1,334 @@
+import React from "react";
+import {connect}  from "react-redux"
+import { Link } from "react-router-dom"
+import {withRouter} from '../../admin/layout/auth/withRouter'
+import { fetchCourseRequest } from "../../actions/course";
+import { fetchCatalogRequest} from "../../actions/catalog"
+import loadjs from 'loadjs';
+import sum from "../../config/sum";
 
-<!DOCTYPE html>
-<html lang="en">
+class HeaderGuest extends React.Component {
+    constructor(){
+        super()
+       
+    }
 
-
-<head>
-    <meta charset="utf-8">
-<!-- CSRF Token -->
-<meta name="csrf-token" content="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx">
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <meta name='robots' content="index, follow, all">
-
-    <meta name="description" content="The most complete course available on Product Management.">
-    <meta property="og:description" content="The most complete course available on Product Management.">
-    <meta name='twitter:description' content='The most complete course available on Product Management.'>
-
-<link rel='shortcut icon' type='image/x-icon' href="https://lms.rocket-soft.org/store/1/favicon.png">
-<link rel="manifest" href="/mix-manifest.json?v=4">
-<meta name="theme-color" content="#FFF">
-<!-- Windows Phone -->
-<meta name="msapplication-starturl" content="/">
-<meta name="msapplication-TileColor" content="#FFF">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<!-- iOS Safari -->
-<meta name="apple-mobile-web-app-title" content="Rocket LMS">
-<link rel="apple-touch-icon" href="https://lms.rocket-soft.org/store/1/favicon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<!-- Android -->
-<link rel='icon' href='https://lms.rocket-soft.org/store/1/favicon.png'>
-<meta name="application-name" content="Rocket LMS">
-<meta name="mobile-web-app-capable" content="yes">
-<!-- Other -->
-<meta name="layoutmode" content="fitscreen/standard">
-<link rel="home" href="https://lms.rocket-soft.org">
-
-<!-- Open Graph -->
-<meta property='og:title' content='Become a Product Manager'>
-<meta name='twitter:card' content='summary'>
-<meta name='twitter:title' content='Become a Product Manager'>
-
-<meta property='og:site_name' content='https://lms.rocket-soft.org/Rocket LMS'>
-<meta property='og:image' content='https://lms.rocket-soft.org/store/1/favicon.png'>
-<meta name='twitter:image' content='https://lms.rocket-soft.org/store/1/favicon.png'>
-<meta property='og:locale' content='https://lms.rocket-soft.org/en_US'>
-<meta property='og:type' content='website'>
-
-    <title>Become a Product Manager | Rocket LMS</title>
-
-    <!-- General CSS File -->
-    <link href="/assets/default/css/font.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/default/vendors/sweetalert2/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="/assets/default/vendors/toast/jquery.toast.min.css">
-    <link rel="stylesheet" href="/assets/default/vendors/simplebar/simplebar.css">
-    <link rel="stylesheet" href="/assets/default/css/app.css">
-
-    
-        <link rel="stylesheet" href="/assets/default/css/css-stars.css">
-    <link rel="stylesheet" href="/assets/default/vendors/video/video-js.min.css">
-    
-    <style>
-        
-    </style>
-
-
-            <style>
-    .pace { -webkit-pointer-events: none; pointer-events: none; -webkit-user-select: none; -moz-user-select: none; user-select: none; } .pace-inactive { display: none; } .pace .pace-progress { background: #29d; position: fixed; z-index: 2000; top: 0; right: 100%; width: 100%; height: 2px; } .pace .pace-progress-inner { display: block; position: absolute; right: 0px; width: 100px; height: 100%; box-shadow: 0 0 10px #29d, 0 0 5px #29d; opacity: 1.0; -webkit-transform: rotate(3deg) translate(0px, -4px); -moz-transform: rotate(3deg) translate(0px, -4px); -ms-transform: rotate(3deg) translate(0px, -4px); -o-transform: rotate(3deg) translate(0px, -4px); transform: rotate(3deg) translate(0px, -4px); } .pace .pace-activity { display: block; position: fixed; z-index: 2000; top: 15px; right: 15px; width: 14px; height: 14px; border: solid 2px transparent; border-top-color: #29d; border-left-color: #29d; border-radius: 10px; -webkit-animation: pace-spinner 400ms linear infinite; -moz-animation: pace-spinner 400ms linear infinite; -ms-animation: pace-spinner 400ms linear infinite; -o-animation: pace-spinner 400ms linear infinite; animation: pace-spinner 400ms linear infinite; } @-webkit-keyframes pace-spinner { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); } } @-moz-keyframes pace-spinner { 0% { -moz-transform: rotate(0deg); transform: rotate(0deg); } 100% { -moz-transform: rotate(360deg); transform: rotate(360deg); } } @-o-keyframes pace-spinner { 0% { -o-transform: rotate(0deg); transform: rotate(0deg); } 100% { -o-transform: rotate(360deg); transform: rotate(360deg); } } @-ms-keyframes pace-spinner { 0% { -ms-transform: rotate(0deg); transform: rotate(0deg); } 100% { -ms-transform: rotate(360deg); transform: rotate(360deg); } } @keyframes  pace-spinner { 0% { transform: rotate(0deg); transform: rotate(0deg); } 100% { transform: rotate(360deg); transform: rotate(360deg); } }
-</style>
-
-<script>
-    window.paceOptions = {
-        ajax: false, // disabled
-        document: false, // disabled
-        eventLag: false, // disabled
-    };
-</script>
-<script src="/assets/default/vendors/pace-loading/pace.min.js"></script>
-    </head>
-
-<body className="">
-
-<div id="app">
-
-            <div className="top-navbar d-flex border-bottom">
-    <div className="container d-flex justify-content-between flex-column flex-lg-row">
-        <div className="top-contact-box border-bottom d-flex flex-column flex-md-row align-items-center justify-content-center">
-
-            <div className="d-flex align-items-center justify-content-center">
-                                    <span className="d-flex align-items-center py-10 py-lg-0 text-dark-blue font-14">
-                        <i data-feather="phone" width="20" height="20" className="mr-10"></i>
-                        415-716-1166
-                    </span>
-                
-                                    <div className="border-left mx-5 mx-lg-15 h-100"></div>
-
-                    <span className="d-flex align-items-center py-10 py-lg-0 text-dark-blue font-14">
-                        <i data-feather="mail" width="20" height="20" className="mr-10"></i>
-                        mailer@rocket-soft.org
-                    </span>
-                            </div>
-
-            <div className="d-flex align-items-center justify-content-between justify-content-md-center">
-                                    <form action="/locale" method="post" className="mr-15 mx-md-20">
-                        <input type="hidden" name="_token" value="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx">
-
-                        <input type="hidden" name="locale">
-
-                        <div className="language-select">
-                            <div id="localItems"
-                                 data-selected-country="US"
-                                 data-countries='{&quot;IQ&quot;:&quot;Arabic&quot;,&quot;US&quot;:&quot;English&quot;,&quot;ES&quot;:&quot;Spanish&quot;}'
-                            ></div>
-                        </div>
-                    </form>
-                
-
-                <form action="/search" method="get" className="form-inline my-2 my-lg-0 navbar-search position-relative">
-                    <input className="form-control mr-5 rounded" type="text" name="search" placeholder="Search..." aria-label="Search">
-
-                    <button type="submit" className="btn-transparent d-flex align-items-center justify-content-center search-icon">
-                        <i data-feather="search" width="20" height="20" className="mr-10"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <div className="xs-w-100 d-flex align-items-center justify-content-between ">
-            <div className="d-flex">
-
-                <div className="dropdown">
-    <button type="button" disabled className="btn btn-transparent dropdown-toggle" id="navbarShopingCart" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-        <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
-
-            </button>
-
-    <div className="dropdown-menu" aria-labelledby="navbarShopingCart">
-        <div className="d-md-none border-bottom mb-20 pb-10 text-right">
-            <i className="close-dropdown" data-feather="x" width="32" height="32" className="mr-10"></i>
-        </div>
-        <div className="h-100">
-            <div className="navbar-shopping-cart h-100" data-simplebar>
-                                    <div className="d-flex align-items-center text-center py-50">
-                        <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
-                        <span className="">Your cart is empty</span>
-                    </div>
-                            </div>
-        </div>
-    </div>
-</div>
-
-                <div className="border-left mx-5 mx-lg-15"></div>
-
-                <div className="dropdown">
-    <button type="button" className="btn btn-transparent dropdown-toggle"  id="navbarNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i data-feather="bell" width="20" height="20" className="mr-10"></i>
-
-                    <span className="badge badge-circle-danger d-flex align-items-center justify-content-center">27</span>
-            </button>
-
-    <div className="dropdown-menu pt-20" aria-labelledby="navbarNotification">
-        <div className="d-flex flex-column h-100">
-            <div className="mb-auto navbar-notification-card" data-simplebar>
-                <div className="d-md-none border-bottom mb-20 pb-10 text-right">
-                    <i className="close-dropdown" data-feather="x" width="32" height="32" className="mr-10"></i>
-                </div>
-
-                
-                                            <a href="/panel/notifications?notification=1896">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1894">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1895">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1892">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1893">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1842">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1843">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1839">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1840">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1841">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1783">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New financial document</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 03:10</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1673">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">13 Dec 2021 | 02:08</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1640">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">28 Oct 2021 | 05:09</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1595">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">17 Jul 2021 | 04:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1530">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">Your class created</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:51</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1529">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:32</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1528">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:32</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1514">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 18:13</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1480">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:44</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1471">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:42</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1466">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:42</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1447">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:28</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1361">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">Your class created</h4>
-                                <span className="notify-at d-block mt-5">7 Jul 2021 | 17:48</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1360">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">7 Jul 2021 | 17:39</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1339">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">6 Jul 2021 | 16:07</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1338">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">6 Jul 2021 | 16:07</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1290">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">Course created</h4>
-                                <span className="notify-at d-block mt-5">30 Jun 2021 | 05:42</span>
-                            </div>
-                        </a>
-                    
-                
-            </div>
-
-                            <div className="mt-10 navbar-notification-action">
-                    <a href="/panel/notifications" className="btn btn-sm btn-danger btn-block">All notifications</a>
-                </div>
-                    </div>
-    </div>
-</div>
-            </div>
-
+    componentDidMount(){
+        loadjs('/assets/default/vendors/swiper/swiper-bundle.min.js', () => {});
+        loadjs('/assets/default/js/parts/main.min.js', () => {});
+        loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
+        loadjs('/assets/default/js/parts/home.min.js', () => {});
+        loadjs('/assets/default/js/parts/categories.min.js', () => {});
+        this.props.fetchCatalogRequest();
+        this.props.fetchCourseRequest(0);
+       
             
+    }
 
-                <div className="dropdown">
-                    <a href="#!" className="navbar-user d-flex align-items-center ml-50 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="/store/867/avatar/617a502cf268a.png" className="rounded-circle" alt="Light Moon">
-                        <span className="font-16 user-name ml-10 text-dark-blue font-14">Light Moon</span>
-                    </a>
+    handleInputSearchChange = e => {   
+        let value = e.target.value       
+        this.setState({searchCourse:value}); 
+        console.log(value) 
+    }
 
-                    <div className="dropdown-menu user-profile-dropdown" aria-labelledby="dropdownMenuButton">
-                        <div className="d-md-none border-bottom mb-20 pb-10 text-right">
-                            <i className="close-dropdown" data-feather="x" width="32" height="32" className="mr-10"></i>
+    searchCourse = (search) => {
+        this.props.navigate(`/search/${search}`,{params:search})
+    }
+    render() {
+        const { cartItems, catalogs } = this.props;
+        return (
+            <>
+                <div className="top-navbar d-flex border-bottom">
+                    <div className="container d-flex justify-content-between flex-column flex-lg-row">
+                        <div
+                            className="top-contact-box border-bottom d-flex flex-column flex-md-row align-items-center justify-content-center">
+
+                            <div className="d-flex align-items-center justify-content-center">
+                                <span className="d-flex align-items-center py-10 py-lg-0 text-dark-blue font-14">
+                                    <i data-feather="phone" width="20" height="20" className="mr-10"></i>
+                                    415-716-1166
+                                </span>
+
+                                <div className="border-left mx-5 mx-lg-15 h-100"></div>
+
+                                <span className="d-flex align-items-center py-10 py-lg-0 text-dark-blue font-14">
+                                    <i data-feather="mail" width="20" height="20" className="mr-10"></i>
+                                    mailer@rocket-soft.org
+                                </span>
+                            </div>
+
+                            <div className="d-flex align-items-center justify-content-between justify-content-md-center">
+                                {/* <form action="/locale" method="post" className="mr-15 mx-md-20">
+                                    <input type="hidden" name="_token" value="ETPTxzgAqooYOwRHgA79RMUNuNbEPsW22p7jTn3I"/>
+
+                                    <input type="hidden" name="locale"/>
+
+                                    <div className="language-select">
+                                        <div id="localItems" data-selected-country="US"
+                                            data-countries='{&quot;IQ&quot;:&quot;Arabic&quot;,&quot;US&quot;:&quot;English&quot;,&quot;ES&quot;:&quot;Spanish&quot;}'>
+                                        </div> 
+                                    </div>
+                                </form> */}
+
+
+
+                                <form  className="mr-15 mx-md-20 form-inline my-2 my-lg-0 navbar-search position-relative">
+                                    <input className="form-control mr-5 rounded" type="text" name="search" placeholder="Search..."  onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)}
+                                        aria-label="Search"/>
+                                    <button onClick={()=>this.searchCourse(this.state.searchCourse) }
+                                        className="btn-transparent d-flex align-items-center justify-content-center search-icon">
+                                        <i data-feather="search" width="20" height="20" className="mr-10"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
 
-                        <a className="dropdown-item" href="/panel">
-                            <img src="/assets/default/img/icons/sidebar/dashboard.svg" width="25" alt="nav-icon">
-                            <span className="font-14 text-dark-blue">My Panel</span>
-                        </a>
-                                                    <a className="dropdown-item" href="/users/867/profile">
-                                <img src="/assets/default/img/icons/profile.svg" width="25" alt="nav-icon">
-                                <span className="font-14 text-dark-blue">My Profile</span>
-                            </a>
-                                                <a className="dropdown-item" href="/logout">
-                            <img src="/assets/default/img/icons/sidebar/logout.svg" width="25" alt="nav-icon">
-                            <span className="font-14 text-dark-blue">Log out</span>
-                        </a>
+                        <div className="xs-w-100 d-flex align-items-center justify-content-between ">
+                            <div className="d-flex">
+
+                                <div className="dropdown">
+                                    <button type="button" className="btn btn-transparent dropdown-toggle"
+                                        id="navbarShopingCart" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
+                                        <span className="badge badge-circle-primary d-flex align-items-center justify-content-center">{cartItems.length}</span>
+                                        
+                                    </button>
+
+                                    <div className="dropdown-menu" aria-labelledby="navbarShopingCart">
+                                        <div className="d-md-none border-bottom mb-20 pb-10 text-right">
+                                            <i className="close-dropdown mr-10" data-feather="x" width="32" height="32"></i>
+                                        </div>
+                                        <div className="h-100">
+                                            <div className="navbar-shopping-cart h-100" data-simplebar>
+                                                {/* <div className="d-flex align-items-center text-center py-50">
+                                                    <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
+                                                    <span className="">Your cart is empty</span>
+                                                </div> */}
+                                                 <div className="mb-auto">
+                                                    {cartItems&&cartItems.length>0? cartItems.map((item) => (
+                                                    <div className="navbar-cart-box d-flex align-items-center">
+                                
+                                                        <a href="https://lms.rocket-soft.org/course/The-Future-of-Energy" target="_blank" className="navbar-cart-img">
+                                                            <img src={item.imageVideoDescription} alt="product title" className="img-cover"/>
+                                                        </a>
+                                                        <div className="navbar-cart-info">
+                                                            <a href="https://lms.rocket-soft.org/course/The-Future-of-Energy" target="_blank">
+                                                                <h4>{item.title}</h4>
+                                                            </a>
+                                                            <div className="price mt-10">
+                                                                    <span className="text-primary font-weight-bold">${item.price}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    )):
+                                                    
+                                                    <div className="navbar-cart-boxalign-items-center" style={{textAlign:"center"}}>
+                                                            <span>Your cart is empty</span>
+                                                    </div>
+                                                }
+                                                    
+                                                            
+                                            </div>
+                    <div className="navbar-cart-actions">
+                        <div className="navbar-cart-total mt-15 border-top d-flex align-items-center justify-content-between">
+                            <strong className="total-text">Total</strong>
+                            <strong className="text-primary font-weight-bold">${sum.formatCurrency(
+                                                    cartItems.reduce((a, c) => a + c.price, 0)
+                                                )}</strong>
+                        </div>
+
+                        <Link to="/cart" className="btn btn-sm btn-primary btn-block mt-50 mt-md-15">Go to cart</Link>
+                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* <div className="border-left mx-5 mx-lg-15"></div> */}
+
+                                {/* <div className="dropdown">
+                                    <button type="button" className="btn btn-transparent dropdown-toggle" disabled
+                                        id="navbarNotification" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i data-feather="bell" width="20" height="20" className="mr-10"></i>
+                                        <span className="badge badge-circle-danger d-flex align-items-center justify-content-center">95</span>
+
+                                    </button>
+
+                                    <div className="dropdown-menu pt-20" aria-labelledby="navbarNotification">
+                                        <div className="d-flex flex-column h-100">
+                                            <div className="mb-auto navbar-notification-card" data-simplebar>
+                                                <div className="d-md-none border-bottom mb-20 pb-10 text-right">
+                                                    <i className="close-dropdown mr-10" data-feather="x" width="32" height="32"
+                                                    ></i>
+                                                </div>
+
+                                                <div className="d-flex align-items-center text-center py-50">
+                                                    <i data-feather="bell" width="20" height="20" className="mr-10"></i>
+                                                    <span className="">Empty notifications</span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> */}
+                            </div>
+
+                            <div className="d-flex align-items-center ml-md-50">
+                                <Link to= "/login" className="py-5 px-10 mr-10 text-dark-blue font-14">Login</Link>
+                                <Link to="/signup" className="py-5 px-10 text-dark-blue font-14">Register</Link>
+                            </div>
+                           
+                        </div>
                     </div>
                 </div>
-                    </div>
-    </div>
-</div>
+                <div id="navbarVacuum"></div>
+                <nav id="navbar" className="navbar navbar-expand-lg navbar-light">
+                    <div className="container">
+                        <div className="d-flex align-items-center justify-content-between w-100">
 
-
-        <div id="navbarVacuum"></div>
-<nav id="navbar" className="navbar navbar-expand-lg navbar-light">
-    <div className="container">
-        <div className="d-flex align-items-center justify-content-between w-100">
-
-            <a className="navbar-brand navbar-order mr-0" href="/">
-                                    <img src="/store/1/default_images/website-logo.png" className="img-cover" alt="site logo">
+                            <a className="navbar-brand navbar-order mr-0" href="/">
+                                <img src="/store/1/default_images/website-logo.png" className="img-cover" alt="site logo"/>
                             </a>
 
-            <button className="navbar-toggler navbar-order" type="button" id="navbarToggle">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+                            <button className="navbar-toggler navbar-order" type="button" id="navbarToggle">
+                                <span className="navbar-toggler-icon"></span>
+                            </button>
 
-            <div className="mx-lg-30 d-none d-lg-flex flex-grow-1 navbar-toggle-content " id="navbarContent">
-                <div className="navbar-toggle-header text-right d-lg-none">
-                    <button className="btn-transparent" id="navbarClose">
-                        <i data-feather="x" width="32" height="32"></i>
-                    </button>
-                </div>
+                            <div className="mx-lg-30 d-none d-lg-flex flex-grow-1 navbar-toggle-content " id="navbarContent">
+                                <div className="navbar-toggle-header text-right d-lg-none">
+                                    <button className="btn-transparent" id="navbarClose">
+                                        <i data-feather="x" width="32" height="32"></i>
+                                    </button>
+                                </div>
 
-                <ul className="navbar-nav mr-auto d-flex align-items-center">
-                                            <li className="mr-lg-25">
-                            <div className="menu-category">
-                                <ul>
-                                    <li className="cursor-pointer user-select-none d-flex xs-categories-toggle">
-                                        <i data-feather="grid" width="20" height="20" className="mr-10 d-none d-lg-block"></i>
-                                        Categories
+                                <ul className="navbar-nav mr-auto d-flex align-items-center">
+                                    <li className="mr-lg-25">
+                                        <div className="menu-category">
+                                            <ul>
+                                                <li className="cursor-pointer user-select-none d-flex xs-categories-toggle">
+                                                    <i data-feather="grid" width="20" height="20"
+                                                        className="mr-10 d-none d-lg-block"></i>
+                                                    Categories
 
-                                        <ul className="cat-dropdown-menu">
-                                                                                            <li>
-                                                    <a href="/categories/Design">
-                                                        <div className="d-flex align-items-center">
-                                                            <img src="/store/1/default_images/categories_icons/feather.png" className="cat-dropdown-menu-icon mr-10" alt="Design icon">
-                                                            Design
-                                                        </div>
+                                                    <ul className="cat-dropdown-menu">
+                                                    {this.props.catalogs.map((catalog,j) => {
+                                                    return (
+                                                        catalog.subCatalogs.length>0?
+                                                        <li key={j}>
+                                                            <a href="#">
+                                                                
+                                                                <div className="d-flex align-items-center" >
+                                                                    {catalog.name}
+                                                                </div>
+                                                                
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-right d-none d-lg-inline-block ml-10"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                                                
+                                                            </a>
+                                                            <ul className="sub-menu">
+                                                            {catalog.subCatalogs.map((subCatalog,index) => {
+                                                                return (
+                                                                <li><Link to={`/courses/${subCatalog.name}/${subCatalog.id}`}  params={subCatalog.id}>{subCatalog.name}</Link></li>
+                                                                )})}
+                                                            </ul>
 
-                                                                                                            </a>
+                                                        </li>
+                                                        :
+                                                        <li key={j}>
+                                                            <a href="/categories/Design">
+                                                                
+                                                                <div className="d-flex align-items-center" >
+                                                                    {catalog.name}
+                                                                </div>
+                                                            </a>
 
-                                                                                                    </li>
-                                                                                            <li>
-                                                    <a href="#!">
-                                                        <div className="d-flex align-items-center">
-                                                            <img src="/store/1/default_images/categories_icons/briefcase.png" className="cat-dropdown-menu-icon mr-10" alt="Academics icon">
-                                                            Academics
-                                                        </div>
+                                                        </li>
+                                                    )})}
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
 
-                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
-                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
-                                                                                                            </a>
-
-                                                                                                            <ul className="sub-menu" >
-                                                                                                                            <li><a href="/categories/Academics/Math">Math</a></li>
-                                                                                                                            <li><a href="/categories/Academics/Science">Science</a></li>
-                                                                                                                            <li><a href="/categories/Academics/Language">Language</a></li>
-                                                                                                                    </ul>
-                                                                                                    </li>
-                                                                                            <li>
-                                                    <a href="/categories/Health-&amp;-Fitness">
-                                                        <div className="d-flex align-items-center">
-                                                            <img src="/store/1/default_images/categories_icons/heart.png" className="cat-dropdown-menu-icon mr-10" alt="Health &amp; Fitness icon">
-                                                            Health &amp; Fitness
-                                                        </div>
-
-                                                                                                            </a>
-
-                                                                                                    </li>
-                                                                                            <li>
-                                                    <a href="#!">
-                                                        <div className="d-flex align-items-center">
-                                                            <img src="/store/1/default_images/categories_icons/umbrella.png" className="cat-dropdown-menu-icon mr-10" alt="Lifestyle icon">
-                                                            Lifestyle
-                                                        </div>
-
-                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
-                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
-                                                                                                            </a>
-
-                                                                                                            <ul className="sub-menu" >
-                                                                                                                            <li><a href="/categories/Lifestyle/Lifestyle">Lifestyle</a></li>
-                                                                                                                            <li><a href="/categories/Lifestyle/Beauty-&amp;-Makeup">Beauty &amp; Makeup</a></li>
-                                                                                                                    </ul>
-                                                                                                    </li>
-                                                                                            <li>
-                                                    <a href="/categories/Marketing">
-                                                        <div className="d-flex align-items-center">
-                                                            <img src="/store/1/default_images/categories_icons/pie-chart.png" className="cat-dropdown-menu-icon mr-10" alt="Marketing icon">
-                                                            Marketing
-                                                        </div>
-
-                                                                                                            </a>
-
-                                                                                                    </li>
-                                                                                            <li>
-                                                    <a href="#!">
-                                                        <div className="d-flex align-items-center">
-                                                            <img src="/store/1/default_images/categories_icons/anchor.png" className="cat-dropdown-menu-icon mr-10" alt="Business icon">
-                                                            Business
-                                                        </div>
-
-                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
-                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
-                                                                                                            </a>
-
-                                                                                                            <ul className="sub-menu" >
-                                                                                                                            <li><a href="/categories/Business/Management">Management</a></li>
-                                                                                                                            <li><a href="/categories/Business/Communications">Communications</a></li>
-                                                                                                                            <li><a href="/categories/Business/Business-Strategy">Business Strategy</a></li>
-                                                                                                                    </ul>
-                                                                                                    </li>
-                                                                                            <li>
-                                                    <a href="#!">
-                                                        <div className="d-flex align-items-center">
-                                                            <img src="/store/1/default_images/categories_icons/code.png" className="cat-dropdown-menu-icon mr-10" alt="Development icon">
-                                                            Development
-                                                        </div>
-
-                                                                                                                    <i data-feather="chevron-right" width="20" height="20" className="d-none d-lg-inline-block ml-10"></i>
-                                                            <i data-feather="chevron-down" width="20" height="20" className="d-inline-block d-lg-none"></i>
-                                                                                                            </a>
-
-                                                                                                            <ul className="sub-menu" >
-                                                                                                                            <li><a href="/categories/Development/Web-Development">Web Development</a></li>
-                                                                                                                            <li><a href="/categories/Development/Mobile-Development">Mobile Development</a></li>
-                                                                                                                            <li><a href="/categories/Development/Game-Development">Game Development</a></li>
-                                                                                                                    </ul>
-                                                                                                    </li>
-                                                                                    </ul>
+                                    <li className="nav-item">
+                                        <Link to= "/index" className="nav-link">Home</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/course" className="nav-link" >Courses</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/about">About</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/contact">Contact</a>
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                    
-                                                                        <li className="nav-item">
-                                <a className="nav-link" href="/">Home</a>
-                            </li>
-                                                    <li className="nav-item">
-                                <a className="nav-link" href="/classes?sort=newest">Courses</a>
-                            </li>
-                                                    <li className="nav-item">
-                                <a className="nav-link" href="/instructors">Instructors</a>
-                            </li>
-                                                    <li className="nav-item">
-                                <a className="nav-link" href="/blog">Blog</a>
-                            </li>
-                                                    <li className="nav-item">
-                                <a className="nav-link" href="/contact">Contact</a>
-                            </li>
-                                                            </ul>
-            </div>
 
-            <div className="nav-icons-or-start-live navbar-order">
+                            <div className="nav-icons-or-start-live navbar-order">
 
-                <a href="/panel/webinars/new" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
-                    Start a new course
-                </a>
+                                <Link to="/login" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
+                                    Login to your account
+                                </Link>
 
-                <a href="/panel/webinars/new" className="d-flex d-lg-none text-primary nav-start-a-live-btn font-14">
-                    Start a new course
-                </a>
+                                <Link to="/login" className="d-flex d-lg-none text-primary nav-start-a-live-btn font-14">
+                                    Login to your account
+                                </Link>
 
-                <div className="d-none nav-notify-cart-dropdown top-navbar ">
-                    <div className="dropdown">
-    <button type="button" disabled className="btn btn-transparent dropdown-toggle" id="navbarShopingCart" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-        <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
+                                <div className="d-none nav-notify-cart-dropdown top-navbar ">
+                                    <div className="dropdown">
+                                        <button type="button" disabled className="btn btn-transparent dropdown-toggle"
+                                            id="navbarShopingCart" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
 
-            </button>
+                                        </button>
 
-    <div className="dropdown-menu" aria-labelledby="navbarShopingCart">
-        <div className="d-md-none border-bottom mb-20 pb-10 text-right">
-            <i className="close-dropdown" data-feather="x" width="32" height="32" className="mr-10"></i>
-        </div>
-        <div className="h-100">
-            <div className="navbar-shopping-cart h-100" data-simplebar>
-                                    <div className="d-flex align-items-center text-center py-50">
-                        <i data-feather="shopping-cart" width="20" height="20" className="mr-10"></i>
-                        <span className="">Your cart is empty</span>
-                    </div>
-                            </div>
-        </div>
-    </div>
-</div>
-
-                    <div className="border-left mx-15"></div>
-
-                    <div className="dropdown">
-    <button type="button" className="btn btn-transparent dropdown-toggle"  id="navbarNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i data-feather="bell" width="20" height="20" className="mr-10"></i>
-
-                    <span className="badge badge-circle-danger d-flex align-items-center justify-content-center">27</span>
-            </button>
-
-    <div className="dropdown-menu pt-20" aria-labelledby="navbarNotification">
-        <div className="d-flex flex-column h-100">
-            <div className="mb-auto navbar-notification-card" data-simplebar>
-                <div className="d-md-none border-bottom mb-20 pb-10 text-right">
-                    <i className="close-dropdown" data-feather="x" width="32" height="32" className="mr-10"></i>
-                </div>
-
-                
-                                            <a href="/panel/notifications?notification=1896">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1894">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1895">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1892">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1893">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">22 Jun 2022 | 15:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1842">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1843">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1839">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1840">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1841">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 10:03</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1783">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New financial document</h4>
-                                <span className="notify-at d-block mt-5">4 Mar 2022 | 03:10</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1673">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">13 Dec 2021 | 02:08</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1640">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">28 Oct 2021 | 05:09</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1595">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">17 Jul 2021 | 04:02</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1530">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">Your class created</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:51</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1529">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:32</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1528">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 23:32</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1514">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">13 Jul 2021 | 18:13</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1480">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:44</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1471">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:42</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1466">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:42</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1447">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New sales</h4>
-                                <span className="notify-at d-block mt-5">11 Jul 2021 | 23:28</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1361">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">Your class created</h4>
-                                <span className="notify-at d-block mt-5">7 Jul 2021 | 17:48</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1360">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">7 Jul 2021 | 17:39</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1339">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">6 Jul 2021 | 16:07</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1338">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">New badge</h4>
-                                <span className="notify-at d-block mt-5">6 Jul 2021 | 16:07</span>
-                            </div>
-                        </a>
-                                            <a href="/panel/notifications?notification=1290">
-                            <div className="navbar-notification-item border-bottom">
-                                <h4 className="font-14 font-weight-bold text-secondary">Course created</h4>
-                                <span className="notify-at d-block mt-5">30 Jun 2021 | 05:42</span>
-                            </div>
-                        </a>
-                    
-                
-            </div>
-
-                            <div className="mt-10 navbar-notification-action">
-                    <a href="/panel/notifications" className="btn btn-sm btn-danger btn-block">All notifications</a>
-                </div>
-                    </div>
-    </div>
-</div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</nav>
-
-    
-        <section className="course-cover-container not-active-special-offer">
-        <img src="/store/1016/1_c.jpg" className="img-cover course-cover-img" alt="Become a Product Manager"/>
-
-        <div className="cover-content pt-40">
-            <div className="container position-relative">
-                            </div>
-        </div>
-    </section>
-
-    <section className="container course-content-section course">
-        <div className="row">
-            <div className="col-12 col-lg-8">
-                <div className="course-content-body user-select-none">
-                    <div className="course-body-on-cover text-white">
-                        <h1 className="font-30 course-title">
-                            Become a Product Manager
-                        </h1>
-                        <span className="d-block font-16 mt-10">In <a href="/categories/Business/Business-Strategy" target="_blank" className="font-weight-500 text-decoration-underline text-white">Business Strategy</a></span>
-
-                        <div className="d-flex align-items-center">
-                            <div className="stars-card d-flex align-items-center  mt-15">
-                <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-                <i data-feather="star" width="20" height="20" className=""></i>
-    
-            <span className="badge badge-primary ml-10">4.58</span>
-    
-</div>
-                            <span className="ml-10 mt-15 font-14">(3 Ratings)</span>
-                        </div>
-
-                        <div className="mt-15">
-                            <span className="font-14">Created by</span>
-                            <a href="/users/1016/profile" target="_blank" className="text-decoration-underline text-white font-14 font-weight-500">Ricardo dave</a>
-                        </div>
-
+                                        <div className="dropdown-menu" aria-labelledby="navbarShopingCart">
+                                            <div className="d-md-none border-bottom mb-20 pb-10 text-right">
+                                                <i className="close-dropdown mr-10" data-feather="x" width="32" height="32"
+                                                    ></i>
                                             </div>
-
-                    <div className=" mt-20 pt-20  mt-md-40 pt-md-40  ">
-                        <ul className="nav nav-tabs bg-secondary rounded-sm p-15 d-flex align-items-center justify-content-between" id="tabs-tab" role="tablist">
-                            <li className="nav-item">
-                                <a className="position-relative font-14 text-white active" id="information-tab"
-                                   data-toggle="tab" href="#information" role="tab" aria-controls="information"
-                                   aria-selected="true">Information</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="position-relative font-14 text-white " id="content-tab" data-toggle="tab"
-                                   href="#content" role="tab" aria-controls="content"
-                                   aria-selected="false">Content (5)</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="position-relative font-14 text-white " id="reviews-tab" data-toggle="tab"
-                                   href="#reviews" role="tab" aria-controls="reviews"
-                                   aria-selected="false">Reviews (3)</a>
-                            </li>
-                        </ul>
-
-                        <div className="tab-content" id="nav-tabContent">
-                            <div className="tab-pane fade show active " id="information" role="tabpanel"
-                                 aria-labelledby="information-tab">
-                                <div className="mt-20">
-        <h2 className="section-title after-line">About this course</h2>
-        <div className="mt-15 course-description">
-            <p style="font-size:inherit;">The <strong>most updated </strong>and <strong>complete</strong> Product Management course on Udemy! You'll learn the skills that make up the entire <strong>Product Management </strong>job and process: from <strong>ideation</strong> to <strong>market research,</strong> to <strong>UX wireframing</strong> to <strong>prototyping</strong>, <strong>technology</strong>, <strong>metrics, </strong>and finally to <strong>building the product</strong> with <strong>user stories</strong>, <strong>project management</strong>, <strong>scoping</strong>, and <strong>leadership</strong>. We even have <strong>interviews with real life PMs</strong>, <strong>Q&amp;A sessions</strong> with students, and a comprehensive guide to <strong>preparing and interviewing for a Product Management job</strong>. <br></p>
-
-<p style="font-size:inherit;">Right now, there are over <strong>3,000+ job listings</strong> worldwide that are looking for Product Managers, that pay on average <strong>$100,000 / year</strong>.</p>
-
-<p style="font-size:inherit;">The demand for Product Management is increasing at an insane rate. More and more companies are finally figuring out how important this discipline and this role is to their success. </p>
-
-<p style="font-size:inherit;">But how exactly do you get into the field? There aren't any degrees in Product Management &amp; there are no certifications. Most Product Managers get into the field through luck or connections. That ends here - we'll get you up to date on ALL the skills you need to learn Product Management AND have the best chance at getting the job you want. There's no more ambiguity to it. We'll show you what you need to know and what you have to do - all taught from a Product Management insider.</p>
-
-<p style="font-size:inherit;">Students aren't required to know anything beforehand - we'll teach you the fundamentals, how to apply them, how to develop into an advanced product manager, and finally how to maximize your chances to get a job as a Product Manager.</p>
-
-<p style="font-size:inherit;"><strong>Your instructors:</strong></p>
-
-<p style="font-size:inherit;"><strong>Cole Mercer</strong> has been a Senior Product Manager at Soundcloud, Bonobos, Mass Relevance, and has taught the Product Management course at General Assembly in Manhattan, NYC.</p>
-
-<p style="font-size:inherit;"><strong>Evan Kimbrell </strong>is a Top rated Udemy instructor with 11 courses on everything Entrepreneurship. His courses have over 35,000 students, 1,000+ 5 star reviews, and an average rating of 4.9 / 5.0.</p>
-
-<p style="font-size:inherit;"><br></p>
-        </div>
-    </div>
-
-
-
-
-
-
-    <div className="mt-20">
-        <h2 className="section-title after-line">FAQ</h2>
-
-        <div className="accordion-content-wrapper mt-15" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div className="accordion-row rounded-sm shadow-lg border mt-20 py-20 px-35">
-                    <div className="font-weight-bold font-14 text-secondary" role="tab" id="faq_13">
-                        <div href="#collapseFaq13" aria-controls="collapseFaq13" className="d-flex align-items-center justify-content-between" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">
-                            <span>What is the course level??</span>
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" width="25" className="text-gray"></i>
-                        </div>
-                    </div>
-                    <div id="collapseFaq13" aria-labelledby="faq_13" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse text-gray">
-                            This is a course for beginners so you will get familiar with the topic from scratch.
-                        </div>
-                    </div>
-                </div>
-                            <div className="accordion-row rounded-sm shadow-lg border mt-20 py-20 px-35">
-                    <div className="font-weight-bold font-14 text-secondary" role="tab" id="faq_14">
-                        <div href="#collapseFaq14" aria-controls="collapseFaq14" className="d-flex align-items-center justify-content-between" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">
-                            <span>How can I get course updates??</span>
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" width="25" className="text-gray"></i>
-                        </div>
-                    </div>
-                    <div id="collapseFaq14" aria-labelledby="faq_14" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse text-gray">
-                            You will receive a notification after each update is released so you can download updated files from the course page.
-                        </div>
-                    </div>
-                </div>
-                            <div className="accordion-row rounded-sm shadow-lg border mt-20 py-20 px-35">
-                    <div className="font-weight-bold font-14 text-secondary" role="tab" id="faq_15">
-                        <div href="#collapseFaq15" aria-controls="collapseFaq15" className="d-flex align-items-center justify-content-between" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">
-                            <span>Is it a supported course??</span>
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" width="25" className="text-gray"></i>
-                        </div>
-                    </div>
-                    <div id="collapseFaq15" aria-labelledby="faq_15" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse text-gray">
-                            Yes, you can get in touch with the instructor using the support system.
-                        </div>
-                    </div>
-                </div>
-                            <div className="accordion-row rounded-sm shadow-lg border mt-20 py-20 px-35">
-                    <div className="font-weight-bold font-14 text-secondary" role="tab" id="faq_16">
-                        <div href="#collapseFaq16" aria-controls="collapseFaq16" className="d-flex align-items-center justify-content-between" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">
-                            <span>How can I download exercise files??</span>
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" width="25" className="text-gray"></i>
-                        </div>
-                    </div>
-                    <div id="collapseFaq16" aria-labelledby="faq_16" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse text-gray">
-                            All of the exercise files could be downloaded from the content tab on the course page.
-                        </div>
-                    </div>
-                </div>
-                            <div className="accordion-row rounded-sm shadow-lg border mt-20 py-20 px-35">
-                    <div className="font-weight-bold font-14 text-secondary" role="tab" id="faq_17">
-                        <div href="#collapseFaq17" aria-controls="collapseFaq17" className="d-flex align-items-center justify-content-between" role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">
-                            <span>Can I have a private meeting with the instructor??</span>
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" width="25" className="text-gray"></i>
-                        </div>
-                    </div>
-                    <div id="collapseFaq17" aria-labelledby="faq_17" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse text-gray">
-                            Yes, you can reserve a 1 to 1 meeting with the instructor using the instructor profile.
-                        </div>
-                    </div>
-                </div>
-                    </div>
-    </div>
-
-
-
-<div className="mt-35">
-    <h2 className="section-title after-line">Comments <span className="ml-5">(2)</span></h2>
-
-    <div className="mt-20">
-        <form action="/comments/store" method="post">
-
-            <input type="hidden" name="_token" value=" b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx">
-            <input type="hidden" id="commentItemId" name="item_id" value="1995">
-            <input type="hidden" id="commentItemName" name="item_name" value="webinar_id">
-
-            <div className="form-group">
-                <textarea name="comment" className="form-control " rows="10"></textarea>
-                <div className="invalid-feedback"></div>
-            </div>
-            <button type="submit" className="btn btn-sm btn-primary">Post comment</button>
-        </form>
-    </div>
-
-    
-                        <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/comments/55/reply" data-csrf="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx" data-id="55">
-                <div className="d-flex align-items-center justify-content-between">
-                    <div className="user-inline-avatar d-flex align-items-center mt-10">
-                        <div className="avatar">
-                            <img src="/store/929/avatar/617a4f5d834c8.png" className="img-cover" alt="">
-                        </div>
-                        <div className="d-flex flex-column ml-5">
-                            <span className="font-weight-500 text-secondary">Kate Williams</span>
-                            <span className="font-12 text-gray">
-                                                                    User
-                                                            </span>
-                        </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                        <span className="font-12 text-gray mr-10">14 Jul 2021 | 01:42</span>
-
-                        <div className="btn-group dropdown table-actions">
-                            <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i data-feather="more-vertical" height="20"></i>
-                            </button>
-                            <div className="dropdown-menu">
-                                <button type="button" className="btn-transparent webinar-actions d-block text-hover-primary reply-comment">Reply</button>
-                                <button type="button" data-item-id="1995" data-comment-id="55" className="btn-transparent webinar-actions d-block mt-10 text-hover-primary report-comment">Report</button>
-
-                                                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="font-14 mt-20 text-gray">
-                    <p>Is it possible to update the course ?</p>
-                </div>
-
-                                                            <div className="rounded-sm border px-20 py-15 mt-30">
-                            <div className="d-flex align-items-center justify-content-between">
-                                <div className="user-inline-avatar d-flex align-items-center mt-10">
-                                    <div className="avatar">
-                                        <img src="/store/1016/avatar/617a4f17c8e72.png" className="img-cover" alt="">
-                                    </div>
-                                    <div className="d-flex flex-column ml-5">
-                                        <span className="font-weight-500 text-secondary">Ricardo dave</span>
-                                        <span className="font-12 text-gray">
-                                                                                            Student
-                                                                                    </span>
-                                    </div>
-                                </div>
-
-                                <div className="d-flex align-items-center">
-                                    <span className="font-12 text-gray mr-10">14 Jul 2021 | 01:45</span>
-
-                                    <div className="btn-group dropdown table-actions">
-                                        <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i data-feather="more-vertical" height="20"></i>
-                                        </button>
-                                        <div className="dropdown-menu">
-                                            <button type="button" className="btn-transparent webinar-actions d-block text-hover-primary reply-comment">Reply</button>
-                                            <button type="button" data-item-id="1995" data-comment-id="57" className="btn-transparent webinar-actions d-block mt-10 text-hover-primary report-comment">Report</button>
-
-                                                                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="font-14 mt-20 text-gray">
-                                <p>No, but it may change in the future. Thank you</p>
-                            </div>
-                        </div>
-                                                </div>
-                    <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/comments/53/reply" data-csrf="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx" data-id="53">
-                <div className="d-flex align-items-center justify-content-between">
-                    <div className="user-inline-avatar d-flex align-items-center mt-10">
-                        <div className="avatar">
-                            <img src="/store/995/avatar/6179b58ee64c7.png" className="img-cover" alt="">
-                        </div>
-                        <div className="d-flex flex-column ml-5">
-                            <span className="font-weight-500 text-secondary">Cameron Schofield</span>
-                            <span className="font-12 text-gray">
-                                                                    Student
-                                                            </span>
-                        </div>
-                    </div>
-
-                    <div className="d-flex align-items-center">
-                        <span className="font-12 text-gray mr-10">14 Jul 2021 | 01:21</span>
-
-                        <div className="btn-group dropdown table-actions">
-                            <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i data-feather="more-vertical" height="20"></i>
-                            </button>
-                            <div className="dropdown-menu">
-                                <button type="button" className="btn-transparent webinar-actions d-block text-hover-primary reply-comment">Reply</button>
-                                <button type="button" data-item-id="1995" data-comment-id="53" className="btn-transparent webinar-actions d-block mt-10 text-hover-primary report-comment">Report</button>
-
-                                                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="font-14 mt-20 text-gray">
-                    <p>Course files are not complete !!!</p>
-                </div>
-
-                                                            <div className="rounded-sm border px-20 py-15 mt-30">
-                            <div className="d-flex align-items-center justify-content-between">
-                                <div className="user-inline-avatar d-flex align-items-center mt-10">
-                                    <div className="avatar">
-                                        <img src="/store/1016/avatar/617a4f17c8e72.png" className="img-cover" alt="">
-                                    </div>
-                                    <div className="d-flex flex-column ml-5">
-                                        <span className="font-weight-500 text-secondary">Ricardo dave</span>
-                                        <span className="font-12 text-gray">
-                                                                                            Student
-                                                                                    </span>
-                                    </div>
-                                </div>
-
-                                <div className="d-flex align-items-center">
-                                    <span className="font-12 text-gray mr-10">14 Jul 2021 | 01:25</span>
-
-                                    <div className="btn-group dropdown table-actions">
-                                        <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i data-feather="more-vertical" height="20"></i>
-                                        </button>
-                                        <div className="dropdown-menu">
-                                            <button type="button" className="btn-transparent webinar-actions d-block text-hover-primary reply-comment">Reply</button>
-                                            <button type="button" data-item-id="1995" data-comment-id="54" className="btn-transparent webinar-actions d-block mt-10 text-hover-primary report-comment">Report</button>
-
-                                                                                    </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="font-14 mt-20 text-gray">
-                                <p>Please prove. The course files are complete and 90% of the students are satisfied.</p>
-                            </div>
-                        </div>
-                                                </div>
-            </div>
-
-
-                            </div>
-                            <div className="tab-pane fade " id="content" role="tabpanel" aria-labelledby="content-tab">
-                                <section className="">
-
-        
-                    <div className="row">
-    <div className="col-12">
-        <div className="accordion-content-wrapper" id="chaptersAccordionfiles" role="tablist" aria-multiselectable="true">
-                            <div className="accordion-row rounded-sm border mt-20 p-15">
-                    <div className="d-flex align-items-center justify-content-between" role="tab" id="chapter_4">
-                        <div className="js-chapter-collapse-toggle d-flex align-items-center" href="#collapseChapter4" aria-controls="collapseChapter4" data-parent="#chaptersAccordionfiles" role="button" data-toggle="collapse" aria-expanded="true">
-                            <span className="chapter-icon mr-15">
-                                <i data-feather="grid" className=""></i>
-                            </span>
-
-                            <span className="font-weight-bold text-secondary font-14">Before Starting the Course</span>
-                        </div>
-
-                        <div className="d-flex align-items-center">
-                            <span className="mr-15 font-14 text-gray">
-                                3 Parts
-
-                                                            </span>
-
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseChapter4" aria-controls="collapseChapter4" data-parent="#chaptersAccordionfiles" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                        </div>
-                    </div>
-
-                    <div id="collapseChapter4" aria-labelledby="chapter_4" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse">
-                                                            <div className="row">
-    <div className="col-12">
-        <div className="accordion-content-wrapper" id="filesAccordion" role="tablist" aria-multiselectable="true">
-                            <div className="accordion-row rounded-sm border mt-20 p-15">
-                    <div className="d-flex align-items-center justify-content-between" role="tab" id="files_34">
-                        <div className="d-flex align-items-center" href="#collapseFiles34" aria-controls="collapseFiles34" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true">
-
-                            <span className="d-flex align-items-center justify-content-center mr-15">
-                                <span className="chapter-icon chapter-content-icon">
-                                <i data-feather="file" width="20" height="20" className="text-gray"></i>
-                                </span>
-                            </span>
-
-                            <span className="font-weight-bold text-secondary font-14 file-title">Demo Video</span>
-                        </div>
-
-                        <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseFiles34" aria-controls="collapseFiles34" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                    </div>
-
-                    <div id="collapseFiles34" aria-labelledby="files_34" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse">
-                            <div className="text-gray text-14">
-                                <p>The most complete course available on Product Management.</p>
-                            </div>
-
-                            
-                            <div className="d-flex align-items-center justify-content-between mt-20">
-
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                        <i data-feather="download-cloud" width="18" height="18" className="text-gray mr-5"></i>
-                                        <span className="line-height-1">5.82 MB</span>
-                                    </div>
-                                </div>
-
-                                <div className="">
-                                                                                                                                                                        <button type="button" data-id="34" data-title="Demo Video" className="js-play-video course-content-btns btn btn-sm btn-primary">
-                                                    Play
-                                                </button>
-                                                                                                                                                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                            <div className="accordion-row rounded-sm border mt-20 p-15">
-                    <div className="d-flex align-items-center justify-content-between" role="tab" id="files_31">
-                        <div className="d-flex align-items-center" href="#collapseFiles31" aria-controls="collapseFiles31" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true">
-
-                            <span className="d-flex align-items-center justify-content-center mr-15">
-                                <span className="chapter-icon chapter-content-icon">
-                                <i data-feather="film" width="20" height="20" className="text-gray"></i>
-                                </span>
-                            </span>
-
-                            <span className="font-weight-bold text-secondary font-14 file-title">Course Overview (Youtube)</span>
-                        </div>
-
-                        <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseFiles31" aria-controls="collapseFiles31" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                    </div>
-
-                    <div id="collapseFiles31" aria-labelledby="files_31" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse">
-                            <div className="text-gray text-14">
-                                <p>Understand the varying role of a Product Manager through different types and sizes of companies</p>
-                            </div>
-
-                            
-                            <div className="d-flex align-items-center justify-content-between mt-20">
-
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                        <i data-feather="download-cloud" width="18" height="18" className="text-gray mr-5"></i>
-                                        <span className="line-height-1">136.00 MB</span>
-                                    </div>
-                                </div>
-
-                                <div className="">
-                                                                                                                                                                        <button type="button" data-id="31" data-title="Course Overview (Youtube)" className="js-play-video course-content-btns btn btn-sm btn-primary">
-                                                    Play
-                                                </button>
-                                                                                                                                                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                            <div className="accordion-row rounded-sm border mt-20 p-15">
-                    <div className="d-flex align-items-center justify-content-between" role="tab" id="files_32">
-                        <div className="d-flex align-items-center" href="#collapseFiles32" aria-controls="collapseFiles32" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true">
-
-                            <span className="d-flex align-items-center justify-content-center mr-15">
-                                <span className="chapter-icon chapter-content-icon">
-                                <i data-feather="film" width="20" height="20" className="text-gray"></i>
-                                </span>
-                            </span>
-
-                            <span className="font-weight-bold text-secondary font-14 file-title">What is a Product? (Youtube)</span>
-                        </div>
-
-                        <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseFiles32" aria-controls="collapseFiles32" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                    </div>
-
-                    <div id="collapseFiles32" aria-labelledby="files_32" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse">
-                            <div className="text-gray text-14">
-                                <p>Let’s get basic – what is a product?</p><br />
-<br />
-<p>Products, like ghosts, are all around you (read that in a spooky voice).</p><br />
-<br />
-<p>Sure, it sounds simple, but there’s a lot more nuance to this than just looking up the dictionary definition.</p>
-                            </div>
-
-                            
-                            <div className="d-flex align-items-center justify-content-between mt-20">
-
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                        <i data-feather="download-cloud" width="18" height="18" className="text-gray mr-5"></i>
-                                        <span className="line-height-1">46.00 MB</span>
-                                    </div>
-                                </div>
-
-                                <div className="">
-                                                                                                                                                                        <button type="button" data-id="32" data-title="What is a Product? (Youtube)" className="js-play-video course-content-btns btn btn-sm btn-primary">
-                                                    Play
-                                                </button>
-                                                                                                                                                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    </div>
-    </div>
-</div>
-                            
+                                            <div className="h-100">
+                                                <div className="navbar-shopping-cart h-100" data-simplebar>
+                                                    <div className="d-flex align-items-center text-center py-50">
+                                                        <i data-feather="shopping-cart" width="20" height="20"
+                                                            className="mr-10"></i>
+                                                        <span className="">Your cart is empty</span>
                                                     </div>
-                    </div>
-                </div>
-                            <div className="accordion-row rounded-sm border mt-20 p-15">
-                    <div className="d-flex align-items-center justify-content-between" role="tab" id="chapter_11">
-                        <div className="js-chapter-collapse-toggle d-flex align-items-center" href="#collapseChapter11" aria-controls="collapseChapter11" data-parent="#chaptersAccordionfiles" role="button" data-toggle="collapse" aria-expanded="true">
-                            <span className="chapter-icon mr-15">
-                                <i data-feather="grid" className=""></i>
-                            </span>
-
-                            <span className="font-weight-bold text-secondary font-14">Ideas and User Needs</span>
-                        </div>
-
-                        <div className="d-flex align-items-center">
-                            <span className="mr-15 font-14 text-gray">
-                                1 Parts
-
-                                                            </span>
-
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseChapter11" aria-controls="collapseChapter11" data-parent="#chaptersAccordionfiles" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                        </div>
-                    </div>
-
-                    <div id="collapseChapter11" aria-labelledby="chapter_11" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse">
-                                                            <div className="row">
-    <div className="col-12">
-        <div className="accordion-content-wrapper" id="filesAccordion" role="tablist" aria-multiselectable="true">
-                            <div className="accordion-row rounded-sm border mt-20 p-15">
-                    <div className="d-flex align-items-center justify-content-between" role="tab" id="files_33">
-                        <div className="d-flex align-items-center" href="#collapseFiles33" aria-controls="collapseFiles33" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true">
-
-                            <span className="d-flex align-items-center justify-content-center mr-15">
-                                <span className="chapter-icon chapter-content-icon">
-                                <i data-feather="film" width="20" height="20" className="text-gray"></i>
-                                </span>
-                            </span>
-
-                            <span className="font-weight-bold text-secondary font-14 file-title">Ideas and User Needs (Vimeo)</span>
-                        </div>
-
-                        <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseFiles33" aria-controls="collapseFiles33" data-parent="#filesAccordion" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                    </div>
-
-                    <div id="collapseFiles33" aria-labelledby="files_33" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse">
-                            <div className="text-gray text-14">
-                                <p>Welcome to the land of ideas and user needs! Have you ever.</p>
-                            </div>
-
-                            
-                            <div className="d-flex align-items-center justify-content-between mt-20">
-
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                        <i data-feather="download-cloud" width="18" height="18" className="text-gray mr-5"></i>
-                                        <span className="line-height-1">280.00 MB</span>
-                                    </div>
-                                </div>
-
-                                <div className="">
-                                                                                                                                                                        <button type="button" data-id="33" data-title="Ideas and User Needs (Vimeo)" className="js-play-video course-content-btns btn btn-sm btn-primary">
-                                                    Play
-                                                </button>
-                                                                                                                                                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    </div>
-    </div>
-</div>
-                            
-                                                    </div>
-                    </div>
-                </div>
-                    </div>
-    </div>
-</div>
-            </section>
-
-    <div className="modal fade" id="playVideo" tabindex="-1" aria-labelledby="playVideoLabel" aria-hidden="true">
-    <div className="modal-dialog modal-lg modal-dialog-centered">
-        <div className="modal-content py-20">
-            <div className="d-flex align-items-center justify-content-between px-20">
-                <h3 className="section-title after-line"></h3>
-
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <i data-feather="x" width="25" height="25"></i>
-                </button>
-            </div>
-
-            <div className="mt-25 position-relative">
-                <div className="px-20">
-                    <div className="file-video-loading align-items-center justify-content-center py-50 text-center">
-                        <img src="/assets/default/img/loading.gif" width="100" height="100">
-                    </div>
-                    <div className="js-modal-video-content d-none">
-
-                    </div>
-                </div>
-
-                
-                <div className="modal-video-lists mt-15">
-
-                    
-                                                                                                        
-                                                                    <div className="d-flex justify-content-between align-items-center my-15 px-20">
-                                        <h3 className="section-title after-line">Before Starting the Course</h3>
-                                    </div>
-
-                                        <div className="accordion-content-wrapper mt-15" id="videosAccordion" role="tablist" aria-multiselectable="true">
-                                                                                                                                    <div data-id="34" data-title="Demo Video" className="accordion-row modal-video-item js-play-video cursor-pointer ">
-    <div className="p-20 item-border">
-        <div className="d-flex align-items-center">
-                            <i data-feather="play-circle" width="20" height="20" className="text-gray"></i>
-            
-
-            <div className="flex-grow-1 mx-15">
-                <h3 className="font-16 text-dark">Demo Video</h3>
-            </div>
-
-            <div className="">
-                                    0:36
-                            </div>
-        </div>
-
-        <div id="collapseVideo34" aria-labelledby="videoTab_34" className="pl-35 collapse" role="tabpanel">
-            <div className="text-gray text-12 mt-10">
-                <p>The most complete course available on Product Management.</p>
-            </div>
-        </div>
-    </div>
-</div>
-                                                                                                                                                                                <div data-id="31" data-title="Course Overview (Youtube)" className="accordion-row modal-video-item js-play-video cursor-pointer ">
-    <div className="p-20 item-border">
-        <div className="d-flex align-items-center">
-                            <i data-feather="play-circle" width="20" height="20" className="text-gray"></i>
-            
-
-            <div className="flex-grow-1 mx-15">
-                <h3 className="font-16 text-dark">Course Overview (Youtube)</h3>
-            </div>
-
-            <div className="">
-                                    Youtube
-                            </div>
-        </div>
-
-        <div id="collapseVideo31" aria-labelledby="videoTab_31" className="pl-35 collapse" role="tabpanel">
-            <div className="text-gray text-12 mt-10">
-                <p>Understand the varying role of a Product Manager through different types and sizes of companies</p>
-            </div>
-        </div>
-    </div>
-</div>
-                                                                                                                                                                                <div data-id="32" data-title="What is a Product? (Youtube)" className="accordion-row modal-video-item js-play-video cursor-pointer ">
-    <div className="p-20 item-border">
-        <div className="d-flex align-items-center">
-                            <i data-feather="play-circle" width="20" height="20" className="text-gray"></i>
-            
-
-            <div className="flex-grow-1 mx-15">
-                <h3 className="font-16 text-dark">What is a Product? (Youtube)</h3>
-            </div>
-
-            <div className="">
-                                    Youtube
-                            </div>
-        </div>
-
-        <div id="collapseVideo32" aria-labelledby="videoTab_32" className="pl-35 collapse" role="tabpanel">
-            <div className="text-gray text-12 mt-10">
-                <p>Let’s get basic – what is a product?</p><br />
-<br />
-<p>Products, like ghosts, are all around you (read that in a spooky voice).</p><br />
-<br />
-<p>Sure, it sounds simple, but there’s a lot more nuance to this than just looking up the dictionary definition.</p>
-            </div>
-        </div>
-    </div>
-</div>
-                                                                                                                        </div>
-                                                                                                                                                
-                                                                    <div className="d-flex justify-content-between align-items-center my-15 px-20">
-                                        <h3 className="section-title after-line">Ideas and User Needs</h3>
-                                    </div>
-
-                                        <div className="accordion-content-wrapper mt-15" id="videosAccordion" role="tablist" aria-multiselectable="true">
-                                                                                                                                    <div data-id="33" data-title="Ideas and User Needs (Vimeo)" className="accordion-row modal-video-item js-play-video cursor-pointer ">
-    <div className="p-20 item-border">
-        <div className="d-flex align-items-center">
-                            <i data-feather="play-circle" width="20" height="20" className="text-gray"></i>
-            
-
-            <div className="flex-grow-1 mx-15">
-                <h3 className="font-16 text-dark">Ideas and User Needs (Vimeo)</h3>
-            </div>
-
-            <div className="">
-                                    Vimeo
-                            </div>
-        </div>
-
-        <div id="collapseVideo33" aria-labelledby="videoTab_33" className="pl-35 collapse" role="tabpanel">
-            <div className="text-gray text-12 mt-10">
-                <p>Welcome to the land of ideas and user needs! Have you ever.</p>
-            </div>
-        </div>
-    </div>
-</div>
-                                                                                                                        </div>
-                                                                                                                        </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-    <section className="">
-        <div className="row">
-    <div className="col-12">
-        <div className="accordion-content-wrapper" id="quizzesAccordion" role="tablist" aria-multiselectable="true">
-                            <div className="accordion-row rounded-sm border mt-20 p-15">
-                    <div className="d-flex align-items-center justify-content-between" role="tab" id="quiz_28">
-                        <div className="d-flex align-items-center" href="#collapseQuiz28" aria-controls="collapseQuiz28" data-parent="#quizzesAccordion" role="button" data-toggle="collapse" aria-expanded="true">
-                            <span className="mr-15 d-flex">
-                                <span className="chapter-icon chapter-content-icon">
-                                <i data-feather="file-text" width="20" height="20" className="text-gray"></i>
-                                </span>
-                            </span>
-
-                            <div className="">
-                                <span className="font-weight-bold font-14 text-secondary d-block">Elementary Quiz</span>
-                            </div>
-                        </div>
-
-                        <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseQuiz28" aria-controls="collapseQuiz28" data-parent="#quizzesAccordion" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                    </div>
-
-                    <div id="collapseQuiz28" aria-labelledby="quiz_28" className=" collapse" role="tabpanel">
-                        <div className="panel-collapse">
-                            <div className="d-flex align-items-center mt-20">
-                                <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                    <i data-feather="help-circle" width="18" height="18" className="text-gray mr-5"></i>
-                                    <span className="line-height-1">5 Questions</span>
-                                </div>
-
-                                <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                    <i data-feather="clock" width="18" height="18" className="text-gray mr-5"></i>
-                                    <span className="line-height-1">5 Min</span>
-                                </div>
-
-                                <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                    <i data-feather="check-square" width="18" height="18" className="text-gray mr-5"></i>
-                                    <span className="line-height-1">Passed grade: 70/100</span>
-                                </div>
-
-                                <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                    <i data-feather="check-square" width="18" height="18" className="text-gray mr-5"></i>
-                                    <span className="line-height-1">Attempts: 0/10</span>
-                                </div>
-
-                                
-                            </div>
-
-                            <div className="d-flex justify-content-end mt-20">
-                                                                    <button type="button" className="course-content-btns btn btn-sm btn-gray disabled not-access-toast">
-                                        Start quiz
-                                    </button>
-                                                            </div>
-                        </div>
-                    </div>
-                </div>
-                    </div>
-    </div>
-</div>
-    </section>
-
-
-    <section className="">
-        <div className="row">
-    <div className="col-12">
-        <div className="accordion-content-wrapper" id="certificateAccordion" role="tablist" aria-multiselectable="true">
-                                                <div className="accordion-row rounded-sm border mt-20 p-15">
-                        <div className="d-flex align-items-center justify-content-between" role="tab" id="quizCertificate_28">
-
-                            <div className="d-flex align-items-center" href="#collapseQuizCertificate28" aria-controls="collapseQuizCertificate28" data-parent="#certificateAccordion" role="button" data-toggle="collapse" aria-expanded="true">
-                                    <span className="chapter-icon chapter-content-icon mr-15">
-                                        <i data-feather="award" width="20" height="20" className="text-gray"></i>
-                                    </span>
-
-                                <span className="font-weight-bold font-14 text-secondary d-block">Elementary Quiz</span>
-                            </div>
-
-                            <i className="collapse-chevron-icon" data-feather="chevron-down" height="20" href="#collapseQuizCertificate28" aria-controls="collapseQuizCertificate28" data-parent="#certificateAccordion" role="button" data-toggle="collapse" aria-expanded="true"></i>
-                        </div>
-
-                        <div id="collapseQuizCertificate28" aria-labelledby="quizCertificate_28" className=" collapse" role="tabpanel">
-                            <div className="panel-collapse">
-                                <div className="d-flex align-items-center justify-content-between mt-20">
-                                    <div className="d-flex align-items-center">
-                                        
-                                        <div className="d-flex align-items-center text-gray text-center font-14 mr-20">
-                                            <i data-feather="check-square" width="18" height="18" className="text-gray mr-5"></i>
-                                            <span className="line-height-1">Passed grade: 70/100</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="">
-                                                                                    <button type="button" className="course-content-btns btn btn-sm btn-gray disabled not-access-toast">
-                                                Download
-                                            </button>
-                                                                            </div>
+
+
+                                    
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                                    </div>
-    </div>
-</div>
-    </section>
-                            </div>
-                            <div className="tab-pane fade " id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-                                <div className="mt-35">
-    <div className="course-reviews-box row align-items-center">
-        <div className="col-3 text-center">
-            <div className="reviews-rate font-36 font-weight-bold text-primary">4.58</div>
-
-            <div className="text-center">
-                <div className="stars-card d-flex align-items-center justify-content-center mt-0">
-                <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-                <i data-feather="star" width="20" height="20" className=""></i>
-    
-    
-</div>
-                <div className="mt-15">3  Reviews</div>
-            </div>
-        </div>
-
-        <div className="col-9">
-            <div className="d-flex align-items-center justify-content-between">
-                <div className="progress course-progress flex-grow-1 rounded-sm">
-                    <span className="progress-bar rounded-sm" style="width: 86.666666666667%"></span>
-                </div>
-                <span className="ml-15 font-14 text-gray">Content quality (4.3)</span>
-            </div>
-
-            <div className="mt-25 d-flex align-items-center justify-content-between">
-                <div className="progress course-progress flex-grow-1 rounded-sm">
-                    <span className="progress-bar rounded-sm" style="width: 93.333333333333%"></span>
-                </div>
-                <span className="ml-15 font-14 text-gray">Instructor skills (4.7)</span>
-            </div>
-
-            <div className="mt-25 d-flex align-items-center justify-content-between">
-                <div className="progress course-progress flex-grow-1 rounded-sm">
-                    <span className="progress-bar rounded-sm" style="width: 93.333333333333%"></span>
-                </div>
-                <span className="ml-15 font-14 text-gray">Purchase worth (4.7)</span>
-            </div>
-
-            <div className="mt-25 d-flex align-items-center justify-content-between">
-                <div className="progress course-progress flex-grow-1 rounded-sm">
-                    <span className="progress-bar rounded-sm" style="width: 93.333333333333%"></span>
-                </div>
-                <span className="ml-15 font-14 text-gray">Support quality (4.7)</span>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<section className="mt-40">
-    <h2 className="section-title after-line">Reviews (3)</h2>
-
-    <form action="/reviews/store" className="mt-20" method="post">
-        <input type="hidden" name="_token" value="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx">
-        <input type="hidden" name="webinar_id" value="1995"/>
-
-        <div className="form-group">
-            <textarea name="description" className="form-control" rows="10"></textarea>
-        </div>
-
-        <div className="reviews-stars row align-items-center">
-
-            <div className="col-6 col-md-3 d-flex flex-column align-items-center justify-content-center barrating-stars">
-                <span className="font-14 text-gray">Content quality</span>
-                <select name="content_quality" data-rate="1">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-
-            <div className="col-6 col-md-3 d-flex flex-column align-items-center justify-content-center barrating-stars">
-                <span className="font-14 text-gray">Instructor skills</span>
-                <select name="instructor_skills" data-rate="1">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-
-            <div className="col-6 col-md-3 d-flex flex-column align-items-center justify-content-center barrating-stars">
-                <span className="font-14 text-gray">Purchase worth</span>
-                <select name="purchase_worth" data-rate="1">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-
-            <div className="col-6 col-md-3 d-flex flex-column align-items-center justify-content-center barrating-stars">
-                <span className="font-14 text-gray">Support quality</span>
-                <select name="support_quality" data-rate="1">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-        </div>
-
-        <button type="submit" className="btn btn-sm btn-primary mt-20">Post review</button>
-    </form>
-
-    <div className="mt-45">
-                    
-                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx" data-id="24">
-                    <div className="d-flex align-items-center justify-content-between">
-                        <div className="user-inline-avatar d-flex align-items-center mt-10">
-                            <div className="avatar">
-                                <img src="/store/996/avatar/617a4ea0d77af.png" className="img-cover" alt="">
-                            </div>
-                            <div className="d-flex flex-column ml-5">
-                                <span className="font-weight-500 text-secondary">Robert B. Gray</span>
-
-                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
-                <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-        
-    
-</div>
-                            </div>
-                        </div>
-
-                        <div className="d-flex align-items-center">
-                            <span className="font-12 text-gray mr-10">13 Jul 2021 | 18:20</span>
-
-                            <div className="btn-group dropdown table-actions">
-                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i data-feather="more-vertical" height="20"></i>
-                                </button>
-                                <div className="dropdown-menu">
-                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
-                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
-
-                                                                    </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-20 text-gray font-14">
-                        Very clear and entertaining course, made me feel prepared to take the next step in my journey to become a product manager! 10/10 would totally recomend.
-                    </div>
-
-                                    </div>
-            
-                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx" data-id="28">
-                    <div className="d-flex align-items-center justify-content-between">
-                        <div className="user-inline-avatar d-flex align-items-center mt-10">
-                            <div className="avatar">
-                                <img src="/store/995/avatar/6179b58ee64c7.png" className="img-cover" alt="">
-                            </div>
-                            <div className="d-flex flex-column ml-5">
-                                <span className="font-weight-500 text-secondary">Cameron Schofield</span>
-
-                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
-                <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-                <i data-feather="star" width="20" height="20" className=""></i>
-            <i data-feather="star" width="20" height="20" className=""></i>
-    
-    
-</div>
-                            </div>
-                        </div>
-
-                        <div className="d-flex align-items-center">
-                            <span className="font-12 text-gray mr-10">13 Jul 2021 | 23:28</span>
-
-                            <div className="btn-group dropdown table-actions">
-                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i data-feather="more-vertical" height="20"></i>
-                                </button>
-                                <div className="dropdown-menu">
-                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
-                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
-
-                                                                    </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-20 text-gray font-14">
-                        The course is completely worth. The instructors gave practical instances and interviewed two successful PMs. In short it taught me all the necessities. The resource PDF is treasure.
-                    </div>
-
-                                    </div>
-            
-                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx" data-id="35">
-                    <div className="d-flex align-items-center justify-content-between">
-                        <div className="user-inline-avatar d-flex align-items-center mt-10">
-                            <div className="avatar">
-                                <img src="/store/1015/avatar/617a4f2fb8a6d.png" className="img-cover" alt="">
-                            </div>
-                            <div className="d-flex flex-column ml-5">
-                                <span className="font-weight-500 text-secondary">Robert Ransdell</span>
-
-                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
-                <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-        
-    
-</div>
-                            </div>
-                        </div>
-
-                        <div className="d-flex align-items-center">
-                            <span className="font-12 text-gray mr-10">4 Mar 2022 | 12:04</span>
-
-                            <div className="btn-group dropdown table-actions">
-                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i data-feather="more-vertical" height="20"></i>
-                                </button>
-                                <div className="dropdown-menu">
-                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
-                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
-
-                                                                    </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mt-20 text-gray font-14">
-                        This course was perfect.
-                    </div>
-
-                                    </div>
-                        </div>
-</section>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div className="course-content-sidebar col-12 col-lg-4 mt-25 mt-lg-0">
-                <div className="rounded-lg shadow-sm">
-                    <div className="course-img has-video">
-
-                        <img src="/store/1016/1.jpg" className="img-cover" alt="">
-
-                                                    <div id="webinarDemoVideoBtn"
-                                 data-video-path="/store/1016/Become A Product Manager.mp4"
-                                 data-video-source=""
-                                 className="course-video-icon cursor-pointer d-flex align-items-center justify-content-center">
-                                <i data-feather="play" width="25" height="25"></i>
-                            </div>
-                                            </div>
-
-                    <div className="px-20 pb-30">
-                        <form action="/cart/store" method="post">
-                            <input type="hidden" name="_token" value="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx">
-                            <input type="hidden" name="webinar_id" value="1995">
-
-                                                                                        
-                                                            <div className="d-flex align-items-center justify-content-center mt-20">
-                                    <span className="font-36 text-primary">Free</span>
-                                </div>
-                            
-                            
-                            <div className="mt-20 d-flex flex-column">
-                                                                    <a href="/course/Become-a-Product-Manager/free" className="btn btn-primary ">Enroll on Course</a>
-                                                            </div>
-
-                        </form>
-
-                        <div className="mt-20 d-flex align-items-center justify-content-center text-gray">
-                            <i data-feather="thumbs-up" width="20" height="20"></i>
-                            <span className="ml-5 font-14">5 Days money back guarantee</span>
-                        </div>
-
-                        <div className="mt-35">
-                            <strong className="d-block text-secondary font-weight-bold">This Course includes:</strong>
-                                                            <div className="mt-20 d-flex align-items-center text-gray">
-                                    <i data-feather="download-cloud" width="20" height="20"></i>
-                                    <span className="ml-5 font-14 font-weight-500">Downloadable content</span>
-                                </div>
-                            
-                                                            <div className="mt-20 d-flex align-items-center text-gray">
-                                    <i data-feather="award" width="20" height="20"></i>
-                                    <span className="ml-5 font-14 font-weight-500">Official certificate</span>
-                                </div>
-                            
-                                                            <div className="mt-20 d-flex align-items-center text-gray">
-                                    <i data-feather="file-text" width="20" height="20"></i>
-                                    <span className="ml-5 font-14 font-weight-500">1 online quizzes</span>
-                                </div>
-                            
-                                                            <div className="mt-20 d-flex align-items-center text-gray">
-                                    <i data-feather="headphones" width="20" height="20"></i>
-                                    <span className="ml-5 font-14 font-weight-500">Instructor support</span>
-                                </div>
-                                                    </div>
-
-                        <div className="mt-40 p-10 rounded-sm border row align-items-center favorites-share-box">
-                            
-                            <div className="col">
-                                <a href="/favorites/Become-a-Product-Manager/toggle" id="favoriteToggle" className="d-flex flex-column align-items-center text-gray">
-                                    <i data-feather="heart" className="" width="20" height="20"></i>
-                                    <span className="font-12">Favorite</span>
-                                </a>
-                            </div>
-
-                            <div className="col">
-                                <a href="#" className="js-share-course d-flex flex-column align-items-center text-gray">
-                                    <i data-feather="share-2" width="20" height="20"></i>
-                                    <span className="font-12">Share</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="mt-30 text-center">
-                            <button type="button" id="webinarReportBtn" className="font-14 text-gray btn-transparent">Report this course</button>
-                        </div>
-                    </div>
-                </div>
-
-                                    <div className="rounded-lg shadow-sm mt-35 d-flex">
-                        <div className="offline-icon offline-icon-left d-flex align-items-stretch">
-                            <div className="d-flex align-items-center">
-                                <img src="/assets/default/img/profile/time-icon.png" alt="offline">
-                            </div>
-                        </div>
-
-                        <div className="p-15">
-                            <h3 className="font-16 text-dark-blue">Instructor is temporarily unavailable.</h3>
-                            <p className="font-14 font-weight-500 text-gray mt-15">I am not available for 2 days due to a business trip</p>
-                        </div>
-                    </div>
-                
-                <div className="rounded-lg shadow-sm mt-35 px-25 py-20">
-                    <h3 className="sidebar-title font-16 text-secondary font-weight-bold">Course specifications</h3>
-
-                    <div className="mt-30">
-                        
-                        <div className="mt-20 d-flex align-items-center justify-content-between text-gray">
-                            <div className="d-flex align-items-center">
-                                <i data-feather="clock" width="20" height="20"></i>
-                                <span className="ml-5 font-14 font-weight-500">Duration:</span>
-                            </div>
-                            <span className="font-14">2:30 Hours</span>
-                        </div>
-
-                        <div className="mt-20 d-flex align-items-center justify-content-between text-gray">
-                            <div className="d-flex align-items-center">
-                                <i data-feather="users" width="20" height="20"></i>
-                                <span className="ml-5 font-14 font-weight-500">Students:</span>
-                            </div>
-                            <span className="font-14">4</span>
-                        </div>
-
-                        
-                        
-                                                    <div className="mt-20 d-flex align-items-center justify-content-between text-gray">
-                                <div className="d-flex align-items-center">
-                                    <img src="/assets/default/img/icons/sessions.svg" width="20" alt="">
-                                    <span className="ml-5 font-14 font-weight-500">Files:</span>
-                                </div>
-                                <span className="font-14">4</span>
-                            </div>
-
-                            <div className="mt-20 d-flex align-items-center justify-content-between text-gray">
-                                <div className="d-flex align-items-center">
-                                    <img src="/assets/default/img/icons/sessions.svg" width="20" alt="">
-                                    <span className="ml-5 font-14 font-weight-500">Created Date:</span>
-                                </div>
-                                <span className="font-14">28 Jun 2021</span>
-                            </div>
-                                            </div>
-                </div>
-
-                
-                                
-                <div className="rounded-lg shadow-sm mt-35 p-20 course-teacher-card d-flex align-items-center flex-column">
-
-    
-    <div className="teacher-avatar mt-5">
-        <img src="/store/1016/avatar/617a4f17c8e72.png" className="img-cover" alt="Ricardo dave">
-
-                    <span className="user-circle-badge unavailable d-flex align-items-center justify-content-center">
-              <i data-feather="slash" width="20" height="20" className="text-white"></i>
-           </span>
-            </div>
-    <h3 className="mt-10 font-16 font-weight-bold text-secondary">Ricardo dave</h3>
-    <span className="mt-5 font-14 font-weight-500 text-gray text-center">Data Analyst at Microsoft</span>
-
-    <div className="stars-card d-flex align-items-center  mt-15">
-                <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-            <i data-feather="star" width="20" height="20" className="active"></i>
-                <i data-feather="star" width="20" height="20" className=""></i>
-    
-            <span className="badge badge-primary ml-10">4.58</span>
-    
-</div>
-
-    <div className="user-reward-badges d-flex align-items-center mt-30">
-                    <div className="mr-15" data-toggle="tooltip" data-placement="bottom" data-html="true" title="1 Year of Membership">
-                <img src="/store/1/default_images/badges/faithful_user.png" width="32" height="32" alt="Faithful User">
-            </div>
-                    <div className="mr-15" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Has 1 Class">
-                <img src="/store/1/default_images/badges/junior_vendor.png" width="32" height="32" alt="Junior Vendor">
-            </div>
-                    <div className="mr-15" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Classes Rating from 4 to 5">
-                <img src="/store/1/default_images/badges/golden_classes.png" width="32" height="32" alt="Golden Classes">
-            </div>
-                    <div className="mr-15" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Classes Sales from 3 to 9">
-                <img src="/store/1/default_images/badges/top_seller.png" width="32" height="32" alt="Top Seller">
-            </div>
-                    <div className="mr-15" data-toggle="tooltip" data-placement="bottom" data-html="true" title="Support Rating from 4 to 5">
-                <img src="/store/1/default_images/badges/fantastic_support.png" width="32" height="32" alt="Fantastic Support">
-            </div>
-            </div>
-
-    
-    <div className="mt-25 d-flex flex-row align-items-center justify-content-center w-100">
-        <a href="/users/1016/profile" target="_blank" className="btn btn-sm btn-primary teacher-btn-action">Profile</a>
-
-                    <a href="/users/1016/profile" className="btn btn-sm btn-primary teacher-btn-action ml-15">Book a Meeting</a>
-            </div>
-</div>
-
-                                
-
-                
-                                    <div className="rounded-lg tags-card shadow-sm mt-35 px-25 py-20">
-                        <h3 className="sidebar-title font-16 text-secondary font-weight-bold">Tags</h3>
-
-                        <div className="d-flex flex-wrap mt-10">
-                                                            <a href="" className="tag-item bg-gray200 p-5 font-14 text-gray font-weight-500 rounded">Product Manager</a>
-                                                            <a href="" className="tag-item bg-gray200 p-5 font-14 text-gray font-weight-500 rounded">managment</a>
-                                                    </div>
-                    </div>
-                                
-                                    <div className="row">
-                                                    <div className="rounded-lg sidebar-ads mt-35 col-12">
-                                <a href="/instructors">
-                                    <img src="/store/1/default_images/banners/reserve_a_meeting.png" className="img-cover rounded-lg" alt="Reserve a meeting - Course page">
-                                </a>
-                            </div>
-                                                    <div className="rounded-lg sidebar-ads mt-35 col-12">
-                                <a href="/certificate_validation">
-                                    <img src="/store/1/default_images/banners/validate_certificates_banner.png" className="img-cover rounded-lg" alt="Certificate validation - Course page">
-                                </a>
-                            </div>
-                                            </div>
-
-                            </div>
-        </div>
-
-        
-                
-    </section>
-
-    <div id="webinarReportModal" className="d-none">
-        <h3 className="section-title after-line font-20 text-dark-blue">Report course</h3>
-
-        <form action="/course/1995/report" method="post" className="mt-25">
-
-            <div className="form-group">
-                <label className="text-dark-blue font-14">Reason</label>
-                <select id="reason" name="reason" className="form-control">
-                    <option value="" selected disabled>Select a reason</option>
-
-                                            <option value="reason 2">reason 2</option>
-                                            <option value="reason 1">reason 1</option>
-                                    </select>
-                <div className="invalid-feedback"></div>
-            </div>
-
-            <div className="form-group">
-                <label className="text-dark-blue font-14" for="message_to_reviewer">Message to reviewer</label>
-                <textarea name="message" id="message_to_reviewer" className="form-control" rows="10"></textarea>
-                <div className="invalid-feedback"></div>
-            </div>
-            <p className="text-gray font-16">Please describe about the report short and clearly.</p>
-
-            <div className="mt-30 d-flex align-items-center justify-content-end">
-                <button type="button" className="js-course-report-submit btn btn-sm btn-primary">Report</button>
-                <button type="button" className="btn btn-sm btn-danger ml-10 close-swl">Close</button>
-            </div>
-        </form>
-    </div>
-
-    <div className="d-none" id="courseShareModal">
-    <h3 className="section-title after-line font-20 text-dark-blue mb-25">Share</h3>
-
-    <div className="text-center">
-        <i data-feather="share-2" width="50" height="50" className="webinar-icon"></i>
-
-        <p className="mt-20 font-14">Share course with your friends</p>
-
-        <div className="position-relative d-flex align-items-center justify-content-between p-15 mt-15 border border-gray250 rounded-sm mt-5">
-            <div className="js-course-share-link font-weight-bold px-16 text-ellipsis font-14">https://lms.rocket-soft.org/course/Become-a-Product-Manager</div>
-
-            <button type="button" className="js-course-share-link-copy btn btn-primary btn-sm font-14 font-weight-500 flex-none" data-toggle="tooltip" data-placement="top" title="Copy">Copy</button>
-        </div>
-
-        <div className="mt-32 mt-lg-40 row align-items-center font-14">
-            <a href="https://telegram.me/share/url?url=https://lms.rocket-soft.org/course/Become-a-Product-Manager&amp;text=Default+share+text" target="_blank" className="col text-center">
-                <img src="/assets/default/img/social/telegram.svg" width="50" height="50" alt="telegram">
-                <span className="mt-10 d-block">Telegram</span>
-            </a>
-
-            <a href="https://wa.me/?text=https://lms.rocket-soft.org/course/Become-a-Product-Manager" target="_blank" className="col text-center">
-                <img src="/assets/default/img/social/whatsapp.svg" width="50" height="50" alt="whatsapp">
-                <span className="mt-10 d-block">Whatsapp</span>
-            </a>
-
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://lms.rocket-soft.org/course/Become-a-Product-Manager" target="_blank" className="col text-center">
-                <img src="/assets/default/img/social/facebook.svg" width="50" height="50" alt="facebook">
-                <span className="mt-10 d-block">Facebook</span>
-            </a>
-
-            <a href="https://twitter.com/intent/tweet?text=Default+share+text&amp;url=https://lms.rocket-soft.org/course/Become-a-Product-Manager" target="_blank" className="col text-center">
-                <img src="/assets/default/img/social/twitter.svg" width="50" height="50" alt="twitter">
-                <span className="mt-10 d-block">Twitter</span>
-            </a>
-        </div>
-    </div>
-
-    <div className="mt-30 d-flex align-items-center justify-content-end">
-        <button type="button" className="btn btn-sm btn-danger ml-10 close-swl">Close</button>
-    </div>
-</div>
-    <div className="d-none" id="buyWithPointModal">
-    <h3 className="section-title font-16 text-dark-blue mb-25">Buy with points</h3>
-
-            <div className="text-center">
-            <img src="/assets/default/img/rewards/medal-2.png" className="buy-with-points-modal-img" alt="medal">
-
-            <p className="font-14 font-weight-500 text-gray mt-30">
-                <span className="d-block">This course requires  points.</span>
-                <span className="d-block">You have 235 points.</span>
-
-                                    <span className="d-block">Do you want to proceed?</span>
-                            </p>
-        </div>
-
-        <div className="d-flex align-items-center mt-25">
-            <a href="/course/Become-a-Product-Manager/points/apply" className="btn btn-sm flex-grow-1 btn-primary js-buy-course-with-point">Buy</a>
-            <a href="/panel/rewards" className="btn btn-outline-primary ml-15 btn-sm flex-grow-1">My Points</a>
-        </div>
-    </div>
-
-            <footer className="footer bg-secondary position-relative user-select-none">
-    <div className="container">
-        <div className="row">
-            <div className="col-12">
-                <div className=" footer-subscribe d-block d-md-flex align-items-center justify-content-between">
-                    <div className="flex-grow-1">
-                        <strong>Join us today</strong>
-                        <span className="d-block mt-5 text-white">#We will send the best deals and offers to your email.</span>
-                    </div>
-                    <div className="subscribe-input bg-white p-10 flex-grow-1 mt-30 mt-md-0">
-                        <form action="/newsletters" method="post">
-                            <input type="hidden" name="_token" value="b2IJdmVinVJLmIuXLXi8cub0VXuihePYfGF0YSTx">
-
-                            <div className="form-group d-flex align-items-center m-0">
-                                <div className="w-100">
-                                    <input type="text" name="newsletter_email" className="form-control border-0 " placeholder="Enter your email here"/>
-                                                                    </div>
-                                <button type="submit" className="btn btn-primary rounded-pill">Join</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-    <div className="container">
-        <div className="row">
-
-                            <div className="col-6 col-md-3">
-                                                                        <span className="header d-block text-white font-weight-bold">About US</span>
-                        
-                                                    <div className="mt-20">
-                                <p><font color="#ffffff">Rocket LMS is a fully-featured learning management system that helps you to run your education business in several hours. This platform helps instructors to create professional education materials and helps students to learn from the best instructors.</font></p>
-                            </div>
-                                                            </div>
-                            <div className="col-6 col-md-3">
-                                                                        <span className="header d-block text-white font-weight-bold">Additional Links</span>
-                        
-                                                    <div className="mt-20">
-                                <p><a href="/login"><font color="#ffffff">- Login</font></a></p><p><font color="#ffffff"><a href="/register"><font color="#ffffff">- Register</font></a><br></font></p><p><a href="/blog"><font color="#ffffff">- Blog</font></a></p><p><a href="/contact"><font color="#ffffff">- Contact us</font></a></p><p><font color="#ffffff"><a href="/certificate_validation"><font color="#ffffff">- Certificate validation</font></a><br></font></p><p><font color="#ffffff"><a href="/become_instructor"><font color="#ffffff">- Become instructor</font></a><br></font></p><p><a href="/pages/terms"><font color="#ffffff">- Terms &amp; rules</font></a></p><p><a href="/pages/about"><font color="#ffffff">- About us</font></a><br></p>
-                            </div>
-                                                            </div>
-                            <div className="col-6 col-md-3">
-                                                                        <span className="header d-block text-white font-weight-bold">Similar Businesses</span>
-                        
-                                                    <div className="mt-20">
-                                <p><a href="https://www.udemy.com/" target="_blank"><font color="#ffffff">- Udemy</font></a></p><p><a href="https://www.skillshare.com/" target="_blank"><font color="#ffffff">- Skillshare</font></a></p><p><a href="https://www.coursera.org/" target="_blank"><font color="#ffffff">- Coursera</font></a></p><p><a href="https://www.linkedin.com/learning/" target="_blank"><font color="#ffffff">- Lynda</font></a></p><p><a href="https://www.skillsoft.com/" target="_blank"><font color="#ffffff">- Skillsoft</font></a></p><p><a href="https://www.udacity.com/" target="_blank"><font color="#ffffff">- Udacity</font></a></p><p><a href="https://www.edx.org/" target="_blank"><font color="#ffffff">- edX</font></a></p><p><a href="https://www.masterclass.com/" target="_blank"><font color="#ffffff">- Masterclass</font></a><br></p>
-                            </div>
-                                                            </div>
-                            <div className="col-6 col-md-3">
-                                                                        <span className="header d-block text-white font-weight-bold">Purchase Rocket LMS</span>
-                        
-                                                    <div className="mt-20">
-                                <p><a title="Notnt" href="https://codecanyon.net"><img style="width: 200px;" src="/store/1/default_images/envato.png"></a></p>
-                            </div>
-                                                            </div>
-            
-        </div>
-
-        <div className="mt-40 border-blue py-25 d-flex align-items-center justify-content-between">
-            <div className="footer-logo">
-                <a href="/">
-                                            <img src="/store/1/default_images/website-logo-white.png" className="img-cover" alt="footer logo">
-                                    </a>
-            </div>
-            <div className="footer-social">
-                                                            <a href="https://www.instagram.com/">
-                            <img src="/store/1/default_images/social/instagram.svg" alt="Instagram" className="mr-15">
-                        </a>
-                                            <a href="https://web.whatsapp.com/">
-                            <img src="/store/1/default_images/social/whatsapp.svg" alt="Whatsapp" className="mr-15">
-                        </a>
-                                            <a href="https://twitter.com/">
-                            <img src="/store/1/default_images/social/twitter.svg" alt="Twitter" className="mr-15">
-                        </a>
-                                            <a href="https://www.facebook.com/">
-                            <img src="/store/1/default_images/social/facebook.svg" alt="Facebook" className="mr-15">
-                        </a>
-                                                </div>
-        </div>
-    </div>
-</footer>
-    </div>
-<!-- Template JS File -->
-<script src="/assets/default/js/app.js"></script>
-<script src="/assets/default/vendors/feather-icons/dist/feather.min.js"></script>
-<script src="/assets/default/vendors/moment.min.js"></script>
-<script src="/assets/default/vendors/sweetalert2/dist/sweetalert2.min.js"></script>
-<script src="/assets/default/vendors/toast/jquery.toast.min.js"></script>
-<script type="text/javascript" src="/assets/default/vendors/simplebar/simplebar.min.js"></script>
-
-<script>
-    var deleteAlertTitle = 'Are you sure?';
-    var deleteAlertHint = 'This action cannot be undone!';
-    var deleteAlertConfirm = 'Delete';
-    var deleteAlertCancel = 'Cancel';
-    var deleteAlertSuccess = 'Success';
-    var deleteAlertFail = 'Failed';
-    var deleteAlertFailHint = 'Error while deleting item!';
-    var deleteAlertSuccessHint = 'Item successfully deleted.';
-    var forbiddenRequestToastTitleLang = 'public.forbidden_request_toast_lang';
-    var forbiddenRequestToastMsgLang = 'public.forbidden_request_toast_msg_lang';
-</script>
-
-
-    <script src="/assets/default/js/parts/time-counter-down.min.js"></script>
-    <script src="/assets/default/vendors/barrating/jquery.barrating.min.js"></script>
-    <script src="/assets/default/vendors/video/video.min.js"></script>
-    <script src="/assets/default/vendors/video/youtube.min.js"></script>
-    <script src="/assets/default/vendors/video/vimeo.js"></script>
-
-    <script>
-        var webinarDemoLang = 'Course demo';
-        var replyLang = 'Reply';
-        var closeLang = 'Close';
-        var saveLang = 'Save';
-        var reportLang = 'Report';
-        var reportSuccessLang = 'Your report has been sent.';
-        var reportFailLang = 'Report failed. Make sure you are logged in.';
-        var messageToReviewerLang = 'Message to reviewer';
-        var copyLang = 'Copy';
-        var copiedLang = 'Copied';
-        var learningToggleLangSuccess = 'Your learning status successfully changed.';
-        var learningToggleLangError = 'Failed to change learning status.';
-        var notLoginToastTitleLang = 'Restricted Content';
-        var notLoginToastMsgLang = 'Please login to access the content.';
-        var notAccessToastTitleLang = 'Access denied';
-        var notAccessToastMsgLang = 'You dont have access to this content.';
-        var canNotTryAgainQuizToastTitleLang = 'Reched out';
-        var canNotTryAgainQuizToastMsgLang = 'You can not take this quiz again.';
-        var canNotDownloadCertificateToastTitleLang = 'Download failed';
-        var canNotDownloadCertificateToastMsgLang = 'You can not download this certificate.';
-        var sessionFinishedToastTitleLang = 'Session Finished';
-        var sessionFinishedToastMsgLang = 'You are too late, this session finished.';
-
-    </script>
-
-    <script src="/assets/default/js/parts/comment.min.js"></script>
-    <script src="/assets/default/js/parts/video_player_helpers.min.js"></script>
-    <script src="/assets/default/js/parts/webinar_show.min.js"></script>
-    <link href="/assets/default/vendors/flagstrap/css/flags.css" rel="stylesheet">
-    <script src="/assets/default/vendors/flagstrap/js/jquery.flagstrap.min.js"></script>
-    <script src="/assets/default/js/parts/top_nav_flags.min.js"></script>
-    <script src="/assets/default/js/parts/navbar.min.js"></script>
-
-<script src="/assets/default/js/parts/main.min.js"></script>
-
-<script>
-    
-    
-</script>
-</body>
-</html>
+                </nav>
+            </>
+        );
+    }  
+};
+ 
+const mapStateToProps = state => {
+    return {        
+        cartItems: state.cart.items,
+        catalogs: state.catalog.catalogs,
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+     
+        fetchCourseRequest:(e) => dispatch (fetchCourseRequest(e)),
+        fetchCatalogRequest:() => dispatch (fetchCatalogRequest()),
+    };
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(HeaderGuest))

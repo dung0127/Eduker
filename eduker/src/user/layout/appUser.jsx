@@ -1,5 +1,4 @@
 import React from "react";
-import HeaderUser from "./headerUser.jsx"
 import { BrowserRouter as Router, Route, Routes, Navigate, Redirect} from 'react-router-dom';
 import MainUser from "./mainUser.jsx";
 import FooterUser from "./footerUser.jsx";
@@ -10,7 +9,6 @@ import CourseById from "../course/courseById.jsx";
 import CourseBySubCatalog from "../course/courseBySubCatalog.jsx";
 import Cart from "../cart/cart.jsx";
 import {connect}  from "react-redux"
-import HeaderGuest from "./headerGuest.jsx";
 import { fetchDetailUserRequest } from "../../actions/detail.js";
 import { loginRequest } from "../../actions/auth.js";
 import DetailUser from "../profile/detailUser.jsx";
@@ -22,6 +20,8 @@ import ChangePassword from "../profile/changePassword.jsx";
 import Order from "../payment/order.jsx";
 import OrderDetail from "../payment/orderDetail.jsx";
 import Signup from "../profile/signup.jsx";
+import CourseLesson from "../course/courseLesson.jsx";
+import Enroll from "../enroll/enroll.jsx";
 
 const isLogin = localStorage.getItem("isLogin");
 
@@ -51,7 +51,8 @@ class AppUser extends React.Component {
     }
 
     componentDidMount(){
-      this.props.fetchDetailUserRequest();
+      this.props.fetchDetailUserRequest()
+
   }
     render() {
 
@@ -64,8 +65,10 @@ class AppUser extends React.Component {
                 <Route path ="/" element = {<MainUser/>}/> 
                 <Route path ="*" element = {<MainUser/>}/> 
                 <Route path ="/signup" element = {<Signup/>}/>
+                <Route path ="/learn/:id" element = {<PrivateRoute><CourseLesson/></PrivateRoute>}/>
+                <Route path ="/enroll" element = {<PrivateRoute><Enroll/></PrivateRoute>}/> 
 
-                {isEmpty(this.props.user)?<Route path ="/login" element = {<Login/>}/>:<Route path ="/login" element = {<MainUser/>}/>}
+                {!isLogin?<Route path ="/login" element = {<Login/>}/>:<Route path ="/login" element = {<MainUser/>}/>}
                 <Route path ="/course" element = {<Course/>}/>
                 <Route path ="/contact" element = {<Contact/>}/>
                 <Route path ="/about" element = {<About/>}/> 

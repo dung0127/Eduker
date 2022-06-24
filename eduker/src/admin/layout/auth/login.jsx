@@ -9,6 +9,7 @@ import {Link} from "react-router-dom"
 import { loginRequest, logout } from "../../../actions/auth";
 import loadjs from 'loadjs'; 
 import {fetchDetailUserRequest} from "../../../actions/detail"
+import Header from "../../../user/layout/header.jsx";
 
 class Login extends React.Component {
 	constructor(){
@@ -95,6 +96,8 @@ class Login extends React.Component {
     }
     render() {
         return(
+            <>
+            <Header/>
             <div className="container">
                 <div className="row login-container">
 
@@ -142,6 +145,7 @@ class Login extends React.Component {
                     </div>
                 </div>
             </div>
+            </>
 		);
     }
 }

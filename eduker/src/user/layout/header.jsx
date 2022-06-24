@@ -18,24 +18,24 @@ class Header extends React.Component {
     }
 
     componentDidMount(){
-        loadjs('/assets/default/vendors/swiper/swiper-bundle.min.js', () => {});
+        loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/js/parts/main.min.js', () => {});
         loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
         loadjs('/assets/default/js/parts/home.min.js', () => {});
         loadjs('/assets/default/js/parts/categories.min.js', () => {});
-            
-        this.props.fetchDetailUserRequest();
+        this.props.fetchDetailUserRequest()
     }
 
     render() {
-        if (isEmpty(this.props.user)) {
-            return <HeaderGuest/>
-        }
+        
         if (!isEmpty(this.props.user)) {
             if(localStorage.getItem("role")=='ROLE_ADMIN')
                 return <HeaderAdmin/>
             else 
                 return <HeaderUser/>
+        }
+        if (isEmpty(this.props.user)) {
+            return <HeaderGuest/>
         }
     } 
 };

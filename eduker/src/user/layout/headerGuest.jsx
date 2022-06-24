@@ -1,12 +1,10 @@
 import React from "react";
 import {connect}  from "react-redux"
 import { Link } from "react-router-dom"
-import {fetchDetailUserRequest} from "../../actions/detail"
 import {withRouter} from '../../admin/layout/auth/withRouter'
 import { fetchCourseRequest } from "../../actions/course";
 import { fetchCatalogRequest} from "../../actions/catalog"
-import {fetchSubCatalogByIdRequest} from "../../actions/subCatalog"
-import { loginRequest, logout } from "../../actions/auth"
+import { loginRequest } from "../../actions/auth"
 import loadjs from 'loadjs';
 import sum from "../../config/sum";
 
@@ -17,13 +15,15 @@ class HeaderGuest extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchCatalogRequest();
-        this.props.fetchCourseRequest(0);
-        loadjs('/assets/default/vendors/swiper/swiper-bundle.min.js', () => {});
+        loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/js/parts/main.min.js', () => {});
-        loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
         loadjs('/assets/default/js/parts/home.min.js', () => {});
         loadjs('/assets/default/js/parts/categories.min.js', () => {});
+        loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
+        
+        this.props.fetchCatalogRequest();
+        this.props.fetchCourseRequest(0);
+       
             
     }
 
@@ -74,12 +74,12 @@ class HeaderGuest extends React.Component {
 
 
 
-                                <form  className="mr-15 mx-md-20 form-inline my-2 my-lg-0 navbar-search position-relative">
-                                    <input className="form-control mr-5 rounded" type="text" name="search" placeholder="Search..."  onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)}
+                                <form  className=" form-inline my-2 my-lg-0 navbar-search position-relative">
+                                    <input  className="form-control" style={{width:"300px"}} type="text" name="search" placeholder="Search..."  onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)}
                                         aria-label="Search"/>
                                     <button onClick={()=>this.searchCourse(this.state.searchCourse) }
                                         className="btn-transparent d-flex align-items-center justify-content-center search-icon">
-                                        <i data-feather="search" width="20" height="20" className="mr-10"></i>
+                                        <i data-feather="search" width="20" height="20" ></i>
                                     </button>
                                 </form>
                             </div>
@@ -191,9 +191,9 @@ class HeaderGuest extends React.Component {
                     <div className="container">
                         <div className="d-flex align-items-center justify-content-between w-100">
 
-                            <a className="navbar-brand navbar-order mr-0" href="/">
+                            <Link to ="/" className="navbar-brand navbar-order mr-0" >
                                 <img src="/store/1/default_images/website-logo.png" className="img-cover" alt="site logo"/>
-                            </a>
+                            </Link>
 
                             <button className="navbar-toggler navbar-order" type="button" id="navbarToggle">
                                 <span className="navbar-toggler-icon"></span>
@@ -261,10 +261,10 @@ class HeaderGuest extends React.Component {
                                         <Link to="/course" className="nav-link" >Courses</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/about">About</a>
+                                        <Link to ="/about" className="nav-link" >About</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="/contact">Contact</a>
+                                        <Link to ="/contact" className="nav-link" >Contact</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -305,32 +305,8 @@ class HeaderGuest extends React.Component {
                                         </div>
                                     </div>
 
-                                    <div className="border-left mx-15"></div>
 
-                                    <div className="dropdown">
-                                        <button type="button" className="btn btn-transparent dropdown-toggle" disabled
-                                            id="navbarNotification" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            <i data-feather="bell" width="20" height="20" className="mr-10"></i>
-
-                                        </button>
-
-                                        <div className="dropdown-menu pt-20" aria-labelledby="navbarNotification">
-                                            <div className="d-flex flex-column h-100">
-                                                <div className="mb-auto navbar-notification-card" data-simplebar>
-                                                    <div className="d-md-none border-bottom mb-20 pb-10 text-right">
-                                                        <i className="close-dropdown mr-10" data-feather="x" width="32" height="32"
-                                                            ></i>
-                                                    </div>
-
-                                                    <div className="d-flex align-items-center text-center py-50">
-                                                        <i data-feather="bell" width="20" height="20" className="mr-10"></i>
-                                                        <span className="">Empty notifications</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -354,6 +330,8 @@ const mapDispatchToProps = dispatch => {
      
         fetchCourseRequest:(e) => dispatch (fetchCourseRequest(e)),
         fetchCatalogRequest:() => dispatch (fetchCatalogRequest()),
+        loginRequest:(e) => dispatch (loginRequest(e)),
+
     };
 }
 

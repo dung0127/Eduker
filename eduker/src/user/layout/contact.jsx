@@ -19,7 +19,7 @@ class Contact extends React.Component {
            <>
            <Header/>
            <section   className="site-top-banner search-top-banner opacity-04 position-relative">
-        <img src="store/1/default_images/category_cover.png"   className="img-cover" alt="Contact"/>
+        <img src="/store/1/default_images/instructors_cover.png"   className="img-cover" alt="Contact"/>
 
         <div   className="container h-100">
             <div   className="row contact-us-head h-100 justify-content-center text-center">

@@ -18,12 +18,11 @@ class HeaderUser extends React.Component {
     }
 
     componentDidMount(){
-        loadjs('/assets/default/vendors/swiper/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/js/parts/main.min.js', () => {});
-        loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
         loadjs('/assets/default/js/parts/home.min.js', () => {});
         loadjs('/assets/default/js/parts/categories.min.js', () => {});
-            
+        loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
+        loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
         this.props.fetchDetailUserRequest();
         this.props.fetchCourseRequest(0);
         this.props.fetchCatalogRequest();
@@ -307,10 +306,10 @@ class HeaderUser extends React.Component {
 
                             <div className="nav-icons-or-start-live navbar-order">
 
-                                <Link to="/detail" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
+                                <Link to="/enroll" className="d-none d-lg-flex btn btn-sm btn-primary nav-start-a-live-btn">
                                   Enroll Now
                                 </Link>
-                                <Link to="/detail" className="d-flex d-lg-none text-primary nav-start-a-live-btn font-14">
+                                <Link to="/enroll" className="d-flex d-lg-none text-primary nav-start-a-live-btn font-14">
                                     Enroll Now
                                 </Link>
 

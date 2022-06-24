@@ -196,6 +196,7 @@ import loadjs from "loadjs";
                             </div> */}
                             <div className="invoice_footer">
                                 <div className="leftfooter">
+                                    <br/>
                                     <p>Thanks for buying.</p>
                                 </div>
                                 
