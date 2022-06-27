@@ -32,7 +32,7 @@ class Enroll extends React.Component {
                         <div className="row h-100 align-items-center justify-content-center text-center">
                             <div className="col-12 col-md-9 col-lg-7">
                                 <div className="top-search-categories-form">
-                                    <h1 className="text-white font-30 mb-15">Enroll course</h1>
+                                    <h1 className="text-white font-30 mb-15">My course</h1>
                                     <span className="course-count-badge py-5 px-10 text-white rounded">{enroll&&enroll.length} Courses</span>
 {/* 
                                     <div className="search-input bg-white p-10 flex-grow-1">

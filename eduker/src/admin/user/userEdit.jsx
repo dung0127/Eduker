@@ -250,7 +250,7 @@ class UserEdit extends React.Component {
                                                         <input className="form-control prompt srch_explore" type="text" name="email"  
                                                         onChange={this.handleInputChange} defaultValue={userById.email}/>					
                                                     </div>
-                                                    {this.state.error.email && <div className="validation alert alert-warning">{this.state.error.email}</div>}
+                                                    {this.state.error.email && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.email}</div>}
 
                                                 </div>
                                             </div>

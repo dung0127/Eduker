@@ -197,7 +197,7 @@ import loadjs from "loadjs";
                             <div className="invoice_footer">
                                 <div className="leftfooter">
                                     <br/>
-                                    <p>Thanks for buying.</p>
+                                    <p style={{textAlign:"center"}}>Thanks for buying.</p>
                                 </div>
                                 
                             </div>
@@ -205,15 +205,19 @@ import loadjs from "loadjs";
                         </div>
                     </div>
             </div>
-                    
+            <div className="create-webinar-footer d-flex align-items-center justify-content-between mt-20 pt-15 border-top">
+            <div className="">
+                <br/>
+            <Link to ="/orders" type="button" id="getNextStep" className="btn btn-sm btn-primary ml-15" >Back</Link>
+            <button style={{backgroundColor:"#dc2e2e", borderColor:"#dc2e2e"}} type="button" value={'Value'} onClick={()=> printdiv('print_this')}  className="btn btn-sm btn-primary ml-15" >Print</button>
+         
+            </div>
+                </div>
             </section>
             <br/>
             
             </div>
-         <div style={{paddingLeft:"150px"}}>
-            <Link to ="/orders" type="button" id="getNextStep" className="btn btn-sm btn-primary ml-15" >Back</Link>
-            <button style={{backgroundColor:"#dc2e2e", borderColor:"#dc2e2e"}} type="button" value={'Value'} onClick={()=> printdiv('print_this')}  className="btn btn-sm btn-primary ml-15" >Print</button>
-         </div>
+           
             </>
             
       );

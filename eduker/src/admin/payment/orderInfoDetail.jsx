@@ -131,7 +131,7 @@ class OrderInfoDetail extends React.PureComponent{
                             
                             <div className="invoice_footer">
                                 <div className="leftfooter">
-                                    <p>Thanks for buying.</p>
+                                    <p style={{textAlign:"center"}}>Thanks for buying.</p>
                                 </div>
                                 
                             </div>

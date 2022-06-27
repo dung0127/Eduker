@@ -117,6 +117,7 @@ class Signup extends React.Component {
     render() {
         return (
             <>
+            <Header/>
             <div className="container">
         <div className="row login-container">
             <div className="col-12 col-md-6 pl-0">
@@ -132,7 +133,7 @@ class Signup extends React.Component {
                                 <label className="input-label" for="email">Username:</label>
                                 <input type="text" name="username" maxlength="64" placeholder="Username" onChange={this.handleInputChange} className="form-control "
                                       />
-                                        {this.state.error.username && <div style={{width:"430px", height:"10px", fontSize:"13px", backgroundColor:"#f5cd7d", paddingTop:"10px"}} className="validation alert alert-warning">{this.state.error.username}</div>}
+                                        {this.state.error.username && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.username}</div>}
 
 
                                                             </div>
@@ -140,7 +141,7 @@ class Signup extends React.Component {
                         <div className="form-group">
                             <label className="input-label" for="full_name">Email:</label>
                             <input type="text" name="email" maxlength="64" placeholder="Email Address" onChange={this.handleInputChange}  className="form-control "/>
-                            {this.state.error.email && <div style={{width:"430px", height:"10px", fontSize:"13px", backgroundColor:"#f5cd7d", paddingTop:"10px"}} className="validation alert alert-warning">{this.state.error.email}</div>}
+                            {this.state.error.email && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.email}</div>}
                              
                                                     </div>
 
@@ -148,14 +149,14 @@ class Signup extends React.Component {
                             <label className="input-label" for="password">Password:</label>
                             <input name="password" type="password" maxlength="64" placeholder="Password" onChange={this.handleInputChange}
                                    className="form-control "/>
-                            {this.state.error.password && <div style={{width:"430px", height:"10px", fontSize:"13px", backgroundColor:"#f5cd7d", paddingTop:"10px"}} className="validation alert alert-warning">{this.state.error.password}</div>}
+                            {this.state.error.password && <div style={{color:"red",fontSize:"12px"}} >{this.state.error.password}</div>}
                                                     </div>
 
                         <div className="form-group ">
                             <label className="input-label" for="confirm_password">Confirm Password:</label>
                             <input type="password" name="confirmPassword" maxlength="64" placeholder="Confirm password" onChange={this.handleInputChange} 
                                    className="form-control " />
-                            {this.state.error.confirmPassword && <div style={{width:"430px", height:"10px", fontSize:"13px", backgroundColor:"#f5cd7d", paddingTop:"10px"}} className="validation alert alert-warning">{this.state.error.confirmPassword}</div>}
+                            {this.state.error.confirmPassword && <div style={{color:"red",fontSize:"12px"}} >{this.state.error.confirmPassword}</div>}
                                                     </div>
 
                                                   

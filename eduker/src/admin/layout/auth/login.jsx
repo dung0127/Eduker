@@ -114,15 +114,15 @@ class Login extends React.Component {
                                     <label className="input-label" for="username">Username:</label>
                                     <input name="username" type="text" className="form-control " placeholder="Username" id="id_email" onChange={this.handleInputsChange} value={this.state.user.username}
                                        aria-describedby="emailHelp"/>
-									{this.state.error.username && <div className="validation alert alert-warning"  style={{backgroundColor:"rgb(249 236 181)",padding:"10px",fontSize:"13px"}}>{this.state.error.username}</div>}
-                                    
+									{this.state.error.username && <div style={{color:"red",fontSize:"12px",padding:"10px",fontSize:"13px"}}>{this.state.error.username}</div>}
+                                     
                                 </div>
 
 
                                 <div className="form-group">
                                     <label className="input-label" for="password">Password:</label>
                                     <input  type="password" name="password" id="id_password" required=""  placeholder={"Password"} onChange={this.handleInputsChange} value={this.state.user.password} className="form-control "aria-describedby="passwordHelp"/>
-									{this.state.error.password && <div className="validation alert alert-warning" style={{backgroundColor:"rgb(249 236 181)",padding:"10px",fontSize:"13px"}}>{this.state.error.password}</div>}
+									{this.state.error.password && <div style={{color:"red",fontSize:"12px",padding:"10px",fontSize:"13px"}}>{this.state.error.password}</div>}
                                 
                                 </div>
 

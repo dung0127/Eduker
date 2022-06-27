@@ -81,7 +81,7 @@ class CourseById extends React.Component {
     }
 
     componentDidMount(){
-
+       
         loadjs('/assets/default/vendors/swiper/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/js/parts/main.min.js', () => {});
         loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
@@ -328,126 +328,130 @@ class CourseById extends React.Component {
         </div>
 
         <section className="mt-40">
-        {localStorage.getItem("isLogin")&&this.props.course.purchased?
-            this.props.course.userReview?
-           
-            <>
-            <h2 className="section-title after-line">Your Review &nbsp; <Link to='' onClick={()=>this.showEdit()}><img style={{height:"25px", width:"25px"}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACYElEQVRoge2ZPWsUQRjHf4reHSQggh9AwSYE0gTSiTkVm4joh0hzSUBCvoDBYGHU2tLOQuVI0qQJ2CRtIEiKVElxycUXtIyQl2JmcpPlMjtvu3uH+4dhj7lnZ/6/mWdm9vagVKmoqgKLQBs4jVQ2LPp9DnwCPgL3QgDeRDSuylpKn28T8cfAlC9ASzYy5tuAo97J/o6AaeAlcCKLF4QahTz0mo75p1r9JB2IGddG8wK4zLySN0QeAGnmlbwgsgZQOX8K/AJGUuIbOK6JLAH0BbsuP/8gMkRWALr5J0AFWMYP4pkpMAuApHklV4gXMnbLFBQb4DLzSi4Qt2TcX1OHMQHSzCvZQNSAVRmzZOo0FoCteSUThG7+ALhjaigGgO0+n1QFaMp7fwOjiIfLFVnXBobTGgkFcB35pJIz8Y3OyA/ZNBAC4DvySekzYT3ySr4AscyDR9ro8gFYICxtdCUXrFXa6HIFGEH8AOkJ8+AO0JDxH3w60+Rt/mpgxwPyajwdU1QFPgOPgUPgIbBte3MoQKiqwBdgAmH+AfDdpYEiAWqIx4IJxG4zjtl8FdgBvuqV17JylyKftLkJ3AUG9coiZsA3bdTmckWvzBsgJOcLBwhdsCfyesFzrDVwG3hk+L4CzAF1xIKt47BVSnWdgW5BLgfZrHaPTWnhecIiFrF61D5X6Aw0ES9jB1Pi/gGbwHvgp2dfmcxAnrqB8PZHryz6JHZR10XcTwCFb6Oh6nuAMoWKVt8D/B8p1JLX8cztuOu+vO6bgtQrkl4u8yaACvAK2OsBo8myi/gb9roJoFQpR50BLV1hJUuKr/4AAAAASUVORK5CYII="/></Link></h2> 
-            <br/>
-            <div className="course-reviews-box row align-items-center">
-                
-            <div className="col-12 text-center " >
-                {/* <div className="reviews-rate font-36 font-weight-bold text-primary">5.00</div> */}
-              
-                <div className="text-center">
-                  
-                        <div className="total_rating">	
-                        <div></div>
-                        <div className="stars-card d-flex align-items-center justify-content-start mt-0">
-
-                                {[...Array(5)].map((e, i) => (i < this.props.course.userReview.ratting)  ?
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                )}
-                                <div style={{float:"right"}}></div></div>
-                                < div className="text-center">{this.props.course.userReview.feedback}</div>
-                            
-                        </div>
-            
-                    {/* <div className="mt-15">1  Reviews</div> */}
-                </div>
-                <br/>
-                {this.state.show?
+        {localStorage.getItem("isLogin")&&localStorage.getItem("role")=="ROLE_ADMIN"?
+        ''
+        :
+            this.props.course.purchased?
+                this.props.course.userReview?
                 <>
+                <h2 className="section-title after-line">Your Review &nbsp; <Link to='' onClick={()=>this.showEdit()}><img style={{height:"25px", width:"25px"}} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACYElEQVRoge2ZPWsUQRjHf4reHSQggh9AwSYE0gTSiTkVm4joh0hzSUBCvoDBYGHU2tLOQuVI0qQJ2CRtIEiKVElxycUXtIyQl2JmcpPlMjtvu3uH+4dhj7lnZ/6/mWdm9vagVKmoqgKLQBs4jVQ2LPp9DnwCPgL3QgDeRDSuylpKn28T8cfAlC9ASzYy5tuAo97J/o6AaeAlcCKLF4QahTz0mo75p1r9JB2IGddG8wK4zLySN0QeAGnmlbwgsgZQOX8K/AJGUuIbOK6JLAH0BbsuP/8gMkRWALr5J0AFWMYP4pkpMAuApHklV4gXMnbLFBQb4DLzSi4Qt2TcX1OHMQHSzCvZQNSAVRmzZOo0FoCteSUThG7+ALhjaigGgO0+n1QFaMp7fwOjiIfLFVnXBobTGgkFcB35pJIz8Y3OyA/ZNBAC4DvySekzYT3ySr4AscyDR9ro8gFYICxtdCUXrFXa6HIFGEH8AOkJ8+AO0JDxH3w60+Rt/mpgxwPyajwdU1QFPgOPgUPgIbBte3MoQKiqwBdgAmH+AfDdpYEiAWqIx4IJxG4zjtl8FdgBvuqV17JylyKftLkJ3AUG9coiZsA3bdTmckWvzBsgJOcLBwhdsCfyesFzrDVwG3hk+L4CzAF1xIKt47BVSnWdgW5BLgfZrHaPTWnhecIiFrF61D5X6Aw0ES9jB1Pi/gGbwHvgp2dfmcxAnrqB8PZHryz6JHZR10XcTwCFb6Oh6nuAMoWKVt8D/B8p1JLX8cztuOu+vO6bgtQrkl4u8yaACvAK2OsBo8myi/gb9roJoFQpR50BLV1hJUuKr/4AAAAASUVORK5CYII="/></Link></h2> 
+                <br/>
                 <div className="course-reviews-box row align-items-center">
-                
-                <div className="col-12 text-center ">
+                    
+                <div className="col-12 text-center " >
                     {/* <div className="reviews-rate font-36 font-weight-bold text-primary">5.00</div> */}
-
+                
                     <div className="text-center">
                     
-                            <div className="total_rating ">	
-                                                                        
-                                <div className="rate" onChange={this.formReview}>
-                                    <input type="radio" id="star5" name="ratting" value="5" />
-                                    <label for="star5" title="text"></label>
-                                    <input type="radio" id="star4" name="ratting" value="4" />
-                                    <label for="star4" title="text"></label>
-                                    <input type="radio" id="star3" name="ratting" value="3" />
-                                    <label for="star3" title="text"></label>
-                                    <input type="radio" id="star2" name="ratting" value="2" />
-                                    <label for="star2" title="text"></label>
-                                    <input type="radio" id="star1" name="ratting" value="1" />
-                                    <label for="star1" title="text"></label>
+                            <div className="total_rating">	
+                            <div></div>
+                            <div className="stars-card d-flex align-items-center justify-content-start mt-0">
 
-                                </div>
-                                < div className="text-center">Course Rating</div>
-
-                            </div>
+                                    {[...Array(5)].map((e, i) => (i < this.props.course.userReview.ratting)  ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                    <div style={{float:"right"}}></div></div>
+                                    < div className="text-center">{this.props.course.userReview.feedback}</div>
                                 
-
+                            </div>
+                
                         {/* <div className="mt-15">1  Reviews</div> */}
                     </div>
-                </div>
+                    <br/>
+                    {this.state.show?
+                    <>
+                    <div className="course-reviews-box row align-items-center">
+                    
+                    <div className="col-12 text-center ">
+                        {/* <div className="reviews-rate font-36 font-weight-bold text-primary">5.00</div> */}
 
-                </div>
-                <form className="mt-20">
-                    <div className="form-group">
-                        <textarea name="feedback" className="form-control" rows="10" placeholder="Add a public review" onChange={this.formReview}></textarea>
-                    </div>
-                    <button type="button" title="edit" onClick={()=>this.updateReview(this.state.review,this.props.course.id)} className="btn btn-sm btn-primary mt-20">Edit</button>&emsp;
-                    <button type="button" title="delete" onClick={()=>this.deleteReview(this.props.course.userReview.id, this.props.course.id)} style={{backgroundColor:"#f14d4d", borderColor:"#f14d4d"}} className="btn btn-sm btn-primary mt-20">Detele</button>
-                
-                </form>
-                </>:''}
-            </div>
+                        <div className="text-center">
+                        
+                                <div className="total_rating ">	
+                                                                            
+                                    <div className="rate" onChange={this.formReview}>
+                                        <input type="radio" id="star5" name="ratting" value="5" />
+                                        <label for="star5" title="text"></label>
+                                        <input type="radio" id="star4" name="ratting" value="4" />
+                                        <label for="star4" title="text"></label>
+                                        <input type="radio" id="star3" name="ratting" value="3" />
+                                        <label for="star3" title="text"></label>
+                                        <input type="radio" id="star2" name="ratting" value="2" />
+                                        <label for="star2" title="text"></label>
+                                        <input type="radio" id="star1" name="ratting" value="1" />
+                                        <label for="star1" title="text"></label>
 
-            </div>
-       
-            </>
-            :<>
-             <h2 className="section-title after-line">Reviews </h2>
-            <br/>
-            <div className="course-reviews-box row align-items-center">
-                
-                <div className="col-12 text-center ">
-                    {/* <div className="reviews-rate font-36 font-weight-bold text-primary">5.00</div> */}
-
-                    <div className="text-center">
-                      
-                            <div className="total_rating ">	
-                            											
-                                <div className="rate" onChange={this.formReview}>
-                                    <input type="radio" id="star5" name="ratting" value="5" />
-                                    <label for="star5" title="text"></label>
-                                    <input type="radio" id="star4" name="ratting" value="4" />
-                                    <label for="star4" title="text"></label>
-                                    <input type="radio" id="star3" name="ratting" value="3" />
-                                    <label for="star3" title="text"></label>
-                                    <input type="radio" id="star2" name="ratting" value="2" />
-                                    <label for="star2" title="text"></label>
-                                    <input type="radio" id="star1" name="ratting" value="1" />
-                                    <label for="star1" title="text"></label>
+                                    </div>
+                                    < div className="text-center">Course Rating</div>
 
                                 </div>
-                                < div className="text-center">Course Rating</div>
+                                    
 
-                            </div>
-                            	
-
-                        {/* <div className="mt-15">1  Reviews</div> */}
+                            {/* <div className="mt-15">1  Reviews</div> */}
+                        </div>
                     </div>
+
+                    </div>
+                    <form className="mt-20">
+                        <div className="form-group">
+                            <textarea name="feedback" className="form-control" rows="10" placeholder="Add a public review" onChange={this.formReview}></textarea>
+                        </div>
+                        <button type="button" title="edit" onClick={()=>this.updateReview(this.state.review,this.props.course.id)} className="btn btn-sm btn-primary mt-20">Edit</button>&emsp;
+                        <button type="button" title="delete" onClick={()=>this.deleteReview(this.props.course.userReview.id, this.props.course.id)} style={{backgroundColor:"#f14d4d", borderColor:"#f14d4d"}} className="btn btn-sm btn-primary mt-20">Detele</button>
+                    
+                    </form>
+                    </>:''}
                 </div>
 
                 </div>
-                <form className="mt-20">
-                    <div className="form-group">
-                        <textarea name="feedback" className="form-control" rows="10" placeholder="Add a public review" onChange={this.formReview}></textarea>
+        
+                </>
+                :
+                <>
+                <h2 className="section-title after-line">Reviews </h2>
+                <br/>
+                <div className="course-reviews-box row align-items-center">
+                    
+                    <div className="col-12 text-center ">
+                        {/* <div className="reviews-rate font-36 font-weight-bold text-primary">5.00</div> */}
+
+                        <div className="text-center">
+                        
+                                <div className="total_rating ">	
+                                                                            
+                                    <div className="rate" onChange={this.formReview}>
+                                        <input type="radio" id="star5" name="ratting" value="5" />
+                                        <label for="star5" title="text"></label>
+                                        <input type="radio" id="star4" name="ratting" value="4" />
+                                        <label for="star4" title="text"></label>
+                                        <input type="radio" id="star3" name="ratting" value="3" />
+                                        <label for="star3" title="text"></label>
+                                        <input type="radio" id="star2" name="ratting" value="2" />
+                                        <label for="star2" title="text"></label>
+                                        <input type="radio" id="star1" name="ratting" value="1" />
+                                        <label for="star1" title="text"></label>
+
+                                    </div>
+                                    < div className="text-center">Course Rating</div>
+
+                                </div>
+                                    
+
+                            {/* <div className="mt-15">1  Reviews</div> */}
+                        </div>
                     </div>
-                    <button type="button" onClick={()=>this.createReview(this.state.review, this.props.course.id)} className="btn btn-sm btn-primary mt-20">Post review</button>
-                </form>
-            </>
-        :''}
+
+                    </div>
+                    <form className="mt-20">
+                        <div className="form-group">
+                            <textarea name="feedback" className="form-control" rows="10" placeholder="Add a public review" onChange={this.formReview}></textarea>
+                        </div>
+                        <button type="button" onClick={()=>this.createReview(this.state.review, this.props.course.id)} className="btn btn-sm btn-primary mt-20">Post review</button>
+                    </form>
+                </>
+            :''
+        }
             <div className="mt-45">
         {this.props.course.reviews&&this.props.course.reviews.length>0? this.props.course.reviews.map((review, r) => {
             return (
@@ -511,15 +515,13 @@ class CourseById extends React.Component {
                         <div className="">
                             <div className="course-img has-video">
 
-                                {/* <img src="/store/1015/new_live_system.jpg" className="img-cover" alt=""/> */}
+                                {/* <img src={this.props.course.imageVideoDescription} className="img-cover" alt=""/> */}
                                 
-                                <div 
-                                 
-                                 className="course-video-icon cursor-pointer d-flex align-items-center justify-content-center">
-                            <iframe  src={this.props.course.urlVideoDescription} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                <div className="course-video-icon cursor-pointer d-flex align-items-center justify-content-center">
+                                    <iframe  src={this.props.course.urlVideoDescription} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
                                 <i data-feather="play" width="25" height="25"></i>
-                            </div>
+                                </div>
                             </div>
 
                             <div className="px-20 pb-30">
@@ -537,11 +539,11 @@ class CourseById extends React.Component {
                                     {localStorage.getItem("isLogin")?
                                     localStorage.getItem("role")=="ROLE_ADMIN"?'':
                                         this.props.course.purchased?
-                                    <div className="mt-20 d-flex flex-column">
-                                         
-                                         <Link to= {`/learn/${this.props.course.id}`}  style={{backgroundColor:"#e1b329", borderColor:"#e1b329"}} type="button" className="btn btn-primary" params={this.props.course.id} >Enroll now</Link>
-                                        {/* <div class="jq-toast-wrap bottom-right" role="alert" aria-live="polite"><div className="jq-toast-single jq-has-icon jq-icon-success" style={{backgroundColor: "rgb(67, 212, 119)", color: "white", textAlign: "left"}}><span className="jq-toast-loader jq-toast-loaded" style={{WebkitTransition: "width 9.6s ease-in",                       OTransition: "width 9.6s ease-in",                       transition: "width 9.6s ease-in",  backgroundColor: "#9EC600"}}></span><span className="close-jq-toast-single">×</span><h2 className="jq-toast-heading">Added to cart!</h2>You can continue shopping or go to cart to finalize your order.</div></div> */}
-                                    </div>
+                                        <div className="mt-20 d-flex flex-column">
+                                            
+                                            <Link to= {`/learn/${this.props.course.id}`}  style={{backgroundColor:"#e1b329", borderColor:"#e1b329"}} type="button" className="btn btn-primary" params={this.props.course.id} >Enroll now</Link>
+                                            {/* <div class="jq-toast-wrap bottom-right" role="alert" aria-live="polite"><div className="jq-toast-single jq-has-icon jq-icon-success" style={{backgroundColor: "rgb(67, 212, 119)", color: "white", textAlign: "left"}}><span className="jq-toast-loader jq-toast-loaded" style={{WebkitTransition: "width 9.6s ease-in",                       OTransition: "width 9.6s ease-in",                       transition: "width 9.6s ease-in",  backgroundColor: "#9EC600"}}></span><span className="close-jq-toast-single">×</span><h2 className="jq-toast-heading">Added to cart!</h2>You can continue shopping or go to cart to finalize your order.</div></div> */}
+                                        </div>
                                     :
                                     <div className="mt-20 d-flex flex-column">
                                         <button type="button" className="btn btn-primary" onClick={() => this.addCart(this.props.cartItems, this.props.course)}>
@@ -568,18 +570,15 @@ class CourseById extends React.Component {
                                     {this.props.course.saved?
                                     <div className="col" onClick={()=>this.unsavedCourse(this.props.course.id)} >
                                         <Link to ='' className="d-flex flex-column align-items-center text-gray">
-                                          
-                                            <svg  style={{width:"20px", height:"20px"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z"/></svg>
+                                            <img src="/assets/default/img/icon-heart.svg"  style={{width:"22px", height:"22px"}} alt=""/>
                                             <span  className="font-12">Unfavorite</span>
-                                            
-                                            </Link>
+                                        </Link>
                                     </div>
                                     :
                                     <div className="col" onClick={()=>this.savedCourse(this.props.course.id)}>
                                         <Link to ='' className="d-flex flex-column align-items-center text-gray">
                                           
-                                           
-                                            <svg style={{width:"20px", height:"20px"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M244 84L255.1 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 0 232.4 0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84C243.1 84 244 84.01 244 84L244 84zM255.1 163.9L210.1 117.1C188.4 96.28 157.6 86.4 127.3 91.44C81.55 99.07 48 138.7 48 185.1V190.9C48 219.1 59.71 246.1 80.34 265.3L256 429.3L431.7 265.3C452.3 246.1 464 219.1 464 190.9V185.1C464 138.7 430.4 99.07 384.7 91.44C354.4 86.4 323.6 96.28 301.9 117.1L255.1 163.9z"/></svg>
+                                            <svg style={{width:"22px", height:"22px"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M244 84L255.1 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 0 232.4 0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84C243.1 84 244 84.01 244 84L244 84zM255.1 163.9L210.1 117.1C188.4 96.28 157.6 86.4 127.3 91.44C81.55 99.07 48 138.7 48 185.1V190.9C48 219.1 59.71 246.1 80.34 265.3L256 429.3L431.7 265.3C452.3 246.1 464 219.1 464 190.9V185.1C464 138.7 430.4 99.07 384.7 91.44C354.4 86.4 323.6 96.28 301.9 117.1L255.1 163.9z"/></svg>
                                             <span className="font-12">Favorite</span>
                                            
                                             </Link>

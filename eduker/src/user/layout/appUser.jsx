@@ -65,8 +65,8 @@ class AppUser extends React.Component {
                 <Route path ="/" element = {<MainUser/>}/> 
                 <Route path ="*" element = {<MainUser/>}/> 
                 <Route path ="/signup" element = {<Signup/>}/>
-                <Route path ="/learn/:id" element = {<PrivateRoute><CourseLesson/></PrivateRoute>}/>
-                <Route path ="/enroll" element = {<PrivateRoute><Enroll/></PrivateRoute>}/> 
+                {!isEmpty(this.props.user) && <Route path ="/learn/:id" element = {<CourseLesson/>} /> }
+                {!isEmpty(this.props.user) && <Route path ="/enroll" element = {<Enroll/>}/> }
 
                 {!isLogin?<Route path ="/login" element = {<Login/>}/>:<Route path ="/login" element = {<MainUser/>}/>}
                 <Route path ="/course" element = {<Course/>}/>

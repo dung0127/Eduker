@@ -146,7 +146,7 @@ class ChangePassword extends React.Component {
                         <div >
                         {this.state.isShow?<img src="/assets/default/img/private.png" style={{position: 'absolute', cursor: 'pointer', width:'15px', top:'40px',left:'330px'}} onClick={this.showHide}/>
                         :<img src="/assets/default/img/eye.png" style={{position: 'absolute', cursor: 'pointer', width:'15px', top:'40px',left:'330px'}} onClick={this.showHide} /> }
-                        {this.state.error.oldPassword && <div style={{width:"350px", height:"40px", fontSize:"12px"}} className="validation alert alert-warning">{this.state.error.oldPassword}</div>}
+                        {this.state.error.oldPassword && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.oldPassword}</div>}
                     
                         </div>
                 </div>
@@ -157,7 +157,7 @@ class ChangePassword extends React.Component {
                     <div >
                         {this.state.isShow?<img src="/assets/default/img/private.png" style={{position: 'absolute', cursor: 'pointer', width:'15px', top:'40px',left:'330px'}} onClick={this.showHide}/>
                         :<img src="/assets/default/img/eye.png" style={{position: 'absolute', cursor: 'pointer', width:'15px', top:'40px',left:'330px'}} onClick={this.showHide} /> }
-                        {this.state.error.newPassword && <div style={{width:"350px", height:"40px", fontSize:"12px"}} className="validation alert alert-warning">{this.state.error.newPassword}</div>}
+                        {this.state.error.newPassword && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.newPassword}</div>}
                         
                         </div>
                 </div>                    
@@ -168,7 +168,7 @@ class ChangePassword extends React.Component {
                         <div >
                         {this.state.isShow?<img src="/assets/default/img/private.png" style={{position: 'absolute', cursor: 'pointer', width:'15px', top:'40px',left:'330px'}} onClick={this.showHide}/>
                         :<img src="/assets/default/img/eye.png" style={{position: 'absolute', cursor: 'pointer', width:'15px', top:'40px',left:'330px'}} onClick={this.showHide} /> }
-                        {this.state.error.confirmPassword && <div style={{width:"350px", height:"40px", fontSize:"12px"}} className="validation alert alert-warning">{this.state.error.confirmPassword}</div>}
+                        {this.state.error.confirmPassword && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.confirmPassword}</div>}
                         
                         </div>            
                     </div>
@@ -197,7 +197,7 @@ class ChangePassword extends React.Component {
                 
                 </div>
                 <div style={{paddingLeft:"50px"}}>
-                    <Link to ="/detail" type="button" id="getNextStep" className="btn btn-sm btn-primary ml-15" >Back</Link>
+                    <Link to ="/detail" type="button" style={{backgroundColor:"#eb4242", borderColor:"#eb4242"}} id="getNextStep" className="btn btn-sm btn-primary ml-15" >Back</Link>
                     <button type="button" value={'Value'} onClick={()=>this.updatePassword(this.state.password)} className="btn btn-sm btn-primary ml-15" >Save</button>
                 </div>
                 </section>

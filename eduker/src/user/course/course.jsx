@@ -6,7 +6,7 @@ import { addToCart } from "../../actions/cart";
 import { fetchSavedRequest } from "../../actions/savedCourse";
 import moment from 'moment';
 import Header from "../layout/header.jsx";
-
+import loadjs from"loadjs"
   
 let date
 class Course extends React.Component {
@@ -26,6 +26,7 @@ class Course extends React.Component {
 
     componentDidMount() {
         this.props.fetchCourseRequest(this.props.page);
+
     }
     handleInputSearchCourseChange = e => {
         let value = e.target.value

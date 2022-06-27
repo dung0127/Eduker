@@ -62,7 +62,15 @@ class CourseEdit extends React.Component {
     getSwitch = (preview) => {
         this.setState({switch:preview})
     }
-    
+    stopVideo = (id) => {
+        
+        $("#videoModalLecture"+id).on('hidden.bs.modal', function(e) {
+            var $iframes = $(e.target).find('iframe');
+            $iframes.each(function(index, iframe){
+            $(iframe).attr('src', $(iframe).attr('src'));
+            });
+          })
+    }
     switch =  () => {
         this.state.changeSwitch?
             this.setState({
@@ -691,7 +699,7 @@ class CourseEdit extends React.Component {
                                                 </div>
 
                                                 <div className="d-flex align-items-center">
-                                                    
+                                                     
                                                     <span className="mr-15 font-14 text-gray">
                                                         {count} lectures
                                                     </span>
@@ -725,10 +733,14 @@ class CourseEdit extends React.Component {
                                                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-film text-gray"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
                                                                                                 </span>
                                                                                             </span>
-                                                                                            <span className="font-weight-bold text-secondary font-14">{lecture.title}</span>
-                                                                                        </div>
-                                                                                        <div className="d-flex align-items-center" >
+                                                                                            <span className="font-weight-bold text-secondary font-14">{lecture.title} </span>&nbsp;
                                                                                             
+                                                                                        </div>
+                                                                                        
+                                                                                        <div className="d-flex align-items-center" >
+                                                                                            <a href="#" data-toggle="modal" data-target={"#videoModalLecture"+lecture.id} className="course-content-btns  ">
+                                                                                                <img  src="http://www.downloadclipart.net/medium/play-button-png-clipart.png" style={{width:"30px",height:"25px"}} alt="" />
+                                                                                            </a>&nbsp;
                                                                                             <button data-toggle="modal" onClick={()=>this.getSwitch(lecture.preview)} data-target={'#idlec'+lecture.id} class="js-add-chapter btn-transparent text-gray" data-webinar-id="2010" data-type="file" data-chapter="31" data-locale="EN">
                                                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3 mr-10 cursor-pointer"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
                                                                                             </button>
@@ -736,7 +748,27 @@ class CourseEdit extends React.Component {
                                                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 mr-10 cursor-pointer"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                                                                                             </a>
                                                                                         </div>
-                                                                                        
+                                                                                        <div className="modal vd_mdl fade" id={"videoModalLecture"+lecture.id} role="dialog" aria-hidden="true">
+                                                                                                    <div className="modal-dialog modal-lg" role="document">
+                                                                                                        <div className="modal-content">
+                                                                                                            
+                                                                                                            <div className="modal-header">
+                                                                                                                <h5 className="modal-title">Video</h5>
+                                                                                                                <button onClick={()=>this.stopVideo(lecture.id)} type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                                                </button>
+                                                                                                            </div>
+                                                                                                            {lecture.videoUrl?
+                                                                                                            <div className="modal-body"  >
+                                                                                                                <iframe style={{height:"300px"}} className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                                                                                            </div>
+                                                                                                            :console.log(lecture.videoUrl)}
+                                                                                                            <div className="modal-footer">
+                                                                                                                {/* <button type="button" className="main-btn" data-dismiss="modal" value={'delete'} onClick={()=>this.deleteLecture(lecture.id, this.props.course.id)} ><i className="uil uil-trash-alt"></i>DELETE</button> */}
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
                                                                                     </div>
                                                                                     <div className="modal fade update"  id={'idlec'+lecture.id} aria-hidden="true">
                                                                                     <div className="modal-dialog modal-lg">
@@ -824,6 +856,7 @@ class CourseEdit extends React.Component {
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div className="modal-footer">
+                                                                                                 
                                                                                                 <button type="button" className="btn btn-sm btn-primary" value={'edit'}  onClick={()=>this.updateLecture(lecture,lesson.id,this.props.course.id,this.state.newLecture)}   >Save</button>
                                                                                                 <button type="button" className="btn btn-sm btn-danger" data-dismiss="modal" onClick={()=>this.closeModal()}>Close</button>
                                                                                                 {/* <button type="button" className="main-btn" data-dismiss="modal" value={'delete'} onClick={()=>this.deleteLecture(lecture.id, this.props.course.id)} ><i className="uil uil-trash-alt"></i>DELETE</button> */}

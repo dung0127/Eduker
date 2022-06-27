@@ -201,7 +201,7 @@ class CatalogAdd extends React.Component {
                                                                 <div class="col-lg-12 ">	
                                                                     <div class="mt-20 lbel25">
                                                                         <div class="section-add-item-wrap p-7">
-                                                                        <button  title="Edit" className="gray-s form-control" style={{backgroundColor:"#43d477"}} data-toggle="modal" data-target='#hoho' ><i class="far fa-plus-square mr-2"></i>New SubCatalog</button>
+                                                                        <button  title="Edit" className="gray-s form-control" style={{backgroundColor:"rgb(250 91 91)"}} data-toggle="modal" data-target='#hoho' ><i class="far fa-plus-square mr-2"></i>New SubCatalog</button>
                                                                         </div>			
                                                                     </div>					
                                                                 </div>
@@ -268,7 +268,7 @@ class CatalogAdd extends React.Component {
                                                                             this.state.subCatalog.map(sub => {
                                                                                 return (
                                                                                     <>
-                                                                                    <div class="section-header" style={{backgroundColor:"#43d477", borderRadius:"5px", textAlign:"center", paddingTop:"5px", paddingBottom:"5px", color:"white"}}>
+                                                                                    <div class="section-header" style={{backgroundColor:"#43d477", borderRadius:"5px", textAlign:"center", paddingTop:"5px", paddingBottom:"5px", color:"white", fontSize:"14px"}}>
                                                                                         {sub.name}&nbsp;
                                                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" value={'delete'} name={sub.name} onClick={()=>this.deleteSubCatalog(sub.name)}>
                                                                                             &times; &nbsp;

@@ -73,7 +73,7 @@ class DetailUser extends React.Component {
 
                                     <div className="d-flex flex-column ml-25 pl-5 following-status">
                                         <span className="font-20 font-weight-bold text-dark-blue">{courses&&courses.length}</span>
-                                        <span className="font-14 text-gray">Saved</span>
+                                        <span className="font-14 text-gray">Favorites</span>
                                     </div>
                                 </div>
                                 }
@@ -107,7 +107,7 @@ class DetailUser extends React.Component {
                             <a className="position-relative text-dark-blue font-weight-500 font-16 " id="webinars-tab" data-toggle="tab" href="#webinars" role="tab" aria-controls="webinars" aria-selected="false">Enrolled</a>
                         </li>
                         <li className="nav-item mr-20 mr-lg-50 mt-30">
-                            <a className="position-relative text-dark-blue font-weight-500 font-16 " id="badges-tab" data-toggle="tab" href="#badges" role="tab" aria-controls="badges" aria-selected="false">Saved</a>
+                            <a className="position-relative text-dark-blue font-weight-500 font-16 " id="badges-tab" data-toggle="tab" href="#badges" role="tab" aria-controls="badges" aria-selected="false">Favorites</a>
                         </li>
                         </>
                         :''

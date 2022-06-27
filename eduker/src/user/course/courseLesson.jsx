@@ -10,6 +10,7 @@ import { fetchAllEnrollRequest} from "../../actions/course"
 import {withRouter} from "../../admin/layout/auth/withRouter"
 import loadjs from 'loadjs';
 import Header from "../layout/header.jsx";
+import {Link} from "react-router-dom"
 
 let arr
 
@@ -33,8 +34,6 @@ class CourseLesson extends React.Component {
 			this.props.courseByIdRequest(en.id):''
 			)
         })
-        loadjs('/assets/default/learning_page/styles.css', () => {});
-        loadjs('/assets/learning_page/scripts.min.js', () => {});
         
 		
     } 
@@ -93,12 +92,12 @@ class CourseLesson extends React.Component {
             
                     <div  className="learning-page-progress-card d-flex flex-column">
                         <a href="https://lms.rocket-soft.org/course/Become-a-Product-Manager"  className="learning-page-navbar-title">
-                            <span style={{fontSize:"22px"}} className="font-weight-bold">{course.title}</span>
+                            <span style={{fontSize:"22px"}} className="font-weight-bold">&nbsp;&nbsp;&nbsp;{course.title}</span>
                         </a>
                         <div  className="d-flex align-items-center">
                             
                         {this.state.lectureShow?
-                            <span style={{fontSize:"16px"}}  className="ml-10 font-weight-500 font-14 text-gray">{this.state.lectureShow.title}</span>
+                            <span style={{fontSize:"16px"}}  className="ml-10 font-weight-500 font-14 text-gray">&nbsp;&nbsp;{this.state.lectureShow.title}</span>
                         :''}
                         </div>
                         
@@ -108,25 +107,22 @@ class CourseLesson extends React.Component {
                 <div  className="d-flex align-items-center">
             
                     <div  className="d-none align-items-center d-lg-flex">
-                        <a href ={`/course/${course.id}`} params={course.id}  className="btn learning-page-navbar-btn btn-sm border-gray200">Course Page</a>
+                        <Link to ={`/course/${course.id}`} params={course.id}  className="btn learning-page-navbar-btn btn-sm border-gray200">Course Page</Link>
             
-                        <a href="/enroll"  className="btn learning-page-navbar-btn btn-sm border-gray200 ml-10">My Courses</a>
+                        <Link to ="/enroll"  className="btn learning-page-navbar-btn btn-sm border-gray200 ml-10">My Courses</Link>
                     </div>
             
-                    <button id="collapseBtn" type="button"  className="btn-transparent ml-20">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"  className="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                    </button>
                 </div>
             </div>
       
             <div  className="d-flex position-relative">
                 {this.state.lectureShow?
-                <div  className="learning-page-content flex-grow-1 bg-info-light p-15">
-                    <iframe  src={this.state.lectureShow.videoUrl}  style={{width:"100%",height:"85%",top:"0",left:"0"}}  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <div className="learning-page-content flex-grow-1 bg-info-light p-15">
+                    <iframe  src={this.state.lectureShow.videoUrl}  style={{width:"100%",height:"650px",top:"0",left:"0"}}  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
                 :
                 <div  className="learning-page-content flex-grow-1 bg-info-light p-15">
-                    <iframe  src={course.urlVideoDescription}  style={{width:"100%",height:"85%",top:"0",left:"0"}}  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <iframe  src={course.urlVideoDescription}  style={{width:"100%",height:"650px",top:"0",left:"0"}}  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
                 }
       
@@ -154,7 +150,7 @@ class CourseLesson extends React.Component {
       
                     <div  className="tab-content h-100" id="nav-tabContent">
                         <div  className="pb-20 tab-pane fade show active h-100" id="content" role="tabpanel" aria-labelledby="content-tab">
-                            <div  className="content-tab p-15 pb-50">
+                            <div  className="content-tab p-15 pb-50" style={{overflowY:"auto",height:"calc(100vh - 200px)"}}>
                         <div  className="accordion-content-wrapper mt-15" id="chapterAccordion_file" role="tablist" aria-multiselectable="true">
                         {course.lessons?
 						course.lessons.map((lesson,i)=>{

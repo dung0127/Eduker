@@ -74,8 +74,8 @@ class HeaderGuest extends React.Component {
 
 
 
-                                <form  className=" form-inline my-2 my-lg-0 navbar-search position-relative">
-                                    <input  className="form-control" style={{width:"300px"}} type="text" name="search" placeholder="Search..."  onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)}
+                                <form  className="mr-15 mx-md-20 form-inline my-2 my-lg-0 navbar-search position-relative">
+                                    <input  className="form-control"  type="text" name="search" placeholder="Search..."  onChange={this.handleInputSearchChange} onKeyPress={e=> e.key==='Enter' && this.searchCourse(this.state.searchCourse)}
                                         aria-label="Search"/>
                                     <button onClick={()=>this.searchCourse(this.state.searchCourse) }
                                         className="btn-transparent d-flex align-items-center justify-content-center search-icon">
