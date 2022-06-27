@@ -26,6 +26,7 @@ import CourseEdit from "../course/courseEdit.jsx";
 import OrderInfo from "../payment/orderInfo.jsx";
 import OrderInfoDetail from "../payment/orderInfoDetail.jsx";
 import Signup from "../../user/profile/signup.jsx";
+import UserAdd from "../user/userAdd.jsx";
 
 const isLogin = localStorage.getItem("isLogin");
 
@@ -70,6 +71,7 @@ class AppAdmin extends React.Component {
                 <Route path ="/catalog-add" element = {<CatalogAdd/>}/>
                 <Route path ="/contact" element = {<Contact/>}/>
                 {isEmpty(this.props.user)?<Route path ="/login" element = {<Login/>}/>:<Route path ="/login" element = {<DashBoard/>}/>}
+                <Route path ="/user-add" element = {<UserAdd/>}/> 
         
                 <Route path ="/order-info" element = {<OrderInfo/>}/>
                 <Route path="/order-detail/:id" element = {<OrderInfoDetail/>}/>

@@ -89,12 +89,25 @@ class Panel extends React.Component {
                             </Link>
                         </li>
                         <li className="sidenav-item ">
-                                <Link to ="/user-info" className="d-flex align-items-center">
+                            <a className="d-flex align-items-center" data-toggle="collapse" href="#webinarCollapseUser" aria-expanded="false" aria-controls="webinarCollapseUser">
                                 <span className="sidenav-item-icon mr-10">
-                                    <i data-feather="user" stroke="#1f3b64" stroke-width="1.5" width="24" height="24" className="mr-10 webinar-icon"></i>
+                                <i data-feather="user" stroke="#1f3b64" stroke-width="1.5" width="24" height="24" className="mr-10 webinar-icon"></i>
+
                                 </span>
-                                    <span className="font-14 text-dark-blue font-weight-500">Users</span>
-                                </Link>
+                                <span className="font-14 text-dark-blue font-weight-500">User</span>
+                            </a>
+                            <div className="collapse " id="webinarCollapseUser">
+                                <ul className="sidenav-item-collapse">
+                                        <li className="mt-5 ">
+                                            <Link to ="/user-info">All user</Link>
+                                        </li>
+
+                                        <li className="mt-5 ">
+                                            <Link to ="/user-add">New Account</Link>
+                                        </li>
+                                 
+                                </ul>
+                            </div>
                         </li>
                         <li className="sidenav-item ">
                             <a className="d-flex align-items-center" data-toggle="collapse" href="#webinarCollapseCata" aria-expanded="false" aria-controls="webinarCollapseCata">
@@ -105,7 +118,7 @@ class Panel extends React.Component {
                             </a>
                             <div className="collapse " id="webinarCollapseCata">
                                 <ul className="sidenav-item-collapse">
-                                                            <li className="mt-5 ">
+                                        <li className="mt-5 ">
                                             <Link to ="/catalog">Catalog</Link>
                                         </li>
 
@@ -134,7 +147,7 @@ class Panel extends React.Component {
 
                             <div className="collapse " id="webinarCollapse">
                                 <ul className="sidenav-item-collapse">
-                                                            <li className="mt-5 ">
+                                        <li className="mt-5 ">
                                             <Link to ="/course-info">All Courses</Link>
                                         </li>
 

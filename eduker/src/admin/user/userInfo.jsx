@@ -89,13 +89,15 @@ class UserInfo extends React.Component {
                         </div>
                         
                     </div>
-                </div>
+                </div> 
             </section>
 
                     <section className="mt-35">
                     <div className="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
                         <h2 className="section-title">All Users</h2>
                     </div>
+                    <Link to ="/user-add" className="btn btn-primary btn-sm mt-15" >Create New Account</Link>
+
                     <div className="panel-section-card py-20 px-25 mt-20">
                         <div className="row">
                             <div className="col-12 ">
@@ -182,7 +184,31 @@ class UserInfo extends React.Component {
                         </div>
                     </div>
 
-                      
+                    {(this.props.totalPages>1?
+                            <div className="mt-50 pt-30">
+                                <nav className="d-flex justify-content-center">
+                                    <ul className="custom-pagination d-flex align-items-center justify-content-center">
+                                        {this.props.page > 0?   
+                                        <li  className="previous" onClick={() => this.handleClick(this.props.page-1)}>
+                                            <a><svg style={{cursor:"pointer"}} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                        </a></li>
+                                        :<li className="previous disabled">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                                        </li>} 
+                                        {[...Array(this.props.totalPages)].map((e, i) => (this.props.page) == i ?<li><a style={{cursor:"pointer"}} className="active" onClick={() => this.handleClick(i)} key={i}>{i+1}</a></li>
+                                                                                                    :<li><a style={{cursor:"pointer"}} onClick={() => this.handleClick(i)} key={i}>{i+1}</a></li>)         }
+                                        {this.props.page  < (this.props.totalPages-1)?
+                                        <li className="next" onClick={() => this.handleClick(this.props.page+1)}><a>
+                                            <svg style={{cursor:"pointer"}} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                        </a></li>
+                                        :<li className="next disabled">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                        </li>
+                                        }   
+                                    </ul>
+                                </nav>
+                            </div>
+                            :'')}
                 </section>
             
                 </div>
