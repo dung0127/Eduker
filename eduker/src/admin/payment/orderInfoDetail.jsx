@@ -40,11 +40,11 @@ class OrderInfoDetail extends React.PureComponent{
 
                 <div className="panel-content">
                 <div className="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
-                        
-                        <h2 className="section-title">Order #{orderById.orderNumber}</h2>
-                    </div>
-                <div className="container mt-30" id="print_this" >
-             <section className="rounded-lg border px-10 pb-35 pt-5 position-relative" style={{backgroundColor:"white"}}>
+                    <h2 className="section-title">Order #{orderById.orderNumber}</h2>
+                </div>
+                <br/>
+                <div style={{backgroundColor:"white", maxWidth:"100%"}} id="print_this" >
+             <section className="rounded-lg border px-10 pb-35 pt-5 position-relative" style={{backgroundColor:"white", maxWidth:"100%"}}>
              <div className="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
             </div>
             <div className="panel-section-card py-20 px-25 mt-20">
@@ -60,7 +60,7 @@ class OrderInfoDetail extends React.PureComponent{
                                             <ul>
                                                 <li><div className="vdt-list">590, Cách Mạng Tháng Tám, P11, Quận 3</div></li>
                                                 <li><div className="vdt-list">Thành phố Hồ Chí Minh</div></li>
-                                                <li><a href="#">  rockeLMS.com</a></li>
+                                                <li><a href="#">  rocketLMS.com</a></li>
                                                 
                                             </ul>
                                         </div>		

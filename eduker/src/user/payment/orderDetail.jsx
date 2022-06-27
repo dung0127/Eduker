@@ -49,7 +49,7 @@ import loadjs from "loadjs";
              </div>
                  </div>
              </section>
-             <div className="container" id="print_this" style={{backgroundColor:"white", width:"5000px"}}>
+             <div className="container mt-30" id="print_this" style={{backgroundColor:"white"}}>
              <section className="rounded-lg border px-10 pb-35 pt-5 position-relative" style={{backgroundColor:"white"}}>
              <div className="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
             </div>
