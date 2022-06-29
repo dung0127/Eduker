@@ -305,7 +305,7 @@ class CatalogAdd extends React.Component {
                     </div>
 
 
-                </section>
+                    </section>
             
                 </div>
             </div>

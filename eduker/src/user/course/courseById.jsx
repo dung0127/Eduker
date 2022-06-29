@@ -397,7 +397,7 @@ class CourseById extends React.Component {
                         <div className="form-group">
                             <textarea name="feedback" className="form-control" rows="10" placeholder="Add a public review" onChange={this.formReview}></textarea>
                         </div>
-                        <button type="button" title="edit" onClick={()=>this.updateReview(this.state.review,this.props.course.id)} className="btn btn-sm btn-primary mt-20">Edit</button>&emsp;
+                        <button type="button" title="edit" onClick={()=>this.updateReview(this.state.review,this.props.course.id)} className="btn btn-sm btn-primary mt-20">Save</button>&emsp;
                         <button type="button" title="delete" onClick={()=>this.deleteReview(this.props.course.userReview.id, this.props.course.id)} style={{backgroundColor:"#f14d4d", borderColor:"#f14d4d"}} className="btn btn-sm btn-primary mt-20">Detele</button>
                     
                     </form>
@@ -452,9 +452,10 @@ class CourseById extends React.Component {
                 </>
             :''
         }
-            <div className="mt-45">
+            <div className="mt-45" style={{overflowY:"auto",height:"calc(100vh - 300px)"}} >
         {this.props.course.reviews&&this.props.course.reviews.length>0? this.props.course.reviews.map((review, r) => {
             return (
+                <>
                 <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
                     <div className="d-flex align-items-center justify-content-between">
                         <div className="user-inline-avatar d-flex align-items-center mt-10">
@@ -495,7 +496,379 @@ class CourseById extends React.Component {
                     {review.feedback}
                     </div>
 
-                </div> )
+                </div> 
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                <div className="comments-card shadow-lg rounded-sm border px-20 py-15 mt-30" data-address="/reviews/store-reply-comment" data-csrf="V1yQUuqpChkymsEzCbH3pHmi4wVeZ6rhp2xV2qJX" data-id="33">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <div className="user-inline-avatar d-flex align-items-center mt-10">
+                            {/* <div className="avatar">
+                                <img src="/store/979/avatar/617a4ed2908fd.png" className="img-cover" alt=""/>
+                            </div> */}
+                            <div className="d-flex flex-column ml-5">
+                                <span className="font-weight-500 text-secondary"><h3>{review.username}</h3></span>
+                                <br/>
+                                <div className="stars-card d-flex align-items-center justify-content-start mt-0">
+
+                                {[...Array(5)].map((e, i) => (i < review.ratting) ?
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star active"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    :   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    )}
+                                
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className="d-flex align-items-center">
+                            <span className="font-12 text-gray mr-10">2 Mar 2022 | 15:57</span>
+
+                            <div className="btn-group dropdown table-actions">
+                                <button type="button" className="btn-transparent dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i data-feather="more-vertical" height="20"></i>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a href="/reviews/store-reply-commnet" className="webinar-actions d-block text-hover-primary reply-comment">Reply</a>
+                                    <a href="" className="webinar-actions d-block mt-10 text-hover-primary">Report</a>
+
+                                                                    </div>
+                            </div>
+                        </div> */}
+                    </div>
+
+                    <div className="mt-20 text-gray font-14">
+                    {review.feedback}
+                    </div>
+
+                </div>
+                </>
+                )
             }):
                 <div className="review_item">
                     No review stars on this course !
@@ -541,7 +914,7 @@ class CourseById extends React.Component {
                                         this.props.course.purchased?
                                         <div className="mt-20 d-flex flex-column">
                                             
-                                            <Link to= {`/learn/${this.props.course.id}`}  style={{backgroundColor:"#e1b329", borderColor:"#e1b329"}} type="button" className="btn btn-primary" params={this.props.course.id} >Enroll now</Link>
+                                            <Link to= {`/learn/${this.props.course.id}`}  type="button" className="js-buy-with-point btn btn-outline-warning mt-20 " params={this.props.course.id} >Enroll now</Link>
                                             {/* <div class="jq-toast-wrap bottom-right" role="alert" aria-live="polite"><div className="jq-toast-single jq-has-icon jq-icon-success" style={{backgroundColor: "rgb(67, 212, 119)", color: "white", textAlign: "left"}}><span className="jq-toast-loader jq-toast-loaded" style={{WebkitTransition: "width 9.6s ease-in",                       OTransition: "width 9.6s ease-in",                       transition: "width 9.6s ease-in",  backgroundColor: "#9EC600"}}></span><span className="close-jq-toast-single">×</span><h2 className="jq-toast-heading">Added to cart!</h2>You can continue shopping or go to cart to finalize your order.</div></div> */}
                                         </div>
                                     :

@@ -99,7 +99,7 @@ class Catalog extends React.Component {
                 </div>
             </section>
 
-                    <section className="mt-35">
+                <section className="mt-35">
                         
                     <div className="d-flex align-items-start align-items-md-center justify-content-between flex-column flex-md-row">
                         <h2 className="section-title">Catalog</h2>

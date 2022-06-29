@@ -490,8 +490,6 @@ class CourseEdit extends React.Component {
                 <div className="panel-content">
             
                 <section className="container course-content-section webinar mt-35">
-               
-               
                    
                 <div className="course-content-body user-select-none">
                     
@@ -1042,19 +1040,18 @@ class CourseEdit extends React.Component {
                         </div>
                     </div>
                 </div>
-                    
-            
-                </section>    
                 <br/>
-                <div style={{fload:"right"}} className="create-webinar-footer mt-20 pt-15 border-top">
-                <div className="mt-20 mt-md-0">
+                <div style={{fload:"right"}} className="create-webinar-footer mt-20 pt-15">
+                    <div className="mt-20 mt-md-0">
 
-                    <Link to="/course-info" ><button style={{backgroundColor:"#eb4242", borderColor:"#eb4242"}} type="button" className=" btn btn-sm btn-primary" >Back</button></Link>
-                                        &nbsp;&nbsp;&nbsp;
-                    <button type="button" value={'add'} onClick={()=>this.editCourse(this.state.editCourse, this.props.course.id)} className=" btn btn-sm btn-primary">Save</button>
+                    <Link to="/course-info" ><button style={{backgroundColor:"#eb4242", borderColor:"#eb4242"}} type="button" className=" btn btn-sm btn-primary " >Back</button></Link>
+                                        
+                    <button type="button" value={'add'} onClick={()=>this.editCourse(this.state.editCourse, this.props.course.id)} className=" btn btn-sm btn-primary ml-15">Save</button>
 
                     </div>
                 </div>
+                </section>    
+                
             </div>
             </div>
             </>

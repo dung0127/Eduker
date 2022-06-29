@@ -15,17 +15,24 @@ class HeaderGuest extends React.Component {
     }
 
     componentDidMount(){
-        loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/js/parts/main.min.js', () => {});
         loadjs('/assets/default/js/parts/home.min.js', () => {});
-        loadjs('/assets/default/js/parts/categories.min.js', () => {});
+        loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
-        
+
         this.props.fetchCatalogRequest();
         this.props.fetchCourseRequest(0);
        
             
     }
+    componentDidUpdate(){
+        loadjs('/assets/default/js/parts/main.min.js', () => {});
+        loadjs('/assets/default/js/parts/home.min.js', () => {});
+        loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
+        loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
+
+    }
+   
 
     handleInputSearchChange = e => {   
         let value = e.target.value       

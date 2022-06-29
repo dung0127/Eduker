@@ -20,13 +20,13 @@ class HeaderUser extends React.Component {
     componentDidMount(){
         loadjs('/assets/default/js/parts/main.min.js', () => {});
         loadjs('/assets/default/js/parts/home.min.js', () => {});
-        loadjs('/assets/default/js/parts/categories.min.js', () => {});
         loadjs('https://unpkg.com/swiper@8/swiper-bundle.min.js', () => {});
         loadjs('/assets/default/vendors/parallax/parallax.min.js', () => {});
         this.props.fetchDetailUserRequest();
         this.props.fetchCourseRequest(0);
         this.props.fetchCatalogRequest();
     }
+
     
     handleInputSearchChange = e => {   
         let value = e.target.value       

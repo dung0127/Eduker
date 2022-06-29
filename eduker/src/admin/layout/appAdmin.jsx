@@ -27,6 +27,7 @@ import OrderInfo from "../payment/orderInfo.jsx";
 import OrderInfoDetail from "../payment/orderInfoDetail.jsx";
 import Signup from "../../user/profile/signup.jsx";
 import UserAdd from "../user/userAdd.jsx";
+import CourseStatus from "../course/courseStatus.jsx";
 
 const isLogin = localStorage.getItem("isLogin");
 
@@ -55,7 +56,7 @@ class AppAdmin extends React.Component {
                 <Route path ="/course-info" element = {<CourseInfo/>}/> 
                 <Route path ="/user-info" element = {<UserInfo/>}/> 
                 <Route path ="/user-edit/:id" element = {<UserEdit/>}/>
-                
+                <Route path ="/course-status/:id" element = {<CourseStatus/>}/>
                 <Route path="/course-add" element = {<CourseAdd/>}/>
                 <Route path ="/course-edit/:id" element = {<CourseEdit/>}/>
                 <Route path ="/change-password" element = {<ChangePassword/>}/> 

@@ -25,6 +25,9 @@ class MainUser extends React.Component {
         this.props.fetchCourseIndexRequest();
         this.props.fetchCourseTopRequest();
     }
+    componentDidUpdate(){
+        
+    }
 
     render() {
         return (

@@ -25,6 +25,7 @@ class Header extends React.Component {
         loadjs('/assets/default/js/parts/categories.min.js', () => {});
         this.props.fetchDetailUserRequest()
     }
+    
 
     render() {
         
