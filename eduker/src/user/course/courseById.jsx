@@ -18,9 +18,17 @@ class CourseById extends React.Component {
             id : this.props.params.id,      
             save:'', 
             show: false,
-            review:{}
+            review:{},
+            videoLecture:''
         }
 
+    }
+
+    removeVideo = (id,url) => {
+        this.setState({videoLecture:url})
+         let videoP = document.querySelector("#demo"+id)
+                videoP.setAttribute("src", url)
+                videoP.play();
     }
 
     addCart = (items, courses) => {
@@ -269,7 +277,7 @@ class CourseById extends React.Component {
                                                                                                 </span>
                                                                                                 {lecture.videoUrl?
                                                                                                 lecture.preview?
-                                                                                                <a href="#" data-toggle="modal" data-target={"#videoModalLecture"+lecture.id} className="course-content-btns  ">
+                                                                                                <a href="#" data-toggle="modal" onClick={()=>this.removeVideo(lecture.id,lecture.videoUrl)} data-target={"#videoModalLecture"+lecture.id} className="course-content-btns  ">
                                                                                                 <img  src="http://www.downloadclipart.net/medium/play-button-png-clipart.png" style={{width:"30px",height:"25px"}} alt="" />
                                                                                                 </a>:''
                                                                                                 :''}
@@ -285,7 +293,11 @@ class CourseById extends React.Component {
                                                                                                             </div>
                                                                                                             {lecture.videoUrl?
                                                                                                             <div className="modal-body"  >
-                                                                                                                <iframe style={{height:"300px"}} className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                                                                                                {/* <iframe style={{height:"300px"}} className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                                                                                                                <video width="765" height="400" controls id={`demo${lecture.id}`} key={`demo${lecture.id}`}>
+                                                                                                                    <source src={this.state.videoLecture} type="video/mp4"/>
+                                                                                                                </video>
+                                                                                                                
                                                                                                             </div>
                                                                                                             :console.log(lecture.videoUrl)}
                                                                                                             <div className="modal-footer">
@@ -518,10 +530,16 @@ class CourseById extends React.Component {
 
                                 {/* <img src={this.props.course.imageVideoDescription} className="img-cover" alt=""/> */}
                                 
-                                <div className="course-video-icon cursor-pointer d-flex align-items-center justify-content-center">
+                                {/* <div className="course-video-icon cursor-pointer d-flex align-items-center justify-content-center">
                                     <iframe  src={this.props.course.urlVideoDescription} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
                                 <i data-feather="play" width="25" height="25"></i>
+                                </div> */}
+                                
+                                <div className="course-video-icon cursor-pointer d-flex align-items-center justify-content-center" key={`video${this.props.course.id}`}>
+                                    <video width="320" height="240" controls className="videoDemo" >
+                                    <source src={this.props.course.urlVideoDescription} type="video/mp4"/>
+                                    </video>
                                 </div>
                             </div>
 

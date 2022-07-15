@@ -34,11 +34,11 @@ class Panel extends React.Component {
                         
                         <div className="user-avatar">
                       
-                            <img src="store/1015/avatar/617a4f2fb8a6d.png" className="img-cover" alt="Robert Ransdell"/>
+                            <img src={this.props.user.avatarImage} className="img-cover"/>
                         </div>
 
                         <div className="user-name ml-15">
-                            <h3 className="font-16 font-weight-bold">Robert Ransdell</h3>
+                            <h3 className="font-16 font-weight-bold">{this.props.user.fullname}</h3>
                         </div>
                     </div>
 
@@ -55,9 +55,9 @@ class Panel extends React.Component {
                     </button>
 
                     <div className="user-info d-flex align-items-center flex-row flex-lg-column justify-content-lg-center">
-                        <a href="panel" className="user-avatar">
+                        <Link to="/dashboard" href="panel" className="user-avatar">
                             <img src={this.props.user.avatarImage} className="img-cover" alt="Robert Ransdell"/>
-                        </a>
+                        </Link>
 
                         <div className="d-flex flex-column align-items-center justify-content-center">
                             <a href="panel" className="user-name mt-15">

@@ -21,6 +21,7 @@ class CourseLesson extends React.Component {
             id : this.props.params.id,  
 			lectureShow: '',
 			prvId:'', 
+            lectureId:'',
         }
 
     }
@@ -38,12 +39,16 @@ class CourseLesson extends React.Component {
 		
     } 
 
-	getLecture = (id, i) => {
-		console.log(i)
+	getLecture = (id) => {
 		axios.get('http://localhost:8080/api/lecture/'+id,{ headers: authHeader() }).then((res) => {
             this.setState({lectureShow:res.data.data})
 			this.setState({prvId:res.data.data.id})
+            this.setState({lectureId:id})
+            let videoP = document.querySelector("#learn"+id)
+            videoP.setAttribute("src", res.data.data.videoUrl)
+            videoP.play();
         })
+        
 	}
     
 	prev = (id) => {
@@ -118,11 +123,22 @@ class CourseLesson extends React.Component {
             <div  className="d-flex position-relative">
                 {this.state.lectureShow?
                 <div className="learning-page-content flex-grow-1 bg-info-light p-15">
-                    <iframe  src={this.state.lectureShow.videoUrl}  style={{width:"100%",height:"650px",top:"0",left:"0"}}  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <div className="input-group js-video-demo-path-input" key={`youtube${course.id}`}>
+                        <video style={{width:"100%",height:"700px",top:"0",left:"0"}} controls id={`learn${this.state.lectureId}`} key={`video${course.id}`}>
+                            <source src={this.state.lectureShow.videoUrl} type="video/mp4"/>
+                        </video>
+                    
+                    </div>
                 </div>
                 :
                 <div  className="learning-page-content flex-grow-1 bg-info-light p-15">
-                    <iframe  src={course.urlVideoDescription}  style={{width:"100%",height:"650px",top:"0",left:"0"}}  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    {/* <iframe  src={course.urlVideoDescription}  style={{width:"100%",height:"650px",top:"0",left:"0"}}  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                    <div className="input-group js-video-demo-path-input" key={`course${course.id}`}>
+                        <video style={{width:"100%",height:"700px",top:"0",left:"0"}} controls >
+                            <source src={course.urlVideoDescription} type="video/mp4"/>
+                        </video>
+                    
+                    </div>
                 </div>
                 }
       

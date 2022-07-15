@@ -40,6 +40,12 @@ class CourseEdit extends React.Component {
 
             ava:'',
 
+            videoUp:'',
+
+            videoLecture:'',
+
+            stateVideo:'',
+
             newLesson:{
                 title:''
             },
@@ -59,6 +65,9 @@ class CourseEdit extends React.Component {
 
     }
 
+    getStateVideo = (id) => {
+        this.setState({stateVideo:"#video"+id})
+    }
     getSwitch = (preview) => {
         this.setState({switch:preview})
     }
@@ -99,17 +108,81 @@ class CourseEdit extends React.Component {
     }
 
     handleInputLectureChange = (e) => {   
-        let formData = Object.assign({}, this.state.newLecture);    
-        formData[e.target.name] = e.target.value;        
-        this.setState({newLecture:formData});  
+        let formData = Object.assign({}, this.state.newLecture);
+        if (e.target.files && e.target.files[0]) {
+            if (e.target.accept=="image/*"){
+                this.setState({
+                    image: URL.createObjectURL(e.target.files[0])
+                })
+                formData[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
+                this.setState({ava:e.target.files[0]})
+            } 
+            else{
+                this.setState({
+                    videoLecture: URL.createObjectURL(e.target.files[0])
+                    
+                })
+
+                // let url = URL.createObjectURL(e.target.files[0])
+                // let videoP = document.querySelector("video").src= url;
+                // videoP.setAttribute("src", url)
+                // videoP.play();
+                formData[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
+                this.setState({videoUp:e.target.files[0]})
+
+            }
+            
+            this.setState({newLecture:formData});  
+        }
+        else {
+            formData[e.target.name] = e.target.value;        
+            this.setState({newLecture:formData});  
+        }    
+        
         console.log(formData)  
+    }
+
+    removeVideo = (id,url) => {
+        this.setState({videoLecture:url})
+        let videoP = document.querySelector("#demo"+id)
+        videoP.setAttribute("src", url)
+        videoP.play();
     }
 
     handleInputLectureCreateChange = (e) => {   
         let formData = Object.assign({}, this.state.addLecture);    
-        formData[e.target.name] = e.target.value;        
-        this.setState({addLecture:formData});  
+         
+        if (e.target.files && e.target.files[0]) {
+            if (e.target.accept=="image/*"){
+                this.setState({
+                    image: URL.createObjectURL(e.target.files[0])
+                })
+                formData[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
+                this.setState({ava:e.target.files[0]})
+            } 
+            else{
+                this.setState({
+                    videoLecture: URL.createObjectURL(e.target.files[0])
+                    
+                })
+
+                // let url = URL.createObjectURL(e.target.files[0])
+                // let videoP = document.querySelector("video").src= url;
+                // videoP.setAttribute("src", url)
+                // videoP.play();
+                formData[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
+                this.setState({videoUp:e.target.files[0]})
+
+            }
+            
+            this.setState({addLecture:formData}); 
+        }
+        else {
+            formData[e.target.name] = e.target.value;        
+            this.setState({addLecture:formData}); 
+        }    
         console.log(formData)  
+
     }
 
     updateLesson = (lesson, courseId, edit, id) => {
@@ -176,13 +249,13 @@ class CourseEdit extends React.Component {
             ))
         ):''
         )
-        if (this.state.newLecture.videoUrl !== undefined) {
-            var pattern = new RegExp(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch))((\w|-){11})(?:\S+)?$/i);
-            if (!pattern.test(this.state.newLecture.videoUrl)) {
-              isValid = false;
-              error["videoUrl"] = "Please enter valid youtube url.";
-            }
-        }
+        // if (this.state.newLecture.videoUrl !== undefined) {
+        //     var pattern = new RegExp(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch))((\w|-){11})(?:\S+)?$/i);
+        //     if (!pattern.test(this.state.newLecture.videoUrl)) {
+        //       isValid = false;
+        //       error["videoUrl"] = "Please enter valid youtube url.";
+        //     }
+        // }
         
         this.setState({
             error: error
@@ -192,8 +265,11 @@ class CourseEdit extends React.Component {
     }
 
     updateLecture = (lecture, lessonId, courseId, edit) => {
+
         axios.get('http://localhost:8080/api/course/'+courseId+'/lessons',{ headers: authHeader() }).then((res) => {
         if(this.validate(edit.sort, lessonId, res.data.data)){
+            
+        this.props.imageRequest(this.state.videoLecture)
         edit.lessonId=lessonId;
         let newForm = Object.assign(lecture,edit);
         console.log(newForm);
@@ -259,13 +335,13 @@ class CourseEdit extends React.Component {
             error['videoUrlCreate'] = 'The field is required.';
             isValid = false;
         }
-        else {
-            var pattern = new RegExp(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch))((\w|-){11})(?:\S+)?$/i);
-            if (!pattern.test(this.state.addLecture.videoUrl)) {
-              isValid = false;
-              error["videoUrlCreate"] = "Please enter valid youtube url.";
-            }
-        }
+        // else {
+        //     var pattern = new RegExp(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch))((\w|-){11})(?:\S+)?$/i);
+        //     if (!pattern.test(this.state.addLecture.videoUrl)) {
+        //       isValid = false;
+        //       error["videoUrlCreate"] = "Please enter valid youtube url.";
+        //     }
+        // }
 
         if(validator.isEmpty(this.state.addLecture.videoDuration)){            
             error['videoDurationCreate'] = 'The field is required.';
@@ -338,6 +414,8 @@ class CourseEdit extends React.Component {
         axios.get('http://localhost:8080/api/course/'+courseId+'/lessons',{ headers: authHeader() }).then((res) => {
           
         if(this.validateCreate(add.sort, lessonId, res.data.data)){
+        this.props.imageRequest(this.state.videoUp)
+
         add.lessonId=lessonId;
         // console.log(add)
         this.props.createLectureRequest(add,courseId);
@@ -354,6 +432,7 @@ class CourseEdit extends React.Component {
         }})
         $('#idlecCreate'+lessonId).click();
         }
+        
         })
     }
 
@@ -445,9 +524,17 @@ class CourseEdit extends React.Component {
             } 
             else{
                 this.setState({
-                    video: e.target.files[0].name
-                  })
-                formDataCourse[e.target.name] = e.target.files[0].name
+                    video: URL.createObjectURL(e.target.files[0])
+                    
+                })
+
+                let url = URL.createObjectURL(e.target.files[0])
+                let videoP = document.querySelector(".videoHere");
+                videoP.setAttribute("src", url)
+                videoP.play();
+                formDataCourse[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
+                this.setState({videoUp:e.target.files[0]})
+
             }
             
             this.setState({editCourse:formDataCourse});  
@@ -462,6 +549,8 @@ class CourseEdit extends React.Component {
     editCourse = (edit, courseId) => {
         let newForm = Object.assign(this.props.course,edit);
         this.props.imageRequest(this.state.ava)
+        this.props.imageRequest(this.state.videoUp)
+
         this.props.updateCourseRequest(newForm, courseId);
         
             Swal.fire({
@@ -479,32 +568,20 @@ class CourseEdit extends React.Component {
 
     render(){
         let dem = 0;
+        console.log(this.state.video)
+        console.log(this.state.image)
+
+
         return (
             <>
             <Header/>
             <div className="d-flex justify-content-end">
                 <Panel/>
 
-                
-                    
                 <div className="panel-content">
-            
-                <section className="container course-content-section webinar mt-35">
-                   
-                <div className="course-content-body user-select-none">
+                <div className="panel-section-card py-20 px-25 ">
                     
-                    <div className="course-body-on-cover text-white">
-                        <h1 className="font-30 course-title">
-                        {this.props.course.title}
-                        
-                        </h1>
-                        <span className="d-block font-16 mt-10">{this.props.course.shortDescription}</span>
-
-
-                    </div>
-
-                    <div className=" mt-35 ">
-                        
+                <section className="mt-25">
                             <ul className="nav nav-tabs bg-secondary rounded-sm p-15 d-flex align-items-center justify-content-between" id="tabs-tab" role="tablist">
                                 <li  className="nav-item " >
                                 
@@ -537,43 +614,78 @@ class CourseEdit extends React.Component {
                                     <br/>
                                     <div className="mt-15 course-description">
                                         <p><font color="#1c1d1f"><b>Title</b></font></p>
-                                        <p style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p style={{fontSize:"14px", color:"rgb(28,29,31)"}}  key={`title${this.props.course.id}`}>
                                         <input className="form-control prompt srch_explore" type="text" placeholder="Course title here" name="title" data-purpose="edit-course-title" maxlength="60" defaultValue={this.props.course.title} onChange={this.formCourse}  />															
                                         </p>
                                         <br/>
                                         <p><font color="#1c1d1f"><b>Short Description</b></font></p>
-                                        <p style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p style={{fontSize:"14px", color:"rgb(28,29,31)"}}  key={`short${this.props.course.id}`}>
                                         <textarea className="form-control " rows="5" name="shortDescription" placeholder="Item description here..."  defaultValue={this.props.course.shortDescription}  onChange={this.formCourse}></textarea>
                                         
                                         </p>
                                         <br/>
                                         <p><font color="#1c1d1f"><b>Requirements</b></font></p>
-                                        <p style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p style={{fontSize:"14px", color:"rgb(28,29,31)"}}  key={`requirements${this.props.course.id}`}>
                                         <textarea className="form-control " rows="5" name="requirement" placeholder="Item description here..."  defaultValue={this.props.course.requirement}  onChange={this.formCourse}></textarea>
                                         </p>
                                         <br/>
 
                                         <p><font color="#1c1d1f"><b>Description</b></font></p>
-                                        <p style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p style={{fontSize:"14px", color:"rgb(28,29,31)"}}  key={`description${this.props.course.id}`}>
                                         <textarea rows="10" name="description" className="form-control "  defaultValue={this.props.course.description}  onChange={this.formCourse}></textarea>
                                         
                                         </p>
                                         <br/>
                                         <p><font color="#1c1d1f"><b>Who this course is for? </b></font></p>
-                                        <p style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p style={{fontSize:"14px", color:"rgb(28,29,31)"}}  key={`who${this.props.course.id}`}>
                                         <textarea className="form-control " rows="5" name="whoThisCourseIsFor" placeholder="" defaultValue={this.props.course.whoThisCourseIsFor}   onChange={this.formCourse}></textarea>
 
 
                                         </p>
                                         <br/>
                                         <p><font color="#1c1d1f"><b>What you'll learn?</b></font></p>
-                                        <p style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p style={{fontSize:"14px", color:"rgb(28,29,31)"}}  key={`learn${this.props.course.id}`}>
                                         <textarea className="form-control " rows="5" name="whatYouWillLearn" placeholder=""  defaultValue={this.props.course.whatYouWillLearn}  onChange={this.formCourse}></textarea>
 
                                         </p>
                                         <br/>
+                                        <p><font color="#1c1d1f"><b>Category</b></font></p>
+                                            <select className="form-control"  name="subCatalogId" onChange={this.formCourse} >
+                                                <option selected disabled >Select a Category</option>
+                                                {
+                                                this.props.catalogs.map((catalog) => {
+                                                    return (
+                                                        catalog.subCatalogs.length>0?
+                                                        <>
+                                                        <optgroup label={catalog.name}>
+                                                        {catalog.subCatalogs.map(sub => {
+                                                            return (
+                                                                <option value={sub.id}>{sub.name}</option>
+                                                            )
+                                                        } )}
+                                                        </optgroup>
+                                                        </>
+                                                        
+                                                        :<option value={catalog.id}>{catalog.name}</option>
+                                                )})}
+                    
+               
+                                            </select>
+
+                                        <br/>
+                                        <p><font color="#1c1d1f"><b>Language</b></font></p>
+                                        <select  name="language" onChange={this.formCourse} className="custom-select ">
+                                                <option value="" selected disabled>Select language</option>
+                                                <option value="ENG">English</option>
+                                                <option value="VN">Vietnamese</option>
+                                                <option value="FR">French</option>
+                                                <option value="JP">Japanese</option>
+                                        </select>
+                                        <br/>
+                                        <br/>
+                                        
                                         <p><font color="#1c1d1f"><b>Course Thumbnail</b></font></p>
-                                        <p  style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p  style={{fontSize:"14px", color:"rgb(28,29,31)"}}  key={`thumbnail${this.props.course.id}`}>
                                             <br/>
                                         <div className="row">
                                             <div className="col-lg-12 col-md-6 col-sm-6">
@@ -583,12 +695,21 @@ class CourseEdit extends React.Component {
                                             <img src={this.state.image} alt="" style={{height:"80px", width:"100px"}}/>
                                             :<img src={this.props.course.imageVideoDescription} alt="" style={{height:"80px", width:"100px"}}/>
                                             }
-                                            <div className="thumb-dt">													
-                                                <div className="upload-btn" >	
                                             <br/>
-                                                    <input className="uploadBtn-main-input" id="myInput" type="file" name="imageVideoDescription" onChange={this.formCourse} accept="image/*" />
+                                            <br/>
+                                            <div className="input-group">
+                                                <div className="input-group-prepend">
+                                                    <button className="input-group-text " data-input="thumbnail" data-preview="holder">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                                    </button>
                                                 </div>
+                                                
+                                                <input type="file" name="imageVideoDescription" onChange={this.formCourse} accept="image/*" className="form-control " placeholder="360x250px preferred"/>
+                                            
                                             </div>
+                                            {this.state.error.imageVideoDescription && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.imageVideoDescription}</div>}
+
+                                            
                                         </div>
                                     
                                                 </div>
@@ -596,26 +717,35 @@ class CourseEdit extends React.Component {
                                         </div>
                                         </p>
                                         <br/>
-                                        <p><font color="#1c1d1f"><b>Youtube URL</b></font></p>
-                                        <p  style={{fontSize:"14px;color:rgb(28,29,31);"}}>
+                                        <p><font color="#1c1d1f"><b>Video</b></font></p>
+                                        <p  style={{fontSize:"14px", color:"rgb(28,29,31)"}}>
                                             <div className="row">
                                                 <div className="col-lg-12 col-md-6 col-sm-6">
                                                     <div className="loc_group">
-                                                        <div className="input-group js-video-demo-path-input">
-                                                            <div className="input-group-prepend">
-                                                                <button type="button" className="js-video-demo-path-links rounded-left input-group-text input-group-text-rounded-left text-white" data-preview="holder">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                                                                </button>
-                                                            </div>
-                                                            <input className="form-control prompt srch_explore" type="text" placeholder="Youtube Video URL"  defaultValue={this.props.course.urlVideoDescription}  name="urlVideoDescription" onChange={this.formCourse} />															
-                                                            {this.state.error.videoUrl && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.videoUrl}</div>}
-
+                                                        <div className="input-group js-video-demo-path-input" key={`youtube${this.props.course.id}`}>
+                                                        <video width="320" height="240" controls className="videoHere">
+                                                        <source src={this.props.course.urlVideoDescription} type="video/mp4"/>
+                                                        </video>
+                                                       
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                             </div>		
                                         </p>
+                                     
+                                        <br/>
+                                        <div className="input-group">
+                                        <div className="input-group-prepend">
+                                            <button className="input-group-text " data-input="thumbnail" data-preview="holder">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                            </button>
+                                        </div>
+                            
+                                        <input type="file" name="urlVideoDescription" onChange={this.formCourse} accept="video/*"  className="form-control "/>
+                           
+                                        </div>
+
+                        
                                     </div>
                                 </div>
 
@@ -736,7 +866,7 @@ class CourseEdit extends React.Component {
                                                                                         </div>
                                                                                         
                                                                                         <div className="d-flex align-items-center" >
-                                                                                            <a href="#" data-toggle="modal" data-target={"#videoModalLecture"+lecture.id} className="course-content-btns  ">
+                                                                                            <a href="#" data-toggle="modal" onClick={()=>this.removeVideo(lecture.id,lecture.videoUrl)} data-target={"#videoModalLecture"+lecture.id} className="course-content-btns  ">
                                                                                                 <img  src="http://www.downloadclipart.net/medium/play-button-png-clipart.png" style={{width:"30px",height:"25px"}} alt="" />
                                                                                             </a>&nbsp;
                                                                                             <button data-toggle="modal" onClick={()=>this.getSwitch(lecture.preview)} data-target={'#idlec'+lecture.id} class="js-add-chapter btn-transparent text-gray" data-webinar-id="2010" data-type="file" data-chapter="31" data-locale="EN">
@@ -756,11 +886,16 @@ class CourseEdit extends React.Component {
                                                                                                                     <span aria-hidden="true">&times;</span>
                                                                                                                 </button>
                                                                                                             </div>
-                                                                                                            {lecture.videoUrl?
+                                                                                                           
                                                                                                             <div className="modal-body"  >
-                                                                                                                <iframe style={{height:"300px"}} className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                                                                                                                {/* <iframe style={{height:"300px"}} className="form-control" src={lecture.videoUrl} allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
+                                                                                                                <video width="765" height="400" controls id={`demo${lecture.id}`} key={`demo${lecture.id}`}>
+                                                                                                                    <source src={this.state.videoLecture} type="video/mp4"/>
+                                                                                                                </video>
+                                                                                                                
+                                                                                                                
                                                                                                             </div>
-                                                                                                            :console.log(lecture.videoUrl)}
+                                                                                                            
                                                                                                             <div className="modal-footer">
                                                                                                                 {/* <button type="button" className="main-btn" data-dismiss="modal" value={'delete'} onClick={()=>this.deleteLecture(lecture.id, this.props.course.id)} ><i className="uil uil-trash-alt"></i>DELETE</button> */}
                                                                                                             </div>
@@ -834,20 +969,36 @@ class CourseEdit extends React.Component {
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         
-                                                                                                        <div className="col-lg-9 col-md-12">
+                                                                                                        <div className="col-lg-12 col-md-12">
                                                                                                             <div className="ui search focus mt-30 lbel25" >
-                                                                                                                <label>Youtube URL*</label>
-                                                                                                                <div className="input-group js-video-demo-path-input" key={`youtube${lecture.id}`}>
+                                                                                                                <label>Video*</label>
+                                                                                                                
+                                                                                                                {/* <div className="input-group js-video-demo-path-input"  key={`youtube${lecture.id}`}>
+                                                                                                                    {this.state.video?
+                                                                                                                    <video width="1000" height="250" controls >
+                                                                                                                    <source src={this.state.video} type="video/mp4"/>
+                                                                                                                    </video>
+                                                                                                                    :
+                                                                                                                    <video width="1000" height="250" controls >
+                                                                                                                    <source src={lecture.videoUrl} type="video/mp4"/>
+                                                                                                                    </video>
+                                                                                                                    }
+
+                                                                                                                
+                                                                                                                </div> */}
+                                                                                                                <br/>
+                                                                                                                <div className="input-group" key={`video${lecture.id}`}  >
                                                                                                                     <div className="input-group-prepend">
-                                                                                                                        <button type="button" className="js-video-demo-path-links rounded-left input-group-text input-group-text-rounded-left text-white" data-preview="holder">
-                                                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                                                                                                                        <button className="input-group-text " data-input="thumbnail" data-preview="holder">
+                                                                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                                                                                                                         </button>
                                                                                                                     </div>
-                                                                                                                    <input className="prompt srch_explore lec form-control" type="text" placeholder="Youtube video URL" name="videoUrl" defaultValue={lecture.videoUrl} onChange={this.handleInputLectureChange}/>
-                                                                                                                    {this.state.error.videoUrl && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.videoUrl}</div>}
-
+                                                                                                        
+                                                                                                                    <input type="file" name="videoUrl" onChange={this.handleInputLectureChange} accept="video/*"  className="form-control "/>
+                                                                                                    
                                                                                                                 </div>
-                                                                                                                
+                                                                                                                {this.state.error.videoUrl && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.videoUrl}</div>}
+
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
@@ -940,16 +1091,23 @@ class CourseEdit extends React.Component {
                                                                                         
 
                                                                                     <div className="form-group">
-                                                                                        <label className="input-label">Youtube URL *</label>
+                                                                                        <label className="input-label">Video *</label>
                                                                                     </div>
                                                                                     <div className="form-group">
                                                                                         <div className="local-input input-group">
-                                                                                            <div className="input-group-prepend">
+                                                                                            {/* <div className="input-group-prepend">
                                                                                                 <button type="button" className="input-group-text panel-file-manager text-white" data-input="file_pathrecord" data-preview="holder">
                                                                                                     <i data-feather="link" width="18" height="18" className="text-white"></i>
                                                                                                 </button>
+                                                                                            </div> */}
+                                                                                            <div className="input-group-prepend">
+                                                                                                <button className="input-group-text " data-input="thumbnail" data-preview="holder">
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                                                                                </button>
                                                                                             </div>
-                                                                                            <input type="text" placeholder="Youtube video URL" name="videoUrl" onChange={this.handleInputLectureCreateChange} className="form-control lecture"/>
+                                                                                            <input type="file" name="videoUrl" onChange={this.handleInputLectureCreateChange} accept="video/*"  className="form-control lecture"/>
+
+                                                                                            {/* <input type="text" placeholder="Youtube video URL" name="videoUrl" onChange={this.handleInputLectureCreateChange} className="form-control lecture"/> */}
 
                                                                                         </div>
                                                                                         {this.state.error.videoUrlCreate && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.videoUrlCreate}</div>}
@@ -1038,9 +1196,10 @@ class CourseEdit extends React.Component {
                             </div>
                             
                         </div>
-                    </div>
-                </div>
                 <br/>
+               
+                </section>
+                </div>
                 <div style={{fload:"right"}} className="create-webinar-footer mt-20 pt-15">
                     <div className="mt-20 mt-md-0">
 
@@ -1050,9 +1209,7 @@ class CourseEdit extends React.Component {
 
                     </div>
                 </div>
-                </section>    
-                
-            </div>
+                </div>
             </div>
             </>
             );
@@ -1067,6 +1224,10 @@ const mapStateToProps = state => {
         cartItems: state.cart.items,
         savedSuccess: state.savedCourse.savedSuccess,
         reviewSuccess: state.review.reviewSuccess,
+
+        catalogs: state.catalog.catalogs,
+        subCatalogs: state.subCatalog.subCatalogs,
+        img: state.course.img,
 
         lesson: state.lesson.lesson,
         messageSuccessLesson: state.lesson.messageSuccess,
@@ -1095,7 +1256,11 @@ const mapDispatchToProps = dispatch => {
         fetchLectureByIdRequest: (e) => dispatch (fetchLectureByIdRequest(e)),
         updateLectureRequest:(e,i) => dispatch (updateLectureRequest(e,i)),
         createLectureRequest:(e,i) => dispatch (createLectureRequest(e,i)),
-        deleteLectureRequest:(e,i) => dispatch (deleteLectureRequest(e,i))
+        deleteLectureRequest:(e,i) => dispatch (deleteLectureRequest(e,i)),
+
+        fetchCatalogRequest:() => dispatch (fetchCatalogRequest()),
+        fetchSubCatalogRequest:() => dispatch (fetchSubCatalogRequest()),
+        
 
     };
 }

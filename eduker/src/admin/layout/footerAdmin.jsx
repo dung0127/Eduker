@@ -5,9 +5,10 @@ class FooterAdmin extends React.Component {
         return (
             <footer className="footer bg-secondary position-relative user-select-none">
             <div className="container">
-              
-
-                <div className="mt-40 border-blue py-25 d-flex align-items-center justify-content-between">
+            <br/>
+                <div className="mt-40  py-25 d-flex align-items-center justify-content-between">
+                    
+                    
                     <div className="footer-logo">
                         
                     </div>
@@ -32,6 +33,8 @@ class FooterAdmin extends React.Component {
                                 alt="footer logo"/>
                         </a>
                 </div>
+                <br/><br/>
+          
             </div>
         </footer>
 

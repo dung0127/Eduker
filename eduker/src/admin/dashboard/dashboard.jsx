@@ -35,7 +35,7 @@ class DashBoard extends React.Component {
             <section className="dashboard">
                 <div className="row">
                     
-                    <div className="col-12 col-lg-3 mt-35">
+                    <div className="col-12 col-lg-4 mt-35">
                         <a href="#" className="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
                             <div className="stat-icon requests">
                                 <img src="/assets/default/img/icons/monay.svg " alt=""/>
@@ -65,7 +65,7 @@ class DashBoard extends React.Component {
                         </a>
                     </div>
 
-                    <div className="col-12 col-lg-3 mt-35">
+                    <div className="col-12 col-lg-4 mt-35">
                         <a href="#" className="bg-white dashboard-stats rounded-sm panel-shadow p-10 p-md-20 d-flex align-items-center">
                             <div className="stat-icon support-messages">
                                 <img src="/assets/default/img/icons/request.svg" alt=""/>
@@ -93,7 +93,7 @@ class DashBoard extends React.Component {
                         </a>
                     </div>
                    
-                    <div className="col-12 col-lg-3 mt-35">
+                    <div className="col-12 col-lg-4 mt-35">
                         <div className="dashboard-banner">
                             <img src="/store/1/dashboard.png" style={{ width:"500px"}} alt="" className="img-cover"/>
                         </div>

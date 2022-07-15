@@ -48,6 +48,7 @@ const isEmpty = (v) => {
 class AppAdmin extends React.Component {
   render() {
       return (
+        <>
         <Router>
                 
             <Routes>    
@@ -87,9 +88,11 @@ class AppAdmin extends React.Component {
                 <Route path="/courses/:name/:id" element ={<CourseBySubCatalog/>}></Route>
                 <Route path="/search" element ={<Search/>}></Route>
             </Routes>  
-            <FooterAdmin/>
 
         </Router>
+            <FooterAdmin/>
+
+        </>
       );
     }
 }

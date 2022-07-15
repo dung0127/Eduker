@@ -68,7 +68,10 @@ class CourseAdd extends Component {
             classStep5:'',
 
             image:'',
+
             video:'',
+
+            videoUp:'',
             
             error: {},
 
@@ -86,7 +89,16 @@ class CourseAdd extends Component {
             
             lessonId: '',
 
+            videoUpload: true 
         }
+    }
+
+    changeVideo = e => {
+        if (this.state.videoUpload) 
+            this.setState({videoUpload:false})
+        else
+            this.setState({videoUpload:true})
+
     }
 
     getLessonTitle = (ti) => {
@@ -284,9 +296,36 @@ class CourseAdd extends Component {
     formLecture = e => {   
         let formDataLecture = Object.assign({}, this.state.addLecture); 
         //console.log(formDataLecture)
+        if (e.target.files && e.target.files[0]) {
+            if (e.target.accept=="image/*"){
+                this.setState({
+                    image: URL.createObjectURL(e.target.files[0])
+                })
+                formDataLecture[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
+                this.setState({ava:e.target.files[0]})
+            } 
+            else{
+                this.setState({
+                    videoLecture: URL.createObjectURL(e.target.files[0])
+                    
+                })
+
+                // let url = URL.createObjectURL(e.target.files[0])
+                // let videoP = document.querySelector("video").src= url;
+                // videoP.setAttribute("src", url)
+                // videoP.play();
+                formDataLecture[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
+                this.setState({videoUp:e.target.files[0]})
+
+            }
+            
+            this.setState({addLecture:formDataLecture}); 
+        }
+        else {
+            formDataLecture[e.target.name] = e.target.value;        
+            this.setState({addLecture:formDataLecture});  
+        }    
         
-        formDataLecture[e.target.name] = e.target.value;        
-        this.setState({addLecture:formDataLecture});  
         console.log(formDataLecture);
     }
 
@@ -312,6 +351,7 @@ class CourseAdd extends Component {
 
     newLecture = (lesson, add) => {
         if(this.validateSort(add.sort,lesson.title)&&this.validateLecture()){
+        this.props.imageRequest(this.state.videoUp)
         idLecture++;
         add.id=idLecture;
         lectures.push(add);
@@ -386,8 +426,8 @@ class CourseAdd extends Component {
             else{
                 this.setState({
                     video: e.target.files[0].name
-                  })
-                formDataCourse[e.target.name] = e.target.files[0].name
+                })
+                formDataCourse[e.target.name] = 'http://localhost:8080/images/'+e.target.files[0].name
             }
             
             this.setState({addCourse:formDataCourse});  
@@ -521,13 +561,13 @@ class CourseAdd extends Component {
             isValid = false;
         }
 
-        if (this.state.addCourse.urlVideoDescription !== '') {
-            var pattern = new RegExp(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch))((\w|-){11})(?:\S+)?$/i);
-            if (!pattern.test(this.state.addCourse.urlVideoDescription)) {
-              isValid = false;
-              error["urlVideoDescription"] = "Please enter valid youtube url.";
-            }
-          }
+        // if (this.state.addCourse.urlVideoDescription !== '') {
+        //     var pattern = new RegExp(/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch))((\w|-){11})(?:\S+)?$/i);
+        //     if (!pattern.test(this.state.addCourse.urlVideoDescription)) {
+        //       isValid = false;
+        //       error["urlVideoDescription"] = "Please enter valid youtube url.";
+        //     }
+        //   }
 
         this.setState({
             error: error
@@ -845,7 +885,29 @@ class CourseAdd extends Component {
                     </div>
 
                     <div className="form-group mt-0">
-                        <label className="input-label font-12">Youtube URL*</label>
+                        <label className="input-label font-12">Video*</label>
+                        {/* <select name="video_demo_source" class="form-control" onChange={this.changeVideo}>
+                                <option value="true" >Upload</option>
+                                <option value="false" >Youtube</option>
+                        </select>
+                        <br/> */}
+                        {/* {this.state.videoUpload?
+                        <> */}
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <button className="input-group-text " data-input="thumbnail" data-preview="holder">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                </button>
+                            </div>
+                            
+                            <input type="file" name="urlVideoDescription" onChange={this.formCourse} accept="video/*"  className="form-control "/>
+                           
+                        </div>
+
+                        {this.state.error.urlVideoDescription && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.urlVideoDescription}</div>}
+                        {/* </>
+                        :
+                        <>
                         <div className="input-group js-video-demo-path-input">
                             <div className="input-group-prepend">
                                 <button type="button" className="js-video-demo-path-links rounded-left input-group-text input-group-text-rounded-left text-white" data-preview="holder">
@@ -855,7 +917,9 @@ class CourseAdd extends Component {
                             <input type="text" placeholder="Youtube Video URL" name="urlVideoDescription" onChange={this.formCourse}  className="form-control "/>
                         </div>
                         {this.state.error.urlVideoDescription && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.urlVideoDescription}</div>}
-
+                        
+                        </>
+                        } */}
                     </div>
 
                     <div className="form-group mt-15">
@@ -863,7 +927,7 @@ class CourseAdd extends Component {
                         <div className="input-group">
                             <div className="input-group-prepend">
                                 <button className="input-group-text " data-input="thumbnail" data-preview="holder">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up text-white"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                                 </button>
                             </div>
                             
@@ -979,31 +1043,30 @@ class CourseAdd extends Component {
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             
-<div className="form-group">
-    <label className="input-label">Title *</label>
-    <input value={lecture.title} disabled className="form-control"/>
-  
-</div>
-                        <div className="form-group">
-    <label className="input-label">Sort *</label>
-    <input value={lecture.sort} disabled className="form-control"/>
+                    <div className="form-group">
+                        <label className="input-label">Title *</label>
+                        <input value={lecture.title} disabled className="form-control"/>
+                    
+                    </div>
+                    <div className="form-group">
+                        <label className="input-label">Sort *</label>
+                        <input value={lecture.sort} disabled className="form-control"/>
 
-</div>
+                    </div>
 
-<div className="form-group">
-    <label className="input-label">Youtube URL *</label>
-</div>
-<div className="form-group">
-    <div className="local-input input-group">
-        <div className="input-group-prepend">
-            <button type="button" className="input-group-text panel-file-manager text-white" data-input="file_pathrecord" data-preview="holder">
-                <i data-feather="link" width="18" height="18" className="text-white"></i>
-            </button>
-        </div>
-        <input value={lecture.videoUrl} disabled className="form-control"/>
-    </div>
-</div>
+                    <div className="form-group">
+                        <label className="input-label">Video *</label>
+                    </div>
+                    <div className="input-group js-video-demo-path-input"  key={`youtube${lecture.id}`}>
+                       
+                        <video width="1000" height="250" controls key={`video${lecture.id}`}>
+                        <source src={lecture.videoUrl} type="video/mp4"/>
+                        </video>
+                        
 
+
+                    </div>
+<br/>
 <div className="form-group">
     <label className="input-label">Duration (Hour) *</label>
 </div>
@@ -1152,16 +1215,17 @@ class CourseAdd extends Component {
     
 
 <div className="form-group">
-    <label className="input-label">Youtube URL *</label>
+    <label className="input-label">Video *</label>
 </div>
 <div className="form-group">
     <div className="local-input input-group">
         <div className="input-group-prepend">
-            <button type="button" className="input-group-text panel-file-manager text-white" data-input="file_pathrecord" data-preview="holder">
-                <i data-feather="link" width="18" height="18" className="text-white"></i>
+            <button className="input-group-text " data-input="thumbnail" data-preview="holder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-upload text-white"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
             </button>
         </div>
-        <input type="text" placeholder="Youtube video URL" name="videoUrl" onChange={this.formLecture} className="form-control"/>
+        <input type="file" name="videoUrl" onChange={this.formLecture} accept="video/*"  className="form-control"/>
+
 
     </div>
     {this.state.error.videoUrlLecture && <div style={{color:"red",fontSize:"12px"}}>{this.state.error.videoUrlLecture}</div>}
